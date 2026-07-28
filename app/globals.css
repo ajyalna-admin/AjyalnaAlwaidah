@@ -1,0 +1,52 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.001ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.001ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+
+  body {
+    background-color: #f5f2ed;
+    color: #121f3e;
+  }
+
+  ::selection {
+    background: rgba(157, 185, 200, 0.4);
+  }
+
+  :focus-visible {
+    outline: 2px solid #7a9daf;
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+}
+
+@layer utilities {
+  .section-pad {
+    @apply px-6 sm:px-10 lg:px-16 py-24 sm:py-28;
+  }
+
+  .container-content {
+    @apply max-w-content mx-auto w-full;
+  }
+
+  .card-surface {
+    @apply bg-white/60 backdrop-blur-sm border border-line;
+  }
+}
