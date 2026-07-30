@@ -22,17 +22,17 @@
   }
 
   body {
-    background-color: #f1f6fb;
-    color: #0f2a4a;
+    background-color: #faf7f2;
+    color: #121f3e;
     position: relative;
   }
 
   ::selection {
-    background: rgba(79, 168, 218, 0.35);
+    background: rgba(142, 173, 188, 0.35);
   }
 
   :focus-visible {
-    outline: 2px solid #1d82bc;
+    outline: 2px solid #6f93a6;
     outline-offset: 3px;
     border-radius: 2px;
   }
@@ -52,34 +52,34 @@
   }
 
   .glass-card {
-    background: linear-gradient(160deg, rgba(255, 255, 255, 0.5), rgba(210, 232, 250, 0.15));
+    background: linear-gradient(160deg, rgba(255, 255, 255, 0.5), rgba(214, 224, 243, 0.18));
     backdrop-filter: blur(24px) saturate(140%);
     -webkit-backdrop-filter: blur(24px) saturate(140%);
     border: 1px solid rgba(255, 255, 255, 0.6);
     box-shadow:
       0 1px 0 rgba(255, 255, 255, 0.7) inset,
-      0 -12px 24px rgba(79, 168, 218, 0.06) inset,
-      0 16px 40px -12px rgba(15, 42, 74, 0.18);
+      0 -12px 24px rgba(142, 173, 188, 0.08) inset,
+      0 16px 40px -12px rgba(18, 31, 62, 0.18);
     transition: border-color 0.35s ease, box-shadow 0.35s ease;
   }
 
   .glass-card:hover {
-    border-color: rgba(79, 168, 218, 0.55);
+    border-color: rgba(142, 173, 188, 0.55);
     box-shadow:
       0 1px 0 rgba(255, 255, 255, 0.8) inset,
-      0 -12px 24px rgba(79, 168, 218, 0.1) inset,
-      0 24px 56px -14px rgba(15, 42, 74, 0.28);
+      0 -12px 24px rgba(142, 173, 188, 0.12) inset,
+      0 24px 56px -14px rgba(18, 31, 62, 0.28);
   }
 
   .glass-chip {
-    background: linear-gradient(160deg, rgba(79, 168, 218, 0.22), rgba(79, 168, 218, 0.08));
+    background: linear-gradient(160deg, rgba(142, 173, 188, 0.22), rgba(142, 173, 188, 0.08));
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
     border: 1px solid rgba(255, 255, 255, 0.55);
   }
 
   .glass-nav {
-    background: rgba(241, 246, 251, 0.6);
+    background: rgba(250, 247, 242, 0.65);
     backdrop-filter: blur(22px) saturate(160%);
     -webkit-backdrop-filter: blur(22px) saturate(160%);
     border-bottom: 1px solid rgba(255, 255, 255, 0.5);
