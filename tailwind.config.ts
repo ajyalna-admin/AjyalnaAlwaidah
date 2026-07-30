@@ -10,18 +10,18 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        cream: "#F5F2ED",
-        "cream-deep": "#EFEBE3",
+        cream: "#F1F6FB",
+        "cream-deep": "#E3EDF7",
         navy: {
-          DEFAULT: "#121F3E",
-          light: "#1C2E56",
+          DEFAULT: "#0F2A4A",
+          light: "#1B3F6B",
         },
         sky: {
-          DEFAULT: "#9DB9C8",
-          deep: "#7A9DAF",
+          DEFAULT: "#4FA8DA",
+          deep: "#1D82BC",
         },
-        line: "rgba(18,31,62,0.10)",
-        muted: "#5C6478",
+        line: "rgba(15,42,74,0.10)",
+        muted: "#51607A",
       },
       fontFamily: {
         display: ["var(--font-cairo)", "system-ui", "sans-serif"],
