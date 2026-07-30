@@ -22,17 +22,17 @@
   }
 
   body {
-    background-color: #f5f2ed;
-    color: #121f3e;
+    background-color: #f1f6fb;
+    color: #0f2a4a;
     position: relative;
   }
 
   ::selection {
-    background: rgba(157, 185, 200, 0.4);
+    background: rgba(79, 168, 218, 0.35);
   }
 
   :focus-visible {
-    outline: 2px solid #7a9daf;
+    outline: 2px solid #1d82bc;
     outline-offset: 3px;
     border-radius: 2px;
   }
@@ -52,35 +52,37 @@
   }
 
   .glass-card {
-    background: linear-gradient(160deg, rgba(255, 255, 255, 0.55), rgba(255, 255, 255, 0.18));
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border: 1px solid rgba(255, 255, 255, 0.55);
+    background: linear-gradient(160deg, rgba(255, 255, 255, 0.5), rgba(210, 232, 250, 0.15));
+    backdrop-filter: blur(24px) saturate(140%);
+    -webkit-backdrop-filter: blur(24px) saturate(140%);
+    border: 1px solid rgba(255, 255, 255, 0.6);
     box-shadow:
-      0 8px 32px rgba(18, 31, 62, 0.08),
-      inset 0 1px 0 rgba(255, 255, 255, 0.5);
-    transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+      0 1px 0 rgba(255, 255, 255, 0.7) inset,
+      0 -12px 24px rgba(79, 168, 218, 0.06) inset,
+      0 16px 40px -12px rgba(15, 42, 74, 0.18);
+    transition: border-color 0.35s ease, box-shadow 0.35s ease;
   }
 
   .glass-card:hover {
-    border-color: rgba(122, 157, 175, 0.5);
+    border-color: rgba(79, 168, 218, 0.55);
     box-shadow:
-      0 14px 40px rgba(18, 31, 62, 0.12),
-      inset 0 1px 0 rgba(255, 255, 255, 0.6);
+      0 1px 0 rgba(255, 255, 255, 0.8) inset,
+      0 -12px 24px rgba(79, 168, 218, 0.1) inset,
+      0 24px 56px -14px rgba(15, 42, 74, 0.28);
   }
 
   .glass-chip {
-    background: linear-gradient(160deg, rgba(157, 185, 200, 0.22), rgba(157, 185, 200, 0.08));
-    backdrop-filter: blur(14px);
-    -webkit-backdrop-filter: blur(14px);
-    border: 1px solid rgba(255, 255, 255, 0.5);
+    background: linear-gradient(160deg, rgba(79, 168, 218, 0.22), rgba(79, 168, 218, 0.08));
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.55);
   }
 
   .glass-nav {
-    background: rgba(245, 242, 237, 0.55);
-    backdrop-filter: blur(18px);
-    -webkit-backdrop-filter: blur(18px);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+    background: rgba(241, 246, 251, 0.6);
+    backdrop-filter: blur(22px) saturate(160%);
+    -webkit-backdrop-filter: blur(22px) saturate(160%);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.5);
   }
 
   .bg-orbs {
