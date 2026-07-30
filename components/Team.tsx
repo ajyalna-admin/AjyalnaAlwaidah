@@ -1,8 +1,85 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { Crown, UserRound, Linkedin } from "lucide-react";
 import { SectionHeading } from "@/components/SectionHeading";
-import { team, teamSection } from "@/lib/data";
+import {
+  teamSection,
+  leadership,
+  guidanceCommittees,
+  subCommittees,
+  type CommitteeEntry,
+  type LeadershipMember,
+} from "@/lib/data";
+
+function LeadershipCard({ member, index }: { member: LeadershipMember; index: number }) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-60px" }}
+      transition={{ duration: 0.5, delay: index * 0.08, ease: [0.16, 1, 0.3, 1] }}
+      whileHover={{ y: -6 }}
+      className="glass-card rounded-2xl p-7 text-center"
+    >
+      <div className="mx-auto h-16 w-16 rounded-full bg-sky/20 flex items-center justify-center mb-4">
+        <span className="font-display text-lg font-bold text-sky-deep">
+          {member.name.trim().charAt(0)}
+        </span>
+      </div>
+      <p className="font-display font-bold text-lg">{member.name}</p>
+      <p className="text-sm text-muted mt-1">{member.role}</p>
+      {member.linkedin && (
+        <a
+          href={member.linkedin}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="mt-4 inline-flex items-center gap-1.5 text-xs font-medium text-sky-deep hover:text-navy transition-colors duration-200"
+        >
+          <Linkedin className="h-3.5 w-3.5" />
+          لينكدإن
+        </a>
+      )}
+    </motion.div>
+  );
+}
+
+function CommitteeCard({ committee, index }: { committee: CommitteeEntry; index: number }) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 18 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-60px" }}
+      transition={{ duration: 0.5, delay: (index % 4) * 0.06, ease: [0.16, 1, 0.3, 1] }}
+      whileHover={{ y: -6 }}
+      className="glass-card rounded-2xl p-6"
+    >
+      <p className="font-display font-bold leading-snug mb-4">{committee.name}</p>
+      <div className="space-y-2.5">
+        <div className="flex items-center gap-2.5">
+          <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-sky/20">
+            <Crown className="h-3.5 w-3.5 text-sky-deep" />
+          </span>
+          <div>
+            <p className="text-[11px] text-muted">القائدة</p>
+            <p className="text-sm font-medium">{committee.leader}</p>
+          </div>
+        </div>
+        {committee.deputy && (
+          <div className="flex items-center gap-2.5">
+            <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-sky/10">
+              <UserRound className="h-3.5 w-3.5 text-sky-deep" />
+            </span>
+            <div>
+              <p className="text-[11px] text-muted">النائبة</p>
+              <p className="text-sm font-medium">{committee.deputy}</p>
+            </div>
+          </div>
+        )}
+      </div>
+    </motion.div>
+  );
+}
 
 export function Team() {
   return (
@@ -14,25 +91,31 @@ export function Team() {
           description={teamSection.description}
         />
 
-        <div className="grid sm:grid-cols-3 gap-5">
-          {team.map((m, i) => (
-            <motion.div
-              key={m.name + i}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-60px" }}
-              transition={{ duration: 0.5, delay: (i % 3) * 0.08, ease: [0.16, 1, 0.3, 1] }}
-              className="glass-card rounded-2xl p-6 text-center"
-            >
-              <div className="mx-auto h-16 w-16 rounded-full bg-sky/20 flex items-center justify-center mb-4">
-                <span className="font-display text-lg font-bold text-sky-deep">
-                  {m.name.trim().charAt(0)}
-                </span>
-              </div>
-              <p className="font-display font-bold">{m.name}</p>
-              <p className="text-sm text-muted mt-1">{m.role}</p>
-            </motion.div>
-          ))}
+        <div className="mb-14">
+          <h3 className="font-display text-lg font-bold mb-6">{teamSection.leadershipNote}</h3>
+          <div className="grid sm:grid-cols-2 gap-5 max-w-xl">
+            {leadership.map((m, i) => (
+              <LeadershipCard key={m.name} member={m} index={i} />
+            ))}
+          </div>
+        </div>
+
+        <div className="mb-14">
+          <h3 className="font-display text-lg font-bold mb-6">{teamSection.guidanceNote}</h3>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            {guidanceCommittees.map((c, i) => (
+              <CommitteeCard key={c.name} committee={c} index={i} />
+            ))}
+          </div>
+        </div>
+
+        <div>
+          <h3 className="font-display text-lg font-bold mb-6">{teamSection.subNote}</h3>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {subCommittees.map((c, i) => (
+              <CommitteeCard key={c.name} committee={c} index={i} />
+            ))}
+          </div>
         </div>
       </div>
     </section>

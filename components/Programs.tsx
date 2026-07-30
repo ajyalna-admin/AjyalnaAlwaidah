@@ -22,6 +22,7 @@ export function Programs() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-60px" }}
               transition={{ duration: 0.55, delay: (i % 2) * 0.08, ease: [0.16, 1, 0.3, 1] }}
+              whileHover={{ y: -6 }}
               className="glass-card rounded-2xl p-7"
             >
               <span className="inline-block text-xs font-bold text-sky-deep bg-sky/15 px-3 py-1 rounded-full mb-4">

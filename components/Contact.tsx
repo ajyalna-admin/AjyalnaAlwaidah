@@ -1,13 +1,14 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Mail, Instagram, Twitter } from "lucide-react";
+import { Mail, Send, Twitter, Linkedin } from "lucide-react";
 import { contact, brand } from "@/lib/data";
 
 const links = [
   { label: "البريد الإلكتروني", value: brand.email, href: `mailto:${brand.email}`, icon: Mail },
-  { label: "إنستغرام", value: "ajyalna.alwaidah@", href: brand.instagram, icon: Instagram },
-  { label: "تويتر / X", value: "ajyalna_alwaidah@", href: brand.twitter, icon: Twitter },
+  { label: "تيليجرام", value: "Ajyalna_Alwaidah", href: brand.telegram, icon: Send },
+  { label: "إكس", value: "AjyalnaAlwaidah", href: brand.twitter, icon: Twitter },
+  { label: "لينكدإن", value: "Ajyalna Alwaidah", href: brand.linkedin, icon: Linkedin },
 ];
 
 export function Contact() {
@@ -28,7 +29,7 @@ export function Contact() {
           <p className="mt-4 text-muted text-lg leading-loose">{contact.description}</p>
         </motion.div>
 
-        <div className="grid sm:grid-cols-3 gap-5 max-w-2xl mx-auto">
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-5 max-w-3xl mx-auto">
           {links.map((l, i) => (
             <motion.a
               key={l.label}
@@ -39,6 +40,7 @@ export function Contact() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-60px" }}
               transition={{ duration: 0.5, delay: i * 0.08, ease: [0.16, 1, 0.3, 1] }}
+              whileHover={{ y: -6 }}
               className="glass-card rounded-2xl p-6 flex flex-col items-center text-center gap-3"
             >
               <span className="flex h-11 w-11 items-center justify-center rounded-full bg-sky/15">

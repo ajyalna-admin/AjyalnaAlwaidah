@@ -33,6 +33,7 @@ export function Resources() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-60px" }}
                 transition={{ duration: 0.5, delay: (i % 3) * 0.08, ease: [0.16, 1, 0.3, 1] }}
+                whileHover={{ y: -4 }}
                 className="glass-card rounded-2xl overflow-hidden"
               >
                 <button

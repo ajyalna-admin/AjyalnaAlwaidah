@@ -8,10 +8,8 @@ import { brand } from "@/lib/data";
 const LINKS = [
   { id: "about", label: "من نحن" },
   { id: "vision", label: "أهدافنا" },
-  { id: "structure", label: "الهيكلة" },
   { id: "programs", label: "برامجنا" },
   { id: "resources", label: "المواضيع" },
-  { id: "excellence", label: "التميز" },
   { id: "impact", label: "أثرنا" },
   { id: "team", label: "الفريق" },
   { id: "contact", label: "تواصل" },
