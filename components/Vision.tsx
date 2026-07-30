@@ -29,7 +29,7 @@ export function Vision() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-60px" }}
               transition={{ duration: 0.55, delay: (i % 2) * 0.08, ease: [0.16, 1, 0.3, 1] }}
-              className="card-surface rounded-2xl p-6 flex items-start gap-4"
+              className="glass-card rounded-2xl p-6 flex items-start gap-4"
             >
               <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-sky/20">
                 <Target className="h-4 w-4 text-sky-deep" />

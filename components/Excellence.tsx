@@ -23,7 +23,7 @@ export function Excellence() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-60px" }}
               transition={{ duration: 0.5, delay: (i % 3) * 0.08, ease: [0.16, 1, 0.3, 1] }}
-              className="rounded-2xl border border-line p-6 bg-white/50"
+              className="glass-card rounded-2xl p-6"
             >
               <div className="flex items-center gap-2.5 mb-4">
                 <span className="flex h-9 w-9 items-center justify-center rounded-full bg-sky/20">

@@ -22,7 +22,7 @@ export function Team() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-60px" }}
               transition={{ duration: 0.5, delay: (i % 3) * 0.08, ease: [0.16, 1, 0.3, 1] }}
-              className="rounded-2xl border border-line p-6 text-center bg-white/40"
+              className="glass-card rounded-2xl p-6 text-center"
             >
               <div className="mx-auto h-16 w-16 rounded-full bg-sky/20 flex items-center justify-center mb-4">
                 <span className="font-display text-lg font-bold text-sky-deep">

@@ -10,7 +10,7 @@ const LINKS = [
   { id: "vision", label: "أهدافنا" },
   { id: "structure", label: "الهيكلة" },
   { id: "programs", label: "برامجنا" },
-  { id: "resources", label: "الموارد" },
+  { id: "resources", label: "المواضيع" },
   { id: "excellence", label: "التميز" },
   { id: "impact", label: "أثرنا" },
   { id: "team", label: "الفريق" },
@@ -36,7 +36,7 @@ export function Navbar() {
   return (
     <header
       className={`fixed top-0 inset-x-0 z-50 transition-all duration-300 ${
-        scrolled ? "bg-cream/85 backdrop-blur-md border-b border-line" : "bg-transparent"
+        scrolled ? "glass-nav" : "bg-transparent"
       }`}
     >
       <div className="container-content flex items-center justify-between px-6 sm:px-10 lg:px-16 h-20">
@@ -78,7 +78,7 @@ export function Navbar() {
       </div>
 
       {open && (
-        <nav className="lg:hidden border-t border-line bg-cream">
+        <nav className="lg:hidden glass-nav">
           <div className="flex flex-col px-6 py-4 gap-1">
             {LINKS.map((l) => (
               <button

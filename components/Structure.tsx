@@ -12,7 +12,7 @@ function CommitteeCard({ committee, index }: { committee: CommitteeEntry; index:
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-60px" }}
       transition={{ duration: 0.5, delay: (index % 4) * 0.06, ease: [0.16, 1, 0.3, 1] }}
-      className="rounded-2xl border border-line p-6 bg-white/40"
+      className="glass-card rounded-2xl p-6"
     >
       <p className="font-display font-bold leading-snug mb-4">{committee.name}</p>
       <div className="space-y-2.5">

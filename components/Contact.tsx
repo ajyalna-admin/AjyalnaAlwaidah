@@ -39,7 +39,7 @@ export function Contact() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-60px" }}
               transition={{ duration: 0.5, delay: i * 0.08, ease: [0.16, 1, 0.3, 1] }}
-              className="rounded-2xl border border-line p-6 flex flex-col items-center text-center gap-3 hover:border-sky-deep/40 transition-colors duration-300 bg-white/40"
+              className="glass-card rounded-2xl p-6 flex flex-col items-center text-center gap-3"
             >
               <span className="flex h-11 w-11 items-center justify-center rounded-full bg-sky/15">
                 <l.icon className="h-4 w-4 text-sky-deep" />
