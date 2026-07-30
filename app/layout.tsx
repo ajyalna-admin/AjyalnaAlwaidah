@@ -34,6 +34,11 @@ export default function RootLayout({
       <body
         className={`${cairo.variable} ${tajawal.variable} font-body antialiased bg-cream text-navy`}
       >
+        <div className="bg-orbs" aria-hidden="true">
+          <span className="h-[420px] w-[420px] bg-sky/50 -top-32 -right-32" />
+          <span className="h-[380px] w-[380px] bg-navy/20 top-[35%] -left-40" />
+          <span className="h-[340px] w-[340px] bg-sky-deep/30 bottom-0 right-1/4" />
+        </div>
         {children}
       </body>
     </html>

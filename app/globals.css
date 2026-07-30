@@ -24,6 +24,7 @@
   body {
     background-color: #f5f2ed;
     color: #121f3e;
+    position: relative;
   }
 
   ::selection {
@@ -47,6 +48,53 @@
   }
 
   .card-surface {
-    @apply bg-white/60 backdrop-blur-sm border border-line;
+    @apply glass-card;
+  }
+
+  .glass-card {
+    background: linear-gradient(160deg, rgba(255, 255, 255, 0.55), rgba(255, 255, 255, 0.18));
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.55);
+    box-shadow:
+      0 8px 32px rgba(18, 31, 62, 0.08),
+      inset 0 1px 0 rgba(255, 255, 255, 0.5);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+  }
+
+  .glass-card:hover {
+    border-color: rgba(122, 157, 175, 0.5);
+    box-shadow:
+      0 14px 40px rgba(18, 31, 62, 0.12),
+      inset 0 1px 0 rgba(255, 255, 255, 0.6);
+  }
+
+  .glass-chip {
+    background: linear-gradient(160deg, rgba(157, 185, 200, 0.22), rgba(157, 185, 200, 0.08));
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+  }
+
+  .glass-nav {
+    background: rgba(245, 242, 237, 0.55);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+  }
+
+  .bg-orbs {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    overflow: hidden;
+    pointer-events: none;
+  }
+
+  .bg-orbs span {
+    position: absolute;
+    border-radius: 9999px;
+    filter: blur(90px);
+    opacity: 0.55;
   }
 }
