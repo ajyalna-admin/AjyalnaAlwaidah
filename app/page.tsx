@@ -3,15 +3,18 @@ import { Hero } from "@/components/Hero";
 import { About } from "@/components/About";
 import { Vision } from "@/components/Vision";
 import { Summary } from "@/components/Summary";
-import { Journey } from "@/components/Journey";
 import { Resources } from "@/components/Resources";
+import { Journey } from "@/components/Journey";
+import { CoursesGuide } from "@/components/CoursesGuide";
+import { Tracks } from "@/components/Tracks";
+import { ImtidadSection } from "@/components/Imtidad";
 import { Impact } from "@/components/Impact";
 import { Team } from "@/components/Team";
 import { Faq } from "@/components/Faq";
-import { JoinUs } from "@/components/JoinUs";
 import { Contact } from "@/components/Contact";
 import { Footer } from "@/components/Footer";
 import { BackToTop } from "@/components/BackToTop";
+import { ChatbotButton } from "@/components/ChatbotButton";
 
 export default function Home() {
   return (
@@ -22,16 +25,19 @@ export default function Home() {
         <About />
         <Vision />
         <Summary />
-        <Journey />
         <Resources />
+        <Journey />
+        <CoursesGuide />
+        <Tracks />
+        <ImtidadSection />
         <Impact />
         <Team />
         <Faq />
-        <JoinUs />
         <Contact />
       </main>
       <Footer />
       <BackToTop />
+      <ChatbotButton />
     </>
   );
 }
