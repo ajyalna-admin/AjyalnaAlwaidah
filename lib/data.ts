@@ -2,11 +2,12 @@
 
 export const brand = {
   name: "أجيالنا الواعدة",
-  tagline: "جيل يمكّن جيلاً",
+  tagline: "جيلٌ يُمكّن جيلاً",
   parentEntity: "كلية علوم الحاسب والمعلومات — جامعة الأميرة نورة بنت عبدالرحمن",
   email: "Ajyalnaalwaidah@gmail.com",
   telegram: "https://t.me/Ajyalna_Alwaidah",
   twitter: "https://x.com/AjyalnaAlwaidah",
+  tiktok: "https://www.tiktok.com/@Ajyalna.Alwaidah",
   linkedin: "https://www.linkedin.com/search/results/all/?keywords=Ajyalna%20Alwaidah",
   footerDescription:
     "مبادرة طلابية في كلية علوم الحاسب والمعلومات بجامعة الأميرة نورة بنت عبدالرحمن، تُعنى بإرشاد الطلبة المستجدين، ودعمهم أكاديميًا وجامعيًا، وبناء تجربة جامعية أكثر وعيًا وتمكينًا، مع رؤية مستقبلية للتوسع إلى جامعات المملكة العربية السعودية.",
@@ -16,7 +17,8 @@ export const brand = {
 
 export const hero = {
   eyebrow: brand.parentEntity,
-  title: brand.tagline,
+  title: brand.name,
+  subtitle: brand.tagline,
   description:
     "أجيالنا الواعدة منصة للإرشاد الجامعي، أطلقتها طالبات كلية علوم الحاسب والمعلومات بجامعة الأميرة نورة بنت عبدالرحمن، لتكون دليلًا موثوقًا يساعد الطلبة المستجدين على فهم الحياة الجامعية، والتعرف على أنظمتها وخدماتها، والاستفادة من الفرص المتاحة، من خلال محتوى منظم وتجارب طلابية وإرشاد عملي يرافقهم منذ بداية رحلتهم الجامعية.",
   ctaPrimary: "ابدأ رحلتك",
@@ -30,41 +32,58 @@ export type ComingSoonNotice = {
   description: string;
 };
 
+export type UniversityEntry = {
+  name: string;
+  available: boolean;
+};
+
+export type Region = {
+  name: string;
+  universities: UniversityEntry[];
+};
+
+export const regions: Region[] = [
+  {
+    name: "منطقة الرياض",
+    universities: [
+      { name: "جامعة الأميرة نورة بنت عبدالرحمن", available: true },
+      { name: "جامعة الملك سعود", available: false },
+      { name: "جامعة الإمام محمد بن سعود الإسلامية", available: false },
+      { name: "الجامعة السعودية الإلكترونية", available: false },
+    ],
+  },
+  {
+    name: "المنطقة الشرقية",
+    universities: [
+      { name: "جامعة الإمام عبدالرحمن بن فيصل", available: false },
+      { name: "جامعة الملك فيصل", available: false },
+    ],
+  },
+  {
+    name: "منطقة مكة المكرمة",
+    universities: [
+      { name: "جامعة الملك عبدالعزيز", available: false },
+      { name: "جامعة جدة", available: false },
+      { name: "جامعة أم القرى", available: false },
+    ],
+  },
+];
+
 export const journeySelector = {
   universityStep: {
     title: "اختر جامعتك",
     description: "ابدأ رحلتك باختيار الجامعة، ليتم عرض المحتوى الإرشادي المناسب لك.",
     availableNote: "الجامعات المتاحة حاليًا",
-    available: "جامعة الأميرة نورة بنت عبدالرحمن",
-    upcomingGroupLabel: "جامعات الرياض الحكومية (قريبًا بإذن الله)",
-    upcoming: [
-      "جامعة الملك سعود",
-      "جامعة الإمام محمد بن سعود الإسلامية",
-      "الجامعة السعودية الإلكترونية",
-      "جامعة شقراء",
-      "جامعة الأمير سطام بن عبدالعزيز",
-    ],
   },
   collegeStep: {
     title: "اختر كليتك",
     availableNote: "الكليات المتاحة حاليًا",
     available: "كلية علوم الحاسب والمعلومات",
   },
-  majorStep: {
-    title: "اختر تخصصك",
-    majors: [
-      "علوم الحاسب",
-      "الأمن السيبراني",
-      "الذكاء الاصطناعي",
-      "علم البيانات",
-      "هندسة البرمجيات",
-      "تقنية المعلومات",
-    ],
-  },
   comingSoonUniversity: {
     title: "قريبًا بإذن الله",
     description:
-      "نعمل حاليًا على إعداد المحتوى الإرشادي الخاص بهذه الجامعة، ليقدم بنفس الجودة والتنظيم. نتطلع إلى إطلاقه قريبًا، ويسعدنا عودتك عند توفره.",
+      "نعمل حاليًا على إعداد المحتوى الإرشادي الخاص بهذه الجامعة، ليقدم بنفس الجودة والتنظيم، وسيتم إطلاقه قريبًا بإذن الله.",
   } as ComingSoonNotice,
   comingSoonCollege: {
     title: "قريبًا بإذن الله",
@@ -84,57 +103,40 @@ export const summarySection = {
 export const summaryCards: string[] = [
   "التعريف بالجامعة",
   "التعريف بالكلية",
-  "التخصصات",
   "الأنظمة واللوائح",
   "الخدمات الإلكترونية",
-  "التسجيل والخطة الدراسية",
-  "المسارات والتخصصات الفرعية",
-  "المرافق والخدمات",
-  "الأنشطة والفرص",
+  "التسجيل",
+  "الخطط الدراسية",
+  "المقررات",
+  "المرافق",
+  "الأنشطة",
+  "الفرص",
   "الأسئلة الشائعة",
 ];
 
 // ==================== رحلتك معنا ====================
 
 export type JourneyStage = {
-  number: string;
+  emoji: string;
   title: string;
-  description: string;
 };
 
 export const journeySection = {
   eyebrow: "رحلتك معنا",
   title: "رحلتك الجامعية تبدأ بخطوة... ونحن نرافقك في كل خطوة بعدها",
   description:
-    "رتبنا المحتوى وفق التسلسل الطبيعي الذي يمر به الطالب منذ لحظة قبوله وحتى اندماجه في الحياة الجامعية، لتصل إلى المعلومة المناسبة في الوقت المناسب.",
+    "رتبنا المحتوى وفق التسلسل الطبيعي الذي يمر به الطالب منذ لحظة قبوله وحتى اندماجه الكامل في الحياة الجامعية، لتصل إلى المعلومة المناسبة في الوقت المناسب.",
 };
 
 export const journeyStages: JourneyStage[] = [
-  {
-    number: "01",
-    title: "القبول والاستعداد",
-    description: "التعرف على الجامعة، والكلية، والتخصص، وأهم الأنظمة الأساسية.",
-  },
-  {
-    number: "02",
-    title: "البداية",
-    description: "تفعيل الحسابات الجامعية، واستخراج البطاقة الجامعية، والتعرف على المنصات والخدمات الإلكترونية.",
-  },
-  {
-    number: "03",
-    title: "الانطلاق",
-    description: "فهم الخطة الدراسية، وآلية التسجيل، والجداول، واللوائح الأكاديمية.",
-  },
-  {
-    number: "04",
-    title: "الاندماج",
-    description: "التعرف على مرافق الكلية، والأندية الطلابية، والأنشطة، والفرص المتاحة.",
-  },
-  {
-    number: "05",
-    title: "التمكين",
-    description: "استثمار الفرص الجامعية، وتنمية المهارات، والاستعداد لمسيرة جامعية ناجحة.",
-  },
+  { emoji: "🎉", title: "القبول والاستعداد" },
+  { emoji: "🏛", title: "التعرف على الجامعة" },
+  { emoji: "💻", title: "التعرف على الكلية" },
+  { emoji: "🪪", title: "تفعيل الحسابات والخدمات" },
+  { emoji: "📅", title: "التسجيل والخطة الدراسية" },
+  { emoji: "📖", title: "الدراسة والمقررات" },
+  { emoji: "🎯", title: "الأنشطة والفرص" },
+  { emoji: "🎓", title: "الاستعداد للمستقبل" },
 ];
 
 // ==================== موضوعات الإرشاد ====================
@@ -391,13 +393,141 @@ export const faqItems: FaqItem[] = [
   },
 ];
 
-// ==================== الانضمام للفريق ====================
+// ==================== دليل المقررات ====================
 
-export const joinSection = {
-  title: "انضم إلى فريق المبادرة",
+export type Course = {
+  slug: string;
+  code: string;
+  name: string;
+  hours: number;
+  prerequisite: string;
+};
+
+export type LevelBlock = {
+  level: string;
+  courses: Course[];
+};
+
+export type MajorCourses = {
+  slug: string;
+  name: string;
+  levels: LevelBlock[];
+};
+
+export const coursesSection = {
+  eyebrow: "دليل المقررات",
+  title: "دليل المقررات",
+  description: "اختاري تخصصك لتصفّح مقرراته موزّعة حسب المستوى الدراسي.",
+  note: "المحتوى قيد الإضافة تباعًا لكل تخصص ومستوى.",
+};
+
+export const majorsCourses: MajorCourses[] = [
+  {
+    slug: "cs",
+    name: "Computer Science",
+    levels: [
+      {
+        level: "المستوى الأول",
+        courses: [
+          { slug: "cs-101", code: "CS 101", name: "Programming 1", hours: 3, prerequisite: "لا يوجد" },
+          { slug: "math-101", code: "MATH 101", name: "Calculus 1", hours: 3, prerequisite: "لا يوجد" },
+        ],
+      },
+    ],
+  },
+  {
+    slug: "cyber",
+    name: "Cybersecurity",
+    levels: [{ level: "المستوى الأول", courses: [] }],
+  },
+  {
+    slug: "ai",
+    name: "Artificial Intelligence",
+    levels: [{ level: "المستوى الأول", courses: [] }],
+  },
+  {
+    slug: "data-science",
+    name: "Data Science",
+    levels: [{ level: "المستوى الأول", courses: [] }],
+  },
+  {
+    slug: "it",
+    name: "Information Technology",
+    levels: [{ level: "المستوى الأول", courses: [] }],
+  },
+  {
+    slug: "se",
+    name: "Software Engineering",
+    levels: [{ level: "المستوى الأول", courses: [] }],
+  },
+];
+
+export const courseDetailLabels = {
+  infoTitle: "معلومات المقرر",
+  ratingTitle: "تقييم الطالبات",
+  effortTitle: "متوسط الجهد",
+  reviewsTitle: "آراء الطالبات",
+  tipsTitle: "نصائح ممن سبقوكم",
+  filesTitle: "الملفات",
+  imtidadTitle: "شروحات امتداد",
+  noDataYet: "لا توجد بيانات كافية بعد لعرضها لهذا المقرر.",
+  effortOptions: ["أقل من ٣ ساعات أسبوعيًا", "من ٣ إلى ٦ ساعات أسبوعيًا", "أكثر من ٦ ساعات أسبوعيًا"],
+};
+
+// ==================== امتداد ====================
+
+export const imtidad = {
+  eyebrow: "امتداد",
+  title: "امتداد",
+  quote: "ويبقى أجمل الأثر ما امتد من إنسان إلى إنسان.",
   description:
-    "إذا كنت تؤمن بأن مشاركة المعرفة تصنع أثرًا، وترغب في دعم الطلبة المستجدين ومساندتهم في بداية رحلتهم الجامعية، فإن أجيالنا الواعدة تمنحك الفرصة لتكون جزءًا من فريق يعمل على بناء مجتمع طلابي أكثر تعاونًا وتمكينًا.",
-  button: "انضم إلى فريق المبادرة",
+    "امتداد هو أحد برامج أجيالنا الواعدة، يهدف إلى نقل المعرفة والخبرات بين الطالبات، من خلال تقديم شروحات تطوعية في المقررات الجامعية، بما يسهم في دعم الطالبات، وتعزيز ثقافة العطاء، وصناعة أثر مستدام يمتد من طالبة إلى أخرى.",
+  howTitle: "كيف تعمل امتداد؟",
+  steps: [
+    "تنضم الطالبة.",
+    "يتم التواصل معها.",
+    "تحدد المقررات التي ترغب بشرحها.",
+    "ترفع المحتوى.",
+    "يراجع المحتوى.",
+    "ينشر ليستفيد منه الجميع.",
+  ],
+  button: "انضمي إلى امتداد",
+  formUrl: "https://forms.gle/kZ6ThAf6KLHTMhTh7",
+};
+
+// ==================== مسارات أجيالنا الواعدة ====================
+
+export type Track = {
+  title: string;
+  description: string;
+  available: boolean;
+};
+
+export const tracksSection = {
+  eyebrow: "مساراتنا",
+  title: "مسارات أجيالنا الواعدة",
+};
+
+export const tracks: Track[] = [
+  {
+    title: "أجيالنا الواعدة للمستجدات",
+    description:
+      "يركز على دعم الطالبات منذ لحظة قبولهن وحتى اندماجهن في الحياة الجامعية، من خلال الإرشاد الأكاديمي، والإجابة عن الاستفسارات، ونقل الخبرات.",
+    available: true,
+  },
+  {
+    title: "أجيالنا الواعدة للخريجات",
+    description:
+      "يرافق الطالبات ابتداءً من التدريب التعاوني (Co-op)، وحتى دخول سوق العمل، من خلال الإرشاد المهني، وبناء السيرة الذاتية، وتحسين LinkedIn، والاستعداد للمقابلات، ومتابعة الفرص الوظيفية.",
+    available: false,
+  },
+];
+
+// ==================== الشات بوت ====================
+
+export const chatbot = {
+  label: "اسأل أجيالنا",
+  url: "https://ajyalna-chatbot.framer.website",
 };
 
 // ==================== التواصل ====================
