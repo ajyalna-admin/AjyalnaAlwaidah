@@ -1,14 +1,11 @@
 import type { Metadata } from "next";
-import localFont from "next/font/local";
+import { IBM_Plex_Sans_Arabic } from "next/font/google";
 import "./globals.css";
 import { brand } from "@/lib/data";
 
-const notoKufi = localFont({
-  src: [
-    { path: "./NotoKufiArabic-Regular.ttf", weight: "400", style: "normal" },
-    { path: "./NotoKufiArabic-Bold.ttf", weight: "700", style: "normal" },
-    { path: "./NotoKufiArabic-Black.ttf", weight: "900", style: "normal" },
-  ],
+const ibmPlexArabic = IBM_Plex_Sans_Arabic({
+  subsets: ["arabic"],
+  weight: ["400", "500", "600", "700"],
   variable: "--font-kufi",
   display: "swap",
 });
@@ -28,7 +25,7 @@ export default function RootLayout({
   return (
     <html lang="ar" dir="rtl">
       <body
-        className={`${notoKufi.variable} font-body antialiased bg-cream text-navy`}
+        className={`${ibmPlexArabic.variable} font-body antialiased bg-cream text-navy`}
       >
         <div className="bg-orbs" aria-hidden="true">
           <span className="h-[460px] w-[460px] bg-sky-mist/70 -top-32 -right-32" />
