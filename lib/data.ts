@@ -393,6 +393,19 @@ export const faqItems: FaqItem[] = [
   },
 ];
 
+// ==================== كيف تستخدمين الموقع ====================
+
+export const guideSection = {
+  eyebrow: "دليل الاستخدام",
+  title: "كيف تستخدمين الموقع؟",
+  steps: [
+    { emoji: "🧭", text: "ابدئي رحلتك من الأعلى، واختاري جامعتك وكليتك." },
+    { emoji: "🗂", text: "استعرضي «ملخص المحتوى» لتأخذي فكرة سريعة عن كل الأقسام." },
+    { emoji: "📚", text: "تصفّحي «موضوعات الإرشاد» و«دليل المقررات» حسب ما تحتاجينه." },
+    { emoji: "💬", text: "أي سؤال؟ اضغطي زر «اسأل أجيالنا» العائم في أي وقت." },
+  ],
+};
+
 // ==================== دليل المقررات ====================
 
 export type Course = {
@@ -400,7 +413,10 @@ export type Course = {
   code: string;
   name: string;
   hours: number;
+  level: string;
   prerequisite: string;
+  tips?: string[];
+  faqs?: { question: string; answer: string }[];
 };
 
 export type LevelBlock = {
@@ -429,8 +445,31 @@ export const majorsCourses: MajorCourses[] = [
       {
         level: "المستوى الأول",
         courses: [
-          { slug: "cs-101", code: "CS 101", name: "Programming 1", hours: 3, prerequisite: "لا يوجد" },
-          { slug: "math-101", code: "MATH 101", name: "Calculus 1", hours: 3, prerequisite: "لا يوجد" },
+          {
+            slug: "cs-101",
+            code: "CS 101",
+            name: "Programming 1",
+            hours: 3,
+            level: "المستوى الأول",
+            prerequisite: "لا يوجد",
+            tips: [
+              "ابدئي بالمشروع من أول أسبوع.",
+              "احضري جميع المحاضرات.",
+              "راجعي أسبوعيًا ولا تعتمدي على ليلة الاختبار.",
+            ],
+            faqs: [
+              { question: "هل يوجد مشروع؟", answer: "نعم، مشروع أساسي في نهاية الفصل." },
+              { question: "هل يحتاج خلفية برمجية؟", answer: "لا، مصمم للمبتدئات تمامًا." },
+            ],
+          },
+          {
+            slug: "math-101",
+            code: "MATH 101",
+            name: "Calculus 1",
+            hours: 3,
+            level: "المستوى الأول",
+            prerequisite: "لا يوجد",
+          },
         ],
       },
     ],
@@ -462,17 +501,50 @@ export const majorsCourses: MajorCourses[] = [
   },
 ];
 
-export const courseDetailLabels = {
+export const courseHub = {
   infoTitle: "معلومات المقرر",
-  ratingTitle: "تقييم الطالبات",
-  effortTitle: "متوسط الجهد",
-  reviewsTitle: "آراء الطالبات",
+  ratingTitle: "تقييمات الطالبات",
+  experiencesTitle: "تجارب الطالبات",
   tipsTitle: "نصائح ممن سبقوكم",
-  filesTitle: "الملفات",
+  filesTitle: "بنك الملفات",
   imtidadTitle: "شروحات امتداد",
+  platformsTitle: "منصات موصى بها لهذا المقرر",
+  tutorsTitle: "مدرسون وخصوصيون للمقرر",
+  ambassadorsTitle: "سفراء المقرر",
+  faqTitle: "الأسئلة الشائعة",
+  contributeTitle: "ساهم في هذا المقرر",
+  contributeDescription:
+    "شاركي تقييمك، تجربتك، نصيحتك، ملفاتك، أو تقدّمي لتكوني سفيرة لهذا المقرر. جميع المشاركات تُراجع وتُعتمد من الإدارة قبل النشر.",
+  contributeOptions: [
+    "تقييم",
+    "تجربة",
+    "نصيحة",
+    "ملخص",
+    "سلايدات",
+    "خرائط ذهنية",
+    "ملفات",
+    "رابط مفيد",
+    "اقتراح منصة تعليمية",
+    "اقتراح مدرس خصوصي",
+    "التقديم كسفيرة للمقرر",
+  ],
+  contributeComingSoon:
+    "استقبال المساهمات مباشرة من الموقع قيد التجهيز حاليًا. للمساهمة الآن، تواصلي معنا عبر القنوات الموضّحة أسفل الصفحة.",
   noDataYet: "لا توجد بيانات كافية بعد لعرضها لهذا المقرر.",
   effortOptions: ["أقل من ٣ ساعات أسبوعيًا", "من ٣ إلى ٦ ساعات أسبوعيًا", "أكثر من ٦ ساعات أسبوعيًا"],
+  fileTabs: ["الملخصات", "السلايدات", "الخرائط الذهنية", "نماذج وتقارير", "ملفات أخرى"],
 };
+
+export type LearningPlatform = { name: string; description: string; url: string };
+
+export const learningPlatforms: LearningPlatform[] = [
+  { name: "أكاديمية سطر", description: "دورات عربية في البرمجة وعلوم الحاسب.", url: "https://satr.academy" },
+  { name: "Coursera", description: "دورات جامعية معتمدة بمختلف المجالات التقنية.", url: "https://www.coursera.org" },
+  { name: "Udemy", description: "دورات عملية مباشرة بأسعار مناسبة.", url: "https://www.udemy.com" },
+  { name: "freeCodeCamp", description: "تعلّم البرمجة مجانًا بمشاريع تطبيقية.", url: "https://www.freecodecamp.org" },
+  { name: "W3Schools", description: "مرجع سريع لتعلّم لغات البرمجة والويب.", url: "https://www.w3schools.com" },
+  { name: "GeeksforGeeks", description: "مقالات وتمارين في الخوارزميات وهياكل البيانات.", url: "https://www.geeksforgeeks.org" },
+];
 
 // ==================== امتداد ====================
 
