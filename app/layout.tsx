@@ -5,9 +5,9 @@ import { brand } from "@/lib/data";
 
 const notoKufi = localFont({
   src: [
-    { path: "./fonts/NotoKufiArabic-Regular.ttf", weight: "400", style: "normal" },
-    { path: "./fonts/NotoKufiArabic-Bold.ttf", weight: "700", style: "normal" },
-    { path: "./fonts/NotoKufiArabic-Black.ttf", weight: "900", style: "normal" },
+    { path: "./NotoKufiArabic-Regular.ttf", weight: "400", style: "normal" },
+    { path: "./NotoKufiArabic-Bold.ttf", weight: "700", style: "normal" },
+    { path: "./NotoKufiArabic-Black.ttf", weight: "900", style: "normal" },
   ],
   variable: "--font-kufi",
   display: "swap",
