@@ -3,16 +3,13 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowLeft, X, CheckCircle2, Clock } from "lucide-react";
-import { hero, journeySelector } from "@/lib/data";
+import { hero, journeySelector, regions } from "@/lib/data";
 
-type Step = "closed" | "university" | "college" | "major" | "comingSoonUni" | "comingSoonCollege";
+type Step = "closed" | "university" | "college" | "comingSoonUni" | "comingSoonCollege";
 
 const container = {
   hidden: { opacity: 0 },
-  show: {
-    opacity: 1,
-    transition: { staggerChildren: 0.12, delayChildren: 0.1 },
-  },
+  show: { opacity: 1, transition: { staggerChildren: 0.12, delayChildren: 0.1 } },
 };
 
 const item = {
@@ -29,17 +26,17 @@ export function Hero() {
 
   const close = () => setStep("closed");
 
-  const handleUniversityPick = (isTarget: boolean) => {
-    setStep(isTarget ? "college" : "comingSoonUni");
+  const handleUniversityPick = (available: boolean) => {
+    setStep(available ? "college" : "comingSoonUni");
   };
 
-  const handleCollegePick = (isTarget: boolean) => {
-    setStep(isTarget ? "major" : "comingSoonCollege");
-  };
-
-  const handleMajorPick = () => {
-    close();
-    scrollToId("resources");
+  const handleCollegePick = (available: boolean) => {
+    if (available) {
+      close();
+      scrollToId("summary");
+    } else {
+      setStep("comingSoonCollege");
+    }
   };
 
   return (
@@ -55,6 +52,9 @@ export function Hero() {
           >
             {hero.title}
           </motion.h1>
+          <motion.p variants={item} className="mt-3 text-lg sm:text-xl font-bold text-sky-deep">
+            {hero.subtitle}
+          </motion.p>
           <motion.p variants={item} className="mt-6 text-lg text-muted leading-loose max-w-xl">
             {hero.description}
           </motion.p>
@@ -114,30 +114,31 @@ export function Hero() {
                     {journeySelector.universityStep.description}
                   </p>
 
-                  <p className="text-xs font-bold text-sky-deep mb-3">
-                    {journeySelector.universityStep.availableNote}
-                  </p>
-                  <button
-                    onClick={() => handleUniversityPick(true)}
-                    className="w-full flex items-center justify-between gap-3 rounded-xl bg-sky/15 border border-sky/30 px-5 py-4 text-right mb-6 hover:bg-sky/25 transition-colors duration-200"
-                  >
-                    <span className="font-bold text-sm">{journeySelector.universityStep.available}</span>
-                    <CheckCircle2 className="h-4 w-4 text-sky-deep shrink-0" />
-                  </button>
-
-                  <p className="text-xs font-bold text-muted mb-3">
-                    {journeySelector.universityStep.upcomingGroupLabel}
-                  </p>
-                  <div className="space-y-2">
-                    {journeySelector.universityStep.upcoming.map((u) => (
-                      <button
-                        key={u}
-                        onClick={() => handleUniversityPick(false)}
-                        className="w-full flex items-center justify-between gap-3 rounded-xl border border-line px-5 py-3.5 text-right hover:border-sky-deep/40 transition-colors duration-200"
-                      >
-                        <span className="text-sm">{u}</span>
-                        <Clock className="h-3.5 w-3.5 text-muted shrink-0" />
-                      </button>
+                  <div className="space-y-6">
+                    {regions.map((region) => (
+                      <div key={region.name}>
+                        <p className="text-xs font-bold text-sky-deep mb-3">{region.name}</p>
+                        <div className="space-y-2">
+                          {region.universities.map((u) => (
+                            <button
+                              key={u.name}
+                              onClick={() => handleUniversityPick(u.available)}
+                              className={`w-full flex items-center justify-between gap-3 rounded-xl px-5 py-3.5 text-right transition-colors duration-200 ${
+                                u.available
+                                  ? "bg-sky/15 border border-sky/30 hover:bg-sky/25"
+                                  : "border border-line hover:border-sky-deep/40"
+                              }`}
+                            >
+                              <span className={`text-sm ${u.available ? "font-bold" : ""}`}>{u.name}</span>
+                              {u.available ? (
+                                <CheckCircle2 className="h-4 w-4 text-sky-deep shrink-0" />
+                              ) : (
+                                <Clock className="h-3.5 w-3.5 text-muted shrink-0" />
+                              )}
+                            </button>
+                          ))}
+                        </div>
+                      </div>
                     ))}
                   </div>
                 </div>
@@ -153,30 +154,18 @@ export function Hero() {
                   </p>
                   <button
                     onClick={() => handleCollegePick(true)}
-                    className="w-full flex items-center justify-between gap-3 rounded-xl bg-sky/15 border border-sky/30 px-5 py-4 text-right hover:bg-sky/25 transition-colors duration-200"
+                    className="w-full flex items-center justify-between gap-3 rounded-xl bg-sky/15 border border-sky/30 px-5 py-4 text-right mb-2 hover:bg-sky/25 transition-colors duration-200"
                   >
                     <span className="font-bold text-sm">{journeySelector.collegeStep.available}</span>
                     <CheckCircle2 className="h-4 w-4 text-sky-deep shrink-0" />
                   </button>
-                </div>
-              )}
-
-              {step === "major" && (
-                <div>
-                  <h3 className="font-display text-xl font-bold mb-6">
-                    {journeySelector.majorStep.title}
-                  </h3>
-                  <div className="grid grid-cols-2 gap-3">
-                    {journeySelector.majorStep.majors.map((m) => (
-                      <button
-                        key={m}
-                        onClick={handleMajorPick}
-                        className="rounded-xl border border-line px-4 py-3.5 text-sm font-medium text-center hover:border-sky-deep/40 hover:bg-sky/10 transition-colors duration-200"
-                      >
-                        {m}
-                      </button>
-                    ))}
-                  </div>
+                  <button
+                    onClick={() => handleCollegePick(false)}
+                    className="w-full flex items-center justify-between gap-3 rounded-xl border border-line px-5 py-3.5 text-right hover:border-sky-deep/40 transition-colors duration-200"
+                  >
+                    <span className="text-sm">كليات أخرى</span>
+                    <Clock className="h-3.5 w-3.5 text-muted shrink-0" />
+                  </button>
                 </div>
               )}
 

@@ -1,13 +1,14 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Mail, Send, Twitter, Linkedin } from "lucide-react";
+import { Mail, Send, Twitter, Linkedin, Music2 } from "lucide-react";
 import { contact, brand } from "@/lib/data";
 
 const links = [
   { label: "البريد الإلكتروني", value: brand.email, href: `mailto:${brand.email}`, icon: Mail },
   { label: "تيليجرام", value: "Ajyalna_Alwaidah", href: brand.telegram, icon: Send },
   { label: "إكس", value: "AjyalnaAlwaidah", href: brand.twitter, icon: Twitter },
+  { label: "تيك توك", value: "Ajyalna.Alwaidah", href: brand.tiktok, icon: Music2 },
   { label: "لينكدإن", value: "Ajyalna Alwaidah", href: brand.linkedin, icon: Linkedin },
 ];
 
@@ -29,7 +30,7 @@ export function Contact() {
           <p className="mt-4 text-muted text-lg leading-loose">{contact.description}</p>
         </motion.div>
 
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-5 max-w-3xl mx-auto">
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-5 max-w-4xl mx-auto">
           {links.map((l, i) => (
             <motion.a
               key={l.label}
