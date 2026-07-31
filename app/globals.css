@@ -28,7 +28,7 @@
   }
 
   ::selection {
-    background: rgba(142, 173, 188, 0.35);
+    background: rgba(111, 147, 166, 0.35);
   }
 
   :focus-visible {
@@ -52,37 +52,37 @@
   }
 
   .glass-card {
-    background: linear-gradient(160deg, rgba(255, 255, 255, 0.5), rgba(214, 224, 243, 0.18));
+    background: linear-gradient(160deg, rgba(255, 255, 255, 0.55), rgba(214, 224, 243, 0.2));
     backdrop-filter: blur(24px) saturate(140%);
     -webkit-backdrop-filter: blur(24px) saturate(140%);
-    border: 1px solid rgba(255, 255, 255, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.65);
     box-shadow:
-      0 1px 0 rgba(255, 255, 255, 0.7) inset,
-      0 -12px 24px rgba(142, 173, 188, 0.08) inset,
-      0 16px 40px -12px rgba(18, 31, 62, 0.18);
+      0 1px 0 rgba(255, 255, 255, 0.75) inset,
+      0 -12px 24px rgba(142, 173, 188, 0.1) inset,
+      0 16px 40px -12px rgba(18, 31, 62, 0.16);
     transition: border-color 0.35s ease, box-shadow 0.35s ease;
   }
 
   .glass-card:hover {
-    border-color: rgba(142, 173, 188, 0.55);
+    border-color: rgba(111, 147, 166, 0.55);
     box-shadow:
-      0 1px 0 rgba(255, 255, 255, 0.8) inset,
-      0 -12px 24px rgba(142, 173, 188, 0.12) inset,
-      0 24px 56px -14px rgba(18, 31, 62, 0.28);
+      0 1px 0 rgba(255, 255, 255, 0.85) inset,
+      0 -12px 24px rgba(142, 173, 188, 0.16) inset,
+      0 24px 56px -14px rgba(18, 31, 62, 0.26);
   }
 
   .glass-chip {
-    background: linear-gradient(160deg, rgba(142, 173, 188, 0.22), rgba(142, 173, 188, 0.08));
+    background: linear-gradient(160deg, rgba(142, 173, 188, 0.25), rgba(142, 173, 188, 0.08));
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
-    border: 1px solid rgba(255, 255, 255, 0.55);
+    border: 1px solid rgba(255, 255, 255, 0.6);
   }
 
   .glass-nav {
     background: rgba(250, 247, 242, 0.65);
     backdrop-filter: blur(22px) saturate(160%);
     -webkit-backdrop-filter: blur(22px) saturate(160%);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.55);
   }
 
   .bg-orbs {
