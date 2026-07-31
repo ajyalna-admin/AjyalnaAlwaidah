@@ -7,11 +7,13 @@ import { brand } from "@/lib/data";
 
 const LINKS = [
   { id: "about", label: "من نحن" },
-  { id: "vision", label: "أهدافنا" },
-  { id: "programs", label: "برامجنا" },
-  { id: "resources", label: "المواضيع" },
+  { id: "vision", label: "رؤيتنا" },
+  { id: "summary", label: "ملخص المحتوى" },
+  { id: "journey", label: "رحلتك معنا" },
+  { id: "resources", label: "موضوعات الإرشاد" },
   { id: "impact", label: "أثرنا" },
   { id: "team", label: "الفريق" },
+  { id: "faq", label: "الأسئلة الشائعة" },
   { id: "contact", label: "تواصل" },
 ];
 

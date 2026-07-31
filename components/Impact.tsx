@@ -9,9 +9,10 @@ export function Impact() {
     <section id="impact" className="section-pad border-b border-line bg-navy text-cream">
       <div className="container-content">
         <p className="text-sm font-bold text-sky mb-3">{impact.eyebrow}</p>
-        <h2 className="font-display text-3xl sm:text-4xl font-extrabold tracking-tight leading-[1.15] max-w-2xl mb-14">
+        <h2 className="font-display text-3xl sm:text-4xl font-extrabold tracking-tight leading-[1.15] max-w-2xl mb-5">
           {impact.title}
         </h2>
+        <p className="text-cream/70 leading-loose max-w-xl mb-14">{impact.description}</p>
 
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-6">
           {impact.stats.map((s, i) => (

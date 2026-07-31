@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { BookOpen, ChevronDown, Info } from "lucide-react";
+import { BookOpen, ChevronDown, Info, Clock } from "lucide-react";
 import { SectionHeading } from "@/components/SectionHeading";
 import { resourcesSection, topics } from "@/lib/data";
 
@@ -23,36 +23,43 @@ export function Resources() {
           <p>{resourcesSection.note}</p>
         </div>
 
-        <div className="grid gap-5">
+        <div className="grid gap-4">
           {topics.map((t, i) => {
             const isOpen = openIndex === i;
+            const hasContent = Boolean(t.content);
+            const num = String(i + 1).padStart(2, "0");
             return (
               <motion.div
                 key={t.title}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-60px" }}
-                transition={{ duration: 0.5, delay: (i % 3) * 0.08, ease: [0.16, 1, 0.3, 1] }}
+                transition={{ duration: 0.5, delay: (i % 5) * 0.05, ease: [0.16, 1, 0.3, 1] }}
                 whileHover={{ y: -4 }}
                 className="glass-card rounded-2xl overflow-hidden"
               >
                 <button
                   type="button"
                   onClick={() => setOpenIndex(isOpen ? null : i)}
-                  className="w-full flex items-center justify-between gap-4 p-6 text-right"
+                  className="w-full flex items-center justify-between gap-4 p-5 sm:p-6 text-right"
                   aria-expanded={isOpen}
                 >
-                  <span className="flex items-center gap-3">
-                    <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-sky/15">
-                      <BookOpen className="h-4 w-4 text-sky-deep" />
+                  <span className="flex items-center gap-3 min-w-0">
+                    <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-sky/15 text-xs font-display font-bold text-sky-deep">
+                      {num}
                     </span>
-                    <span className="font-display font-bold leading-snug">{t.title}</span>
+                    <span className="font-display font-bold leading-snug text-sm sm:text-base">
+                      {t.title}
+                    </span>
                   </span>
-                  <ChevronDown
-                    className={`h-4 w-4 shrink-0 text-sky-deep transition-transform duration-300 ${
-                      isOpen ? "rotate-180" : ""
-                    }`}
-                  />
+                  <span className="flex items-center gap-2 shrink-0">
+                    {!hasContent && <Clock className="h-3.5 w-3.5 text-muted" />}
+                    <ChevronDown
+                      className={`h-4 w-4 text-sky-deep transition-transform duration-300 ${
+                        isOpen ? "rotate-180" : ""
+                      }`}
+                    />
+                  </span>
                 </button>
 
                 <AnimatePresence initial={false}>
@@ -65,9 +72,16 @@ export function Resources() {
                       className="overflow-hidden"
                     >
                       <div className="px-6 pb-7 pt-1 border-t border-white/40">
-                        <p className="whitespace-pre-line text-sm leading-relaxed text-navy/85 mt-5">
-                          {t.content}
-                        </p>
+                        {hasContent ? (
+                          <p className="whitespace-pre-line text-sm leading-relaxed text-navy/85 mt-5">
+                            {t.content}
+                          </p>
+                        ) : (
+                          <div className="flex items-center gap-2.5 mt-5 text-sm text-muted">
+                            <BookOpen className="h-4 w-4 text-sky-deep shrink-0" />
+                            <p>هذا الموضوع قيد الإعداد حاليًا، وسيُضاف قريبًا بإذن الله.</p>
+                          </div>
+                        )}
                       </div>
                     </motion.div>
                   )}
