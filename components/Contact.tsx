@@ -5,11 +5,11 @@ import { Mail, Send, Twitter, Linkedin, Music2 } from "lucide-react";
 import { contact, brand } from "@/lib/data";
 
 const links = [
-  { label: "البريد الإلكتروني", value: brand.email, href: `mailto:${brand.email}`, icon: Mail },
-  { label: "تيليجرام", value: "Ajyalna_Alwaidah", href: brand.telegram, icon: Send },
-  { label: "إكس", value: "AjyalnaAlwaidah", href: brand.twitter, icon: Twitter },
-  { label: "تيك توك", value: "Ajyalna.Alwaidah", href: brand.tiktok, icon: Music2 },
-  { label: "لينكدإن", value: "Ajyalna Alwaidah", href: brand.linkedin, icon: Linkedin },
+  { label: "Email", value: brand.email, href: `mailto:${brand.email}`, icon: Mail },
+  { label: "Telegram", value: "Ajyalna_Alwaidah", href: brand.telegram, icon: Send },
+  { label: "X", value: "AjyalnaAlwaidah", href: brand.twitter, icon: Twitter },
+  { label: "TikTok", value: "Ajyalna.Alwaidah", href: brand.tiktok, icon: Music2 },
+  { label: "LinkedIn", value: "Ajyalna Alwaidah", href: brand.linkedin, icon: Linkedin },
 ];
 
 export function Contact() {
@@ -35,21 +35,27 @@ export function Contact() {
             <motion.a
               key={l.label}
               href={l.href}
-              target={l.label === "البريد الإلكتروني" ? undefined : "_blank"}
-              rel={l.label === "البريد الإلكتروني" ? undefined : "noopener noreferrer"}
+              target={l.label === "Email" ? undefined : "_blank"}
+              rel={l.label === "Email" ? undefined : "noopener noreferrer"}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-60px" }}
               transition={{ duration: 0.5, delay: i * 0.08, ease: [0.16, 1, 0.3, 1] }}
               whileHover={{ y: -6 }}
-              className="glass-card rounded-2xl p-6 flex flex-col items-center text-center gap-3"
+              className="glass-card rounded-2xl p-5 flex flex-col items-center text-center gap-3"
             >
               <span className="flex h-11 w-11 items-center justify-center rounded-full bg-sky/15">
                 <l.icon className="h-4 w-4 text-sky-deep" />
               </span>
-              <div>
+              <div className="w-full min-w-0">
                 <p className="text-xs font-bold text-muted">{l.label}</p>
-                <p className="font-display font-bold mt-1 text-sm break-all">{l.value}</p>
+                <p
+                  dir="ltr"
+                  className="font-display font-bold mt-1 text-xs sm:text-sm whitespace-nowrap overflow-hidden text-ellipsis"
+                  title={l.value}
+                >
+                  {l.value}
+                </p>
               </div>
             </motion.a>
           ))}

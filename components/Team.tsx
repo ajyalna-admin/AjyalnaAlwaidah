@@ -34,10 +34,10 @@ function LeadershipCard({ member, index }: { member: LeadershipMember; index: nu
           href={member.linkedin}
           target="_blank"
           rel="noopener noreferrer"
-          className="mt-4 inline-flex items-center gap-1.5 text-xs font-medium text-sky-deep hover:text-navy transition-colors duration-200"
+          className="mt-4 inline-flex items-center gap-1.5 rounded-full bg-sky/15 px-4 py-1.5 text-xs font-bold text-sky-deep hover:bg-sky/25 transition-colors duration-200"
         >
           <Linkedin className="h-3.5 w-3.5" />
-          لينكدإن
+          LinkedIn
         </a>
       )}
     </motion.div>

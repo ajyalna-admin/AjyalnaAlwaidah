@@ -4,6 +4,13 @@ import { motion } from "framer-motion";
 import { SectionHeading } from "@/components/SectionHeading";
 import { journeySection, journeyStages } from "@/lib/data";
 
+const barColors = [
+  "bg-navy",
+  "bg-sky-deep",
+  "bg-sky",
+  "bg-navy-light",
+];
+
 export function Journey() {
   return (
     <section id="journey" className="section-pad border-b border-line bg-cream-deep/40">
@@ -14,30 +21,52 @@ export function Journey() {
           description={journeySection.description}
         />
 
-        <div className="relative max-w-xl mx-auto">
-          <div
-            className="absolute right-6 top-2 bottom-2 w-px bg-gradient-to-b from-sky-deep/40 via-sky-deep/20 to-transparent"
-            aria-hidden="true"
-          />
+        <div className="overflow-x-auto pb-4 -mx-6 px-6 sm:mx-0 sm:px-0">
+          <div className="min-w-[860px] sm:min-w-0 grid grid-flow-col auto-cols-fr">
+            {journeyStages.map((stage, i) => {
+              const isTop = i % 2 === 0;
+              const color = barColors[i % barColors.length];
+              return (
+                <motion.div
+                  key={stage.title}
+                  initial={{ opacity: 0, y: isTop ? -14 : 14 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-60px" }}
+                  transition={{ duration: 0.5, delay: i * 0.06, ease: [0.16, 1, 0.3, 1] }}
+                  className="relative flex flex-col items-center"
+                >
+                  {isTop && (
+                    <>
+                      <span
+                        className={`flex h-16 w-16 items-center justify-center rounded-full ${color} text-2xl shadow-md mb-1`}
+                      >
+                        {stage.emoji}
+                      </span>
+                      <span className="h-6 w-px bg-navy/25" aria-hidden="true" />
+                    </>
+                  )}
 
-          <div className="space-y-3">
-            {journeyStages.map((stage, i) => (
-              <motion.div
-                key={stage.title}
-                initial={{ opacity: 0, x: 20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true, margin: "-60px" }}
-                transition={{ duration: 0.5, delay: i * 0.07, ease: [0.16, 1, 0.3, 1] }}
-                className="relative flex items-center gap-5 pr-0"
-              >
-                <span className="relative z-10 flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-cream border-2 border-sky-deep/40 text-lg shadow-sm">
-                  {stage.emoji}
-                </span>
-                <span className="glass-card rounded-xl px-5 py-3.5 flex-1 font-display font-bold text-sm sm:text-base">
-                  {stage.title}
-                </span>
-              </motion.div>
-            ))}
+                  <span className={`relative w-full h-2.5 ${color} first:rounded-r-full last:rounded-l-full`}>
+                    <span className="absolute right-1/2 translate-x-1/2 -top-[3px] h-2 w-2 rounded-full bg-cream border border-navy/20" />
+                  </span>
+
+                  {!isTop && (
+                    <>
+                      <span className="h-6 w-px bg-navy/25" aria-hidden="true" />
+                      <span
+                        className={`flex h-16 w-16 items-center justify-center rounded-full ${color} text-2xl shadow-md mt-1`}
+                      >
+                        {stage.emoji}
+                      </span>
+                    </>
+                  )}
+
+                  <p className="mt-3 text-center text-xs sm:text-sm font-display font-bold px-2 leading-snug max-w-[120px]">
+                    {stage.title}
+                  </p>
+                </motion.div>
+              );
+            })}
           </div>
         </div>
       </div>
