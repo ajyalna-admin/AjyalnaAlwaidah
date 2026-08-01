@@ -70,9 +70,12 @@ export default async function CoursePage({
           <p className="text-sm font-medium text-sky-deep mb-2">
             {major.name} — {course.level}
           </p>
-          <h1 className="font-display text-3xl sm:text-4xl font-black tracking-tight mb-10">
-            {course.name}
+          <h1 className="font-display text-3xl sm:text-4xl font-black tracking-tight mb-1.5">
+            {course.nameAr}
           </h1>
+          <p className="text-lg text-muted mb-10" dir="ltr">
+            {course.name}
+          </p>
 
           <div className="grid gap-6 max-w-2xl">
             {/* معلومات المقرر */}
@@ -84,7 +87,10 @@ export default async function CoursePage({
               <dl className="grid grid-cols-2 gap-4 text-sm">
                 <div>
                   <dt className="text-muted text-xs mb-1">اسم المقرر</dt>
-                  <dd className="font-medium">{course.name}</dd>
+                  <dd className="font-medium">
+                    {course.nameAr}
+                    <span className="block text-xs text-muted mt-0.5" dir="ltr">{course.name}</span>
+                  </dd>
                 </div>
                 <div>
                   <dt className="text-muted text-xs mb-1">رمز المقرر</dt>
