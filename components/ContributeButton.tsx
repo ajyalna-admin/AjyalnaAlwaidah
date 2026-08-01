@@ -32,6 +32,7 @@ export function ContributeButton({ defaultCourseSlug }: { defaultCourseSlug?: st
   const [link, setLink] = useState("");
   const [name, setName] = useState("");
   const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
+  const [errorMsg, setErrorMsg] = useState<string>("");
 
   const reset = () => {
     setOption(null);
@@ -39,6 +40,7 @@ export function ContributeButton({ defaultCourseSlug }: { defaultCourseSlug?: st
     setLink("");
     setName("");
     setStatus("idle");
+    setErrorMsg("");
   };
 
   const close = () => {
@@ -62,7 +64,13 @@ export function ContributeButton({ defaultCourseSlug }: { defaultCourseSlug?: st
       status: "pending",
     });
 
-    setStatus(error ? "error" : "sent");
+    if (error) {
+      console.error("Supabase insert error:", error);
+      setErrorMsg(error.message);
+      setStatus("error");
+    } else {
+      setStatus("sent");
+    }
   };
 
   return (
@@ -182,7 +190,9 @@ export function ContributeButton({ defaultCourseSlug }: { defaultCourseSlug?: st
                       )}
 
                       {status === "error" && (
-                        <p className="text-xs text-red-500">صار خطأ، حاولي مرة ثانية.</p>
+                        <p className="text-xs text-red-500" dir="ltr">
+                          {errorMsg || "صار خطأ، حاولي مرة ثانية."}
+                        </p>
                       )}
 
                       <div className="flex gap-2 pt-2">
