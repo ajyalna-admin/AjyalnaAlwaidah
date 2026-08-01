@@ -517,7 +517,7 @@ export const coursesSection = {
 export const majorsCourses: MajorCourses[] = [
   {
     slug: "shared",
-    name: "Common Courses",
+    name: "متطلبات الكلية المشتركة",
     levels: [
       {
         level: "متطلبات الكلية المشتركة",
@@ -649,11 +649,7 @@ export const majorsCourses: MajorCourses[] = [
     name: "علوم الذكاء الاصطناعي",
     levels: [{ level: "المستوى الأول", courses: [] }],
   },
-  {
-    slug: "data-science",
-    name: "Data Science",
-    levels: [{ level: "المستوى الأول", courses: [] }],
-  },
+  
   {
     slug: "se",
     name: "هندسة البرمجيات",
