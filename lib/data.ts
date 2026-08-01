@@ -299,6 +299,8 @@ export type CommitteeEntry = {
   name: string;
   leader: string;
   deputy?: string;
+  leaderLinkedin?: string;
+  deputyLinkedin?: string;
 };
 
 export const teamSection = {
@@ -324,26 +326,99 @@ export const leadership: LeadershipMember[] = [
   },
 ];
 
+const li = (name: string) =>
+  `https://www.linkedin.com/search/results/all/?keywords=${encodeURIComponent(name)}`;
+
 export const guidanceCommittees: CommitteeEntry[] = [
-  { name: "لجنة علوم الحاسب", leader: "ألين البدر", deputy: "لجين الممتن" },
-  { name: "لجنة نظم المعلومات", leader: "بدور الربيعان", deputy: "نوره القديري" },
-  { name: "لجنة تقنية المعلومات", leader: "رهف العتيبي", deputy: "جوري الرشيدي" },
-  { name: "لجنة الذكاء الاصطناعي", leader: "لينه الدوسري", deputy: "ريان المنقوري" },
-  { name: "لجنة هندسة البرمجيات", leader: "أجوان العمر", deputy: "رودي القفاري" },
-  { name: "لجنة علم البيانات وتحليلها", leader: "لين القويفل", deputy: "هيفاء المطيري" },
-  { name: "لجنة الأمن السيبراني", leader: "يارا النصيان", deputy: "ريما الغامدي" },
-  { name: "لجنة إنترنت الأشياء", leader: "روز الضيف", deputy: "جود الشبانه" },
+  {
+    name: "لجنة علوم الحاسب",
+    leader: "ألين البدر",
+    deputy: "لجين الممتن",
+    leaderLinkedin: li("Aleen Albader"),
+    deputyLinkedin: li("Lujain Almmtan"),
+  },
+  {
+    name: "لجنة نظم المعلومات",
+    leader: "بدور الربيعان",
+    deputy: "نوره القديري",
+    leaderLinkedin: li("Bdour Alrubayan"),
+    deputyLinkedin: li("Norah Alqudayri"),
+  },
+  {
+    name: "لجنة تقنية المعلومات",
+    leader: "رهف العتيبي",
+    deputy: "جوري الرشيدي",
+    leaderLinkedin: li("Rahaf Alotaibi"),
+    deputyLinkedin: li("Jory Alrasheedi"),
+  },
+  {
+    name: "لجنة الذكاء الاصطناعي",
+    leader: "لينه الدوسري",
+    deputy: "ريان المنقوري",
+    leaderLinkedin: li("Leenah Aldossari"),
+  },
+  {
+    name: "لجنة هندسة البرمجيات",
+    leader: "أجوان العمر",
+    deputy: "رودي القفاري",
+    leaderLinkedin: li("Ajwan Alomar"),
+    deputyLinkedin: li("Rudi Alqifari"),
+  },
+  {
+    name: "لجنة علم البيانات وتحليلها",
+    leader: "لين القويفل",
+    deputy: "هيفاء المطيري",
+    leaderLinkedin: li("Leen AlQuwaifil"),
+  },
+  {
+    name: "لجنة الأمن السيبراني",
+    leader: "يارا النصيان",
+    deputy: "ريما الغامدي",
+    leaderLinkedin: li("Yara Alnasyan"),
+    deputyLinkedin: li("Reema Alghamdi"),
+  },
+  {
+    name: "لجنة إنترنت الأشياء",
+    leader: "روز الضيف",
+    deputy: "جود الشبانه",
+    leaderLinkedin: li("Rose aldhaif"),
+    deputyLinkedin: li("Joud Alshabanh"),
+  },
 ];
 
 export const subCommittees: CommitteeEntry[] = [
-  { name: "لجنة التصميم", leader: "شيخة الشريف" },
-  { name: "لجنة الكتابة", leader: "ميس خرمي", deputy: "نورة الدوسري" },
-  { name: "لجنة العلاقات العامة", leader: "الجوهرة الناصر" },
-  { name: "لجنة التوسّع الاستراتيجي", leader: "عهد الشيحه" },
-  { name: "لجنة الجودة", leader: "شيخة الهميلي", deputy: "راما الشريف" },
+  {
+    name: "لجنة التصميم",
+    leader: "شيخة الشريف",
+    leaderLinkedin: li("shaikhah alshareef"),
+  },
+  {
+    name: "لجنة الكتابة",
+    leader: "ميس خرمي",
+    deputy: "نورة الدوسري",
+    leaderLinkedin: li("Mays Khormi"),
+  },
+  {
+    name: "لجنة العلاقات العامة",
+    leader: "الجوهرة الناصر",
+    leaderLinkedin: li("Aljawharah Alnasser"),
+  },
+  {
+    name: "لجنة التوسّع الاستراتيجي",
+    leader: "عهد الشيحه",
+    leaderLinkedin: li("Ahad Alshehah"),
+  },
+  {
+    name: "لجنة الجودة",
+    leader: "شيخة الهميلي",
+    deputy: "راما الشريف",
+    leaderLinkedin: li("Shiekah mazen"),
+    deputyLinkedin: li("Rama Alshareef"),
+  },
 ];
 
 // ==================== الأسئلة الشائعة ====================
+
 
 export type FaqItem = { question: string; answer: string };
 
@@ -439,37 +514,106 @@ export const coursesSection = {
 
 export const majorsCourses: MajorCourses[] = [
   {
-    slug: "cs",
-    name: "Computer Science",
+    slug: "shared",
+    name: "Common Courses",
+    levels: [
+      {
+        level: "متطلبات الكلية المشتركة",
+        courses: [
+          { slug: "math-101", code: "MATH 101", name: "Calculus (1)", hours: 3, level: "مشترك", prerequisite: "لا يوجد" },
+          { slug: "math-161", code: "MATH 161", name: "General Statistics", hours: 3, level: "مشترك", prerequisite: "لا يوجد" },
+          { slug: "cs-100", code: "CS 100", name: "Discrete Structures", hours: 3, level: "مشترك", prerequisite: "لا يوجد" },
+          { slug: "cs-110", code: "CS 110", name: "Programming Language (1)", hours: 4, level: "مشترك", prerequisite: "لا يوجد" },
+          { slug: "cs-111", code: "CS 111", name: "Programming Language (2)", hours: 4, level: "مشترك", prerequisite: "CS 110" },
+          { slug: "cs-380", code: "CS 380", name: "Professional Ethics", hours: 1, level: "مشترك", prerequisite: "لا يوجد" },
+          { slug: "cs-212", code: "CS 212", name: "Data Structures", hours: 3, level: "مشترك", prerequisite: "CS 111" },
+          { slug: "it-221", code: "IT 221", name: "Computer Networks Fundamentals", hours: 3, level: "مشترك", prerequisite: "CS 110" },
+          { slug: "is-220", code: "IS 220", name: "Database Fundamentals", hours: 4, level: "مشترك", prerequisite: "CS 111" },
+          { slug: "is-350", code: "IS 350", name: "Projects Management", hours: 3, level: "مشترك", prerequisite: "CS 212" },
+          { slug: "cs-340", code: "CS 340", name: "Operating Systems", hours: 3, level: "مشترك", prerequisite: "CS 212" },
+          { slug: "cs-351", code: "CS 351", name: "Human-Computer Interaction", hours: 3, level: "مشترك", prerequisite: "CS 212" },
+        ],
+      },
+    ],
+  },
+  {
+    slug: "iot",
+    name: "Internet of Things",
     levels: [
       {
         level: "المستوى الأول",
         courses: [
-          {
-            slug: "cs-101",
-            code: "CS 101",
-            name: "Programming 1",
-            hours: 3,
-            level: "المستوى الأول",
-            prerequisite: "لا يوجد",
-            tips: [
-              "ابدئي بالمشروع من أول أسبوع.",
-              "احضري جميع المحاضرات.",
-              "راجعي أسبوعيًا ولا تعتمدي على ليلة الاختبار.",
-            ],
-            faqs: [
-              { question: "هل يوجد مشروع؟", answer: "نعم، مشروع أساسي في نهاية الفصل." },
-              { question: "هل يحتاج خلفية برمجية؟", answer: "لا، مصمم للمبتدئات تمامًا." },
-            ],
-          },
-          {
-            slug: "math-101",
-            code: "MATH 101",
-            name: "Calculus 1",
-            hours: 3,
-            level: "المستوى الأول",
-            prerequisite: "لا يوجد",
-          },
+          { slug: "eng-101", code: "ENG 101-1", name: "English Language (1)", hours: 3, level: "المستوى الأول", prerequisite: "لا يوجد" },
+          { slug: "phys-102", code: "PHYS 102", name: "General Physics for Engineering (1)", hours: 4, level: "المستوى الأول", prerequisite: "لا يوجد" },
+          { slug: "iot-cs110", code: "CS 110", name: "Programming Language (1)", hours: 4, level: "المستوى الأول", prerequisite: "لا يوجد" },
+          { slug: "iot-math101", code: "MATH 101", name: "Calculus (1)", hours: 3, level: "المستوى الأول", prerequisite: "لا يوجد" },
+        ],
+      },
+      {
+        level: "المستوى الثاني",
+        courses: [
+          { slug: "eng-102", code: "ENG 102-2", name: "English Language (2)", hours: 3, level: "المستوى الثاني", prerequisite: "ENG 101-1" },
+          { slug: "iot-cs111", code: "CS 111", name: "Programming Language (2)", hours: 4, level: "المستوى الثاني", prerequisite: "CS 110" },
+          { slug: "iote-110", code: "IOTE 110", name: "Introduction to IoT", hours: 3, level: "المستوى الثاني", prerequisite: "لا يوجد" },
+          { slug: "phys-103", code: "PHYS 103", name: "General Physics for Engineering (2)", hours: 4, level: "المستوى الثاني", prerequisite: "PHYS 102" },
+          { slug: "iot-math103", code: "MATH 103", name: "Calculus (II)", hours: 4, level: "المستوى الثاني", prerequisite: "MATH 101" },
+        ],
+      },
+      {
+        level: "المستوى الثالث",
+        courses: [
+          { slug: "iot-cs212", code: "CS 212", name: "Data Structures", hours: 3, level: "المستوى الثالث", prerequisite: "CS 111" },
+          { slug: "iote-240", code: "IOTE 240", name: "Electric Circuits", hours: 4, level: "المستوى الثالث", prerequisite: "MATH 103, PHYS 103" },
+          { slug: "iot-math161", code: "MATH 161", name: "General Statistics", hours: 3, level: "المستوى الثالث", prerequisite: "لا يوجد" },
+          { slug: "iot-it221", code: "IT 221", name: "Computer Networks Fundamentals", hours: 3, level: "المستوى الثالث", prerequisite: "CS 110" },
+        ],
+      },
+      {
+        level: "المستوى الرابع",
+        courses: [
+          { slug: "iot-cs340", code: "CS 340", name: "Operating Systems", hours: 3, level: "المستوى الرابع", prerequisite: "CS 212" },
+          { slug: "iote-241", code: "IOTE 241", name: "Electronics", hours: 4, level: "المستوى الرابع", prerequisite: "IOTE 240" },
+          { slug: "iote-211", code: "IOTE 211", name: "Human Machine Interaction for IoT", hours: 3, level: "المستوى الرابع", prerequisite: "IOTE 110" },
+          { slug: "iote-200", code: "IOTE 200", name: "Big Data Analytics for IoT", hours: 3, level: "المستوى الرابع", prerequisite: "MATH 161" },
+          { slug: "iot-is220", code: "IS 220", name: "Database Fundamentals", hours: 4, level: "المستوى الرابع", prerequisite: "CS 111" },
+        ],
+      },
+      {
+        level: "المستوى الخامس",
+        courses: [
+          { slug: "iote-312", code: "IOTE 312", name: "Cloud Computing for IoT", hours: 3, level: "المستوى الخامس", prerequisite: "IS 220" },
+          { slug: "ece-260", code: "ECE 260", name: "Digital Logic Circuit Design", hours: 4, level: "المستوى الخامس", prerequisite: "MATH 103" },
+          { slug: "iote-313", code: "IOTE 313", name: "IoT Networks Protocols", hours: 3, level: "المستوى الخامس", prerequisite: "IT 221" },
+          { slug: "iote-330", code: "IOTE 330", name: "Software Engineering for Embedded Systems", hours: 3, level: "المستوى الخامس", prerequisite: "CS 340" },
+          { slug: "iote-350", code: "IOTE 350", name: "Signals and Systems", hours: 3, level: "المستوى الخامس", prerequisite: "IOTE 240" },
+          { slug: "iote-301", code: "IOTE 301", name: "Artificial Intelligence and Machine Learning for IoT", hours: 3, level: "المستوى الخامس", prerequisite: "IOTE 200" },
+        ],
+      },
+      {
+        level: "المستوى السادس",
+        courses: [
+          { slug: "iote-314", code: "IOTE 314", name: "IoT Networks Management and Analysis", hours: 3, level: "المستوى السادس", prerequisite: "IOTE 200" },
+          { slug: "iote-360", code: "IOTE 360", name: "Microcontroller and Microprocessor", hours: 3, level: "المستوى السادس", prerequisite: "ECE 260" },
+          { slug: "iot-cs380", code: "CS 380", name: "Professional Ethics", hours: 1, level: "المستوى السادس", prerequisite: "لا يوجد" },
+          { slug: "iote-331", code: "IOTE 331", name: "IoT Operating Systems", hours: 3, level: "المستوى السادس", prerequisite: "IOTE 330" },
+          { slug: "iote-351", code: "IOTE 351", name: "Communication Systems", hours: 4, level: "المستوى السادس", prerequisite: "IOTE 350" },
+          { slug: "iote-302", code: "IOTE 302", name: "Cybersecurity for IoT", hours: 3, level: "المستوى السادس", prerequisite: "IOTE 313" },
+        ],
+      },
+      {
+        level: "المستوى السابع",
+        courses: [
+          { slug: "iote-454", code: "IOTE 454", name: "Wireless Sensor Networks for IoT", hours: 3, level: "المستوى السابع", prerequisite: "IOTE 351" },
+          { slug: "iote-452", code: "IOTE 452", name: "Wireless Communications for IoT", hours: 3, level: "المستوى السابع", prerequisite: "IOTE 351" },
+          { slug: "iote-420", code: "IOTE 420", name: "IoT Applications Development", hours: 3, level: "المستوى السابع", prerequisite: "IOTE 331" },
+          { slug: "iote-480", code: "IOTE 480", name: "Graduation Project (1)", hours: 3, level: "المستوى السابع", prerequisite: "اجتياز 128 وحدة" },
+        ],
+      },
+      {
+        level: "المستوى الثامن",
+        courses: [
+          { slug: "iote-490", code: "IOTE 490", name: "Internship", hours: 6, level: "المستوى الثامن", prerequisite: "اجتياز 110 وحدة" },
+          { slug: "iote-481", code: "IOTE 481", name: "Graduation Project (2)", hours: 3, level: "المستوى الثامن", prerequisite: "IOTE 480" },
         ],
       },
     ],
@@ -477,6 +621,204 @@ export const majorsCourses: MajorCourses[] = [
   {
     slug: "cyber",
     name: "Cybersecurity",
+    levels: [
+      {
+        level: "المستوى الأول",
+        courses: [
+          { slug: "cy-eng101", code: "ENG 101-1", name: "English Language (1)", hours: 3, level: "المستوى الأول", prerequisite: "لا يوجد" },
+          { slug: "cy-math101", code: "MATH 101", name: "Calculus (1)", hours: 3, level: "المستوى الأول", prerequisite: "لا يوجد" },
+          { slug: "cy-cs100", code: "CS 100", name: "Discrete Structures", hours: 3, level: "المستوى الأول", prerequisite: "لا يوجد" },
+          { slug: "cy-cs110", code: "CS 110", name: "Programming Language (1)", hours: 4, level: "المستوى الأول", prerequisite: "لا يوجد" },
+        ],
+      },
+      {
+        level: "المستوى الثاني",
+        courses: [
+          { slug: "cy-eng102", code: "ENG 102-2", name: "English Language (2)", hours: 3, level: "المستوى الثاني", prerequisite: "ENG 101-1" },
+          { slug: "cy-math161", code: "MATH 161", name: "General Statistics", hours: 3, level: "المستوى الثاني", prerequisite: "لا يوجد" },
+          { slug: "cy-cs111", code: "CS 111", name: "Programming Language (2)", hours: 4, level: "المستوى الثاني", prerequisite: "CS 110" },
+          { slug: "cy-it201", code: "IT 201", name: "Principles of Information and Technology Systems", hours: 3, level: "المستوى الثاني", prerequisite: "CS 110" },
+        ],
+      },
+      {
+        level: "المستوى الثالث",
+        courses: [
+          { slug: "cy-math103", code: "MATH 103", name: "Calculus (II)", hours: 4, level: "المستوى الثالث", prerequisite: "MATH 101" },
+          { slug: "cy-is220", code: "IS 220", name: "Database Fundamentals", hours: 4, level: "المستوى الثالث", prerequisite: "CS 111" },
+          { slug: "cy-cs212", code: "CS 212", name: "Data Structures", hours: 3, level: "المستوى الثالث", prerequisite: "CS 111" },
+          { slug: "cy-phys101", code: "PHYS 101", name: "General Physics (1)", hours: 3, level: "المستوى الثالث", prerequisite: "لا يوجد" },
+          { slug: "cy-it221", code: "IT 221", name: "Computer Networks Fundamentals", hours: 3, level: "المستوى الثالث", prerequisite: "CS 110" },
+        ],
+      },
+      {
+        level: "المستوى الرابع",
+        courses: [
+          { slug: "cy-200", code: "CY 200", name: "Cybersecurity Principles", hours: 3, level: "المستوى الرابع", prerequisite: "لا يوجد" },
+          { slug: "cy-cs340", code: "CS 340", name: "Operating Systems", hours: 3, level: "المستوى الرابع", prerequisite: "CS 212" },
+          { slug: "cy-it222", code: "IT 222", name: "Communications and Networks Fundamentals", hours: 4, level: "المستوى الرابع", prerequisite: "PHYS 101" },
+          { slug: "cy-220", code: "CY 220", name: "Cryptography", hours: 3, level: "المستوى الرابع", prerequisite: "CS 100" },
+          { slug: "cy-cs220", code: "CS 220", name: "Algorithms Design and Analysis", hours: 3, level: "المستوى الرابع", prerequisite: "CS 100, CS 212" },
+          { slug: "cy-201", code: "CY 201", name: "Cybersecurity Laws and Policies", hours: 2, level: "المستوى الرابع", prerequisite: "لا يوجد" },
+        ],
+      },
+      {
+        level: "المستوى الخامس",
+        courses: [
+          { slug: "cy-cs380", code: "CS 380", name: "Professional Ethics", hours: 1, level: "المستوى الخامس", prerequisite: "لا يوجد" },
+          { slug: "cy-321", code: "CY 321", name: "System Security", hours: 3, level: "المستوى الخامس", prerequisite: "CS 340" },
+          { slug: "cy-is350", code: "IS 350", name: "Projects Management", hours: 3, level: "المستوى الخامس", prerequisite: "CS 212" },
+          { slug: "cy-math367", code: "MATH 367", name: "Theory of Probability", hours: 3, level: "المستوى الخامس", prerequisite: "MATH 103, MATH 161" },
+          { slug: "cy-302", code: "CY 302", name: "Information Security Management", hours: 3, level: "المستوى الخامس", prerequisite: "لا يوجد" },
+          { slug: "cy-cs385", code: "CS 385", name: "Software Engineering", hours: 3, level: "المستوى الخامس", prerequisite: "IS 220" },
+        ],
+      },
+      {
+        level: "المستوى السادس",
+        courses: [
+          { slug: "cy-311", code: "CY 311", name: "Ethical Hacking", hours: 3, level: "المستوى السادس", prerequisite: "CY 201" },
+          { slug: "cy-it323", code: "IT 323", name: "Network Protocols", hours: 3, level: "المستوى السادس", prerequisite: "IT 221" },
+          { slug: "cy-310", code: "CY 310", name: "Malware Analysis", hours: 3, level: "المستوى السادس", prerequisite: "CY 321" },
+          { slug: "cy-cs351", code: "CS 351", name: "Human-Computer Interaction", hours: 3, level: "المستوى السادس", prerequisite: "CS 212" },
+        ],
+      },
+      {
+        level: "المستوى السابع",
+        courses: [
+          { slug: "cy-480", code: "CY 480", name: "Graduation Project (1)", hours: 3, level: "المستوى السابع", prerequisite: "اجتياز 130 وحدة + IS 350" },
+          { slug: "cy-440", code: "CY 440", name: "Cyber Physical Systems Security", hours: 3, level: "المستوى السابع", prerequisite: "لا يوجد" },
+          { slug: "cy-441", code: "CY 441", name: "Networks Security", hours: 3, level: "المستوى السابع", prerequisite: "IT 221" },
+          { slug: "cy-430", code: "CY 430", name: "Web Systems Security", hours: 3, level: "المستوى السابع", prerequisite: "IT 221" },
+          { slug: "cy-442", code: "CY 442", name: "Wireless Networks Security", hours: 3, level: "المستوى السابع", prerequisite: "CY 200" },
+        ],
+      },
+      {
+        level: "المستوى الثامن",
+        courses: [
+          { slug: "cy-481", code: "CY 481", name: "Graduation Project (2)", hours: 3, level: "المستوى الثامن", prerequisite: "CY 480" },
+          { slug: "cy-490", code: "CY 490", name: "Internship", hours: 6, level: "المستوى الثامن", prerequisite: "اجتياز 125 وحدة" },
+        ],
+      },
+      {
+        level: "مقررات اختيارية",
+        courses: [
+          { slug: "cy-322", code: "CY 322", name: "Biometrics and Security", hours: 3, level: "اختياري", prerequisite: "لا يوجد" },
+          { slug: "cy-412", code: "CY 412", name: "Computer Forensics", hours: 3, level: "اختياري", prerequisite: "CY 200" },
+          { slug: "cy-431", code: "CY 431", name: "Mobile and Wireless Systems Security", hours: 3, level: "اختياري", prerequisite: "لا يوجد" },
+          { slug: "cy-443", code: "CY 443", name: "AI in Cybersecurity", hours: 3, level: "اختياري", prerequisite: "CY 200" },
+          { slug: "cy-cs370", code: "CS 370", name: "Artificial Intelligence", hours: 3, level: "اختياري", prerequisite: "CS 111, CS 220" },
+          { slug: "cy-cs486", code: "CS 486", name: "Web Applications Development", hours: 3, level: "اختياري", prerequisite: "CS 220" },
+          { slug: "cy-cs350", code: "CS 350", name: "Multimedia Systems", hours: 3, level: "اختياري", prerequisite: "CS 212" },
+          { slug: "cy-it433", code: "IT 433", name: "Wireless Sensor Networks", hours: 3, level: "اختياري", prerequisite: "IT 221" },
+        ],
+      },
+    ],
+  },
+  {
+    slug: "it",
+    name: "Information Technology",
+    levels: [
+      {
+        level: "المستوى الأول",
+        courses: [
+          { slug: "it-eng101", code: "ENG 101-1", name: "English Language (1)", hours: 3, level: "المستوى الأول", prerequisite: "لا يوجد" },
+          { slug: "it-cs100", code: "CS 100", name: "Discrete Structures", hours: 3, level: "المستوى الأول", prerequisite: "لا يوجد" },
+          { slug: "it-cs110", code: "CS 110", name: "Programming Language (1)", hours: 4, level: "المستوى الأول", prerequisite: "لا يوجد" },
+          { slug: "it-math101", code: "MATH 101", name: "Calculus (1)", hours: 3, level: "المستوى الأول", prerequisite: "لا يوجد" },
+        ],
+      },
+      {
+        level: "المستوى الثاني",
+        courses: [
+          { slug: "it-eng102", code: "ENG 102-2", name: "English Language (2)", hours: 3, level: "المستوى الثاني", prerequisite: "ENG 101-1" },
+          { slug: "it-phys101", code: "PHYS 101", name: "General Physics (1)", hours: 3, level: "المستوى الثاني", prerequisite: "لا يوجد" },
+          { slug: "it-math161", code: "MATH 161", name: "General Statistics", hours: 3, level: "المستوى الثاني", prerequisite: "لا يوجد" },
+          { slug: "it-cs111", code: "CS 111", name: "Programming Language (2)", hours: 4, level: "المستوى الثاني", prerequisite: "CS 110" },
+          { slug: "it-cs105", code: "CS 105", name: "Digital Logic Design", hours: 3, level: "المستوى الثاني", prerequisite: "لا يوجد" },
+        ],
+      },
+      {
+        level: "المستوى الثالث",
+        courses: [
+          { slug: "it-math103", code: "MATH 103", name: "Calculus (II)", hours: 4, level: "المستوى الثالث", prerequisite: "MATH 101" },
+          { slug: "it-is220", code: "IS 220", name: "Database Fundamentals", hours: 4, level: "المستوى الثالث", prerequisite: "CS 111" },
+          { slug: "it-cs212", code: "CS 212", name: "Data Structures", hours: 3, level: "المستوى الثالث", prerequisite: "CS 111" },
+          { slug: "it-cs206", code: "CS 206", name: "Computer Organization", hours: 3, level: "المستوى الثالث", prerequisite: "CS 105" },
+        ],
+      },
+      {
+        level: "المستوى الرابع",
+        courses: [
+          { slug: "it-it222", code: "IT 222", name: "Communications and Networks Fundamentals", hours: 4, level: "المستوى الرابع", prerequisite: "PHYS 101" },
+          { slug: "it-is221", code: "IS 221", name: "Database Management", hours: 3, level: "المستوى الرابع", prerequisite: "IS 220" },
+          { slug: "it-cs220", code: "CS 220", name: "Algorithms Design and Analysis", hours: 3, level: "المستوى الرابع", prerequisite: "CS 100, CS 212" },
+          { slug: "it-it201", code: "IT 201", name: "Principles of Information and Technology Systems", hours: 3, level: "المستوى الرابع", prerequisite: "CS 110" },
+          { slug: "it-it221", code: "IT 221", name: "Computer Networks Fundamentals", hours: 3, level: "المستوى الرابع", prerequisite: "CS 110" },
+        ],
+      },
+      {
+        level: "المستوى الخامس",
+        courses: [
+          { slug: "it-cs380", code: "CS 380", name: "Professional Ethics", hours: 1, level: "المستوى الخامس", prerequisite: "لا يوجد" },
+          { slug: "it-cs340", code: "CS 340", name: "Operating Systems", hours: 3, level: "المستوى الخامس", prerequisite: "CS 212" },
+          { slug: "it-cs385", code: "CS 385", name: "Software Engineering", hours: 3, level: "المستوى الخامس", prerequisite: "IS 220" },
+          { slug: "it-311", code: "IT 311", name: "Information Security", hours: 3, level: "المستوى الخامس", prerequisite: "IT 221" },
+        ],
+      },
+      {
+        level: "المستوى السادس",
+        courses: [
+          { slug: "it-math367", code: "MATH 367", name: "Theory of Probability", hours: 3, level: "المستوى السادس", prerequisite: "MATH 103, MATH 161" },
+          { slug: "it-is350", code: "IS 350", name: "Projects Management", hours: 3, level: "المستوى السادس", prerequisite: "CS 212" },
+          { slug: "it-361", code: "IT 361", name: "IT Enterprise Systems Architecture and Integration", hours: 3, level: "المستوى السادس", prerequisite: "IT 201, CS 385" },
+          { slug: "it-371", code: "IT 371", name: "System Administration", hours: 3, level: "المستوى السادس", prerequisite: "CS 340" },
+          { slug: "it-cs351", code: "CS 351", name: "Human-Computer Interaction", hours: 3, level: "المستوى السادس", prerequisite: "CS 212" },
+        ],
+      },
+      {
+        level: "المستوى السابع",
+        courses: [
+          { slug: "it-435", code: "IT 435", name: "Graduation Project (1)", hours: 3, level: "المستوى السابع", prerequisite: "اجتياز 100 وحدة + IS 350" },
+          { slug: "it-481", code: "IT 481", name: "Web Systems and Technologies", hours: 3, level: "المستوى السابع", prerequisite: "IT 221" },
+        ],
+      },
+      {
+        level: "المستوى الثامن",
+        courses: [
+          { slug: "it-436", code: "IT 436", name: "Graduation Project (2)", hours: 3, level: "المستوى الثامن", prerequisite: "IT 435" },
+          { slug: "it-437", code: "IT 437", name: "Internship", hours: 6, level: "المستوى الثامن", prerequisite: "اجتياز 117 وحدة" },
+        ],
+      },
+      {
+        level: "مقررات اختيارية",
+        courses: [
+          { slug: "it-426", code: "IT 426", name: "Selected Topics", hours: 3, level: "اختياري", prerequisite: "IT 221" },
+          { slug: "it-elec-cs350", code: "CS 350", name: "Multimedia Systems", hours: 3, level: "اختياري", prerequisite: "CS 212" },
+          { slug: "it-is322", code: "IS 322", name: "Data Warehousing and Data Mining", hours: 3, level: "اختياري", prerequisite: "IS 221, MATH 161" },
+          { slug: "it-323", code: "IT 323", name: "Networks Protocols", hours: 3, level: "اختياري", prerequisite: "IT 221" },
+          { slug: "it-331", code: "IT 331", name: "Wireless Networks and Mobile Communication Systems", hours: 3, level: "اختياري", prerequisite: "IT 221" },
+          { slug: "it-324", code: "IT 324", name: "Networks Management and Analysis", hours: 3, level: "اختياري", prerequisite: "IT 221" },
+          { slug: "it-341", code: "IT 341", name: "Networks Programming and Applications", hours: 3, level: "اختياري", prerequisite: "IT 221" },
+          { slug: "it-432", code: "IT 432", name: "Networks Design and Implementation", hours: 3, level: "اختياري", prerequisite: "IT 221" },
+          { slug: "it-433", code: "IT 433", name: "Wireless Sensor Networks", hours: 3, level: "اختياري", prerequisite: "IT 221" },
+          { slug: "it-425", code: "IT 425", name: "Satellite Communication", hours: 3, level: "اختياري", prerequisite: "IT 221" },
+          { slug: "it-434", code: "IT 434", name: "Optical Networks", hours: 3, level: "اختياري", prerequisite: "IT 221" },
+          { slug: "it-351", code: "IT 351", name: "Networks Operating Systems", hours: 3, level: "اختياري", prerequisite: "IT 221" },
+          { slug: "it-352", code: "IT 352", name: "Real Time and Embedded Systems", hours: 3, level: "اختياري", prerequisite: "CS 340" },
+          { slug: "it-353", code: "IT 353", name: "Parallel Computers", hours: 3, level: "اختياري", prerequisite: "CS 340, CS 206" },
+          { slug: "it-414", code: "IT 414", name: "Computer Forensics", hours: 3, level: "اختياري", prerequisite: "IT 311" },
+          { slug: "it-412", code: "IT 412", name: "Networks Security", hours: 3, level: "اختياري", prerequisite: "IT 311" },
+          { slug: "it-415", code: "IT 415", name: "Information Security Management", hours: 3, level: "اختياري", prerequisite: "IT 311" },
+          { slug: "it-413", code: "IT 413", name: "Ethical Hacking", hours: 3, level: "اختياري", prerequisite: "IT 311" },
+          { slug: "it-416", code: "IT 416", name: "Biometrics and Security", hours: 3, level: "اختياري", prerequisite: "IT 311" },
+          { slug: "it-417", code: "IT 417", name: "Mobile and Wireless Systems Security", hours: 3, level: "اختياري", prerequisite: "IT 311" },
+          { slug: "it-430", code: "IT 430", name: "Internet of Things", hours: 3, level: "اختياري", prerequisite: "IT 221" },
+        ],
+      },
+    ],
+  },
+  {
+    slug: "cs",
+    name: "Computer Science",
     levels: [{ level: "المستوى الأول", courses: [] }],
   },
   {
@@ -487,11 +829,6 @@ export const majorsCourses: MajorCourses[] = [
   {
     slug: "data-science",
     name: "Data Science",
-    levels: [{ level: "المستوى الأول", courses: [] }],
-  },
-  {
-    slug: "it",
-    name: "Information Technology",
     levels: [{ level: "المستوى الأول", courses: [] }],
   },
   {
