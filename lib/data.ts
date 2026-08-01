@@ -20,7 +20,7 @@ export const hero = {
   title: brand.name,
   subtitle: brand.tagline,
   description:
-    "أجيالنا الواعدة منصة للإرشاد الجامعي، أطلقتها طالبات كلية علوم الحاسب والمعلومات بجامعة الأميرة نورة بنت عبدالرحمن، لتكون دليلًا موثوقًا يساعد الطلبة المستجدين على فهم الحياة الجامعية، والتعرف على أنظمتها وخدماتها، والاستفادة من الفرص المتاحة، من خلال محتوى منظم وتجارب طلابية وإرشاد عملي يرافقهم منذ بداية رحلتهم الجامعية.",
+    "أجيالنا الواعدة منصة للإرشاد الجامعي، أطلقها طلبة كلية علوم الحاسب والمعلومات بجامعة الأميرة نورة بنت عبدالرحمن، لتكون دليلًا موثوقًا يساعد الطلبة المستجدين على فهم الحياة الجامعية، والتعرف على أنظمتها وخدماتها، والاستفادة من الفرص المتاحة، من خلال محتوى منظم وتجارب طلابية وإرشاد عملي يرافقهم منذ بداية رحلتهم الجامعية.",
   ctaPrimary: "ابدأ رحلتك",
   ctaSecondary: "تعرف على المبادرة",
 };
@@ -150,8 +150,8 @@ export const resourcesSection = {
   eyebrow: "موضوعات الإرشاد",
   title: "موضوعات الإرشاد",
   description:
-    "مجموعة من المواضيع المُعدّة بعناية لمرافقة الطالبة المستجدة خطوة بخطوة، تُضاف إليها موضوعات جديدة أولًا بأول.",
-  note: "اضغطي على أي موضوع لقراءته، أو لمعرفة موعد توفره.",
+    "مجموعة من المواضيع المُعدّة بعناية لمرافقة الطالب المستجد خطوة بخطوة، تُضاف إليها موضوعات جديدة أولًا بأول.",
+  note: "اضغط على أي موضوع لقراءته، أو لمعرفة موعد توفره.",
 };
 
 export const topics: Topic[] = [
@@ -278,10 +278,10 @@ export const impact = {
   eyebrow: "أثر المبادرة",
   title: "أرقامٌ تروي حجم الأثر",
   description:
-    "منذ انطلاقها، ساهمت أجيالنا الواعدة في دعم مئات الطالبات المستجدات، والإجابة عن استفساراتهن، وتقديم برامج ولقاءات إرشادية أسهمت في بناء تجربة جامعية أكثر وضوحًا وثقة.",
+    "منذ انطلاقها، ساهمت أجيالنا الواعدة في دعم مئات الطلبة المستجدين، والإجابة عن استفساراتهم، وتقديم برامج ولقاءات إرشادية أسهمت في بناء تجربة جامعية أكثر وضوحًا وثقة.",
   stats: [
-    { value: "+5000", label: "طالبة جديدة استفادت" },
-    { value: "+1000", label: "متطوعة في فريق المبادرة" },
+    { value: "+5000", label: "طالب جديد استفاد" },
+    { value: "+1000", label: "متطوع في فريق المبادرة" },
     { value: "6", label: "نسخ من المبادرة" },
     { value: "+20", label: "شراكة معرفية وأكاديمية" },
   ],
@@ -307,7 +307,7 @@ export const teamSection = {
   eyebrow: "فريق المبادرة",
   title: "فريق المبادرة",
   description:
-    "يقف خلف أجيالنا الواعدة فريق من الطالبات المتطوعات في كلية علوم الحاسب والمعلومات، يعملن بروح المسؤولية والتعاون لتقديم تجربة إرشادية متكاملة، ويحرصن على تطوير المبادرة بصورة مستمرة لضمان تحقيق رسالتها وأهدافها.",
+    "يقف خلف أجيالنا الواعدة فريق من الطلبة المتطوعين في كلية علوم الحاسب والمعلومات، يعملون بروح المسؤولية والتعاون لتقديم تجربة إرشادية متكاملة، ويحرصون على تطوير المبادرة بصورة مستمرة لضمان تحقيق رسالتها وأهدافها.",
   leadershipNote: "قيادة المبادرة",
   guidanceNote: "لجان الإرشاد",
   subNote: "اللجان الفرعية",
@@ -356,6 +356,7 @@ export const guidanceCommittees: CommitteeEntry[] = [
     leader: "لينه الدوسري",
     deputy: "ريان المنقوري",
     leaderLinkedin: li("Leenah Aldossari"),
+    deputyLinkedin: li("Rayan Almanquri"),
   },
   {
     name: "لجنة هندسة البرمجيات",
@@ -397,6 +398,7 @@ export const subCommittees: CommitteeEntry[] = [
     leader: "ميس خرمي",
     deputy: "نورة الدوسري",
     leaderLinkedin: li("Mays Khormi"),
+    deputyLinkedin: li("Norah Aldossari"),
   },
   {
     name: "لجنة العلاقات العامة",
@@ -419,7 +421,6 @@ export const subCommittees: CommitteeEntry[] = [
 
 // ==================== الأسئلة الشائعة ====================
 
-
 export type FaqItem = { question: string; answer: string };
 
 export const faqSection = {
@@ -436,7 +437,7 @@ export const faqItems: FaqItem[] = [
   {
     question: "من الفئة المستهدفة؟",
     answer:
-      "تستهدف المبادرة حاليًا الطالبات المستجدات في كلية علوم الحاسب والمعلومات بجامعة الأميرة نورة، مع خطة مستقبلية للتوسع إلى جامعات المملكة العربية السعودية.",
+      "تستهدف المبادرة حاليًا الطلبة المستجدين في كلية علوم الحاسب والمعلومات بجامعة الأميرة نورة، مع خطة مستقبلية للتوسع إلى جامعات المملكة العربية السعودية.",
   },
   {
     question: "كيف تساعدني المبادرة بعد قبولي؟",
@@ -468,16 +469,16 @@ export const faqItems: FaqItem[] = [
   },
 ];
 
-// ==================== كيف تستخدمين الموقع ====================
+// ==================== كيف تستخدم الموقع ====================
 
 export const guideSection = {
   eyebrow: "دليل الاستخدام",
-  title: "كيف تستخدمين الموقع؟",
+  title: "كيف تستخدم الموقع؟",
   steps: [
-    { icon: "Compass", text: "ابدئي رحلتك من الأعلى، واختاري جامعتك وكليتك." },
-    { icon: "FolderOpen", text: "استعرضي «ملخص المحتوى» لتأخذي فكرة سريعة عن كل الأقسام." },
-    { icon: "BookMarked", text: "تصفّحي «موضوعات الإرشاد» و«دليل المقررات» حسب ما تحتاجينه." },
-    { icon: "MessageCircle", text: "أي سؤال؟ اضغطي زر «اسأل أجيالنا» العائم في أي وقت." },
+    { icon: "Compass", text: "ابدأ رحلتك من الأعلى، واختر جامعتك وكليتك." },
+    { icon: "FolderOpen", text: "استعرض «ملخص المحتوى» لتأخذ فكرة سريعة عن كل الأقسام." },
+    { icon: "BookMarked", text: "تصفّح «موضوعات الإرشاد» و«دليل المقررات» حسب ما تحتاجه." },
+    { icon: "MessageCircle", text: "أي سؤال؟ اضغط زر «اسأل أجيالنا» العائم في أي وقت." },
   ],
 };
 
@@ -509,7 +510,7 @@ export type MajorCourses = {
 export const coursesSection = {
   eyebrow: "دليل المقررات",
   title: "دليل المقررات",
-  description: "اختاري تخصصك لتصفّح مقرراته موزّعة حسب المستوى الدراسي.",
+  description: "اختر تخصصك لتصفّح مقرراته موزّعة حسب المستوى الدراسي.",
   note: "المحتوى قيد الإضافة تباعًا لكل تخصص ومستوى.",
 };
 
@@ -820,7 +821,108 @@ export const majorsCourses: MajorCourses[] = [
   {
     slug: "cs",
     name: "Computer Science",
-    levels: [{ level: "المستوى الأول", courses: [] }],
+    levels: [
+      {
+        level: "المستوى الأول",
+        courses: [
+          { slug: "csp-eng101", code: "ENG 101-1", nameAr: "اللغة الإنجليزية (1)", name: "English Language (1)", hours: 3, level: "المستوى الأول", prerequisite: "لا يوجد" },
+          { slug: "csp-cs100", code: "CS 100", nameAr: "التراكيب المحددة", name: "Discrete Structures", hours: 3, level: "المستوى الأول", prerequisite: "لا يوجد" },
+          { slug: "csp-cs110", code: "CS 110", nameAr: "لغة برمجة (1)", name: "Programming Language (1)", hours: 4, level: "المستوى الأول", prerequisite: "لا يوجد" },
+          { slug: "csp-math101", code: "MATH 101", nameAr: "حساب التفاضل والتكامل (1)", name: "Calculus (1)", hours: 3, level: "المستوى الأول", prerequisite: "لا يوجد" },
+        ],
+      },
+      {
+        level: "المستوى الثاني",
+        courses: [
+          { slug: "csp-eng102", code: "ENG 102-2", nameAr: "اللغة الإنجليزية (2)", name: "English Language (2)", hours: 3, level: "المستوى الثاني", prerequisite: "ENG 101-1" },
+          { slug: "csp-cs105", code: "CS 105", nameAr: "تصميم منطق رقمي", name: "Digital Logic Design", hours: 3, level: "المستوى الثاني", prerequisite: "لا يوجد" },
+          { slug: "csp-cs111", code: "CS 111", nameAr: "لغة برمجة (2)", name: "Programming Language (2)", hours: 4, level: "المستوى الثاني", prerequisite: "CS 110" },
+          { slug: "csp-math161", code: "MATH 161", nameAr: "إحصاء عام", name: "General Statistics", hours: 3, level: "المستوى الثاني", prerequisite: "لا يوجد" },
+          { slug: "csp-math242", code: "MATH 242", nameAr: "مبادئ الجبر الخطي", name: "Principles of Linear Algebra", hours: 3, level: "المستوى الثاني", prerequisite: "MATH 101" },
+        ],
+      },
+      {
+        level: "المستوى الثالث",
+        courses: [
+          { slug: "csp-cs206", code: "CS 206", nameAr: "تنظيم الحاسبات", name: "Computer Organization", hours: 3, level: "المستوى الثالث", prerequisite: "CS 105" },
+          { slug: "csp-cs212", code: "CS 212", nameAr: "هياكل البيانات", name: "Data Structures", hours: 3, level: "المستوى الثالث", prerequisite: "CS 111" },
+          { slug: "csp-is220", code: "IS 220", nameAr: "أساسيات قواعد البيانات", name: "Database Fundamentals", hours: 4, level: "المستوى الثالث", prerequisite: "CS 111" },
+          { slug: "csp-phys101", code: "PHYS 101", nameAr: "فيزياء عامة (1)", name: "General Physics (1)", hours: 3, level: "المستوى الثالث", prerequisite: "لا يوجد" },
+          { slug: "csp-math103", code: "MATH 103", nameAr: "التفاضل والتكامل (II)", name: "Calculus (II)", hours: 4, level: "المستوى الثالث", prerequisite: "MATH 101" },
+        ],
+      },
+      {
+        level: "المستوى الرابع",
+        courses: [
+          { slug: "csp-cs207", code: "CS 207", nameAr: "عمارة الحاسب", name: "Computer Architecture", hours: 3, level: "المستوى الرابع", prerequisite: "CS 206" },
+          { slug: "csp-cs220", code: "CS 220", nameAr: "تحليل وتصميم الخوارزميات", name: "Algorithms Design and Analysis", hours: 3, level: "المستوى الرابع", prerequisite: "CS 100، CS 212" },
+          { slug: "csp-it221", code: "IT 221", nameAr: "أساسيات شبكات الحاسب", name: "Computer Networks Fundamentals", hours: 3, level: "المستوى الرابع", prerequisite: "CS 110" },
+          { slug: "csp-math221", code: "MATH 221", nameAr: "المعادلات التفاضلية", name: "Differential Equations", hours: 3, level: "المستوى الرابع", prerequisite: "MATH 103" },
+          { slug: "csp-math367", code: "MATH 367", nameAr: "نظرية الاحتمالات", name: "Theory of Probability", hours: 3, level: "المستوى الرابع", prerequisite: "MATH 103، MATH 161" },
+          { slug: "csp-phys202", code: "PHYS 202", nameAr: "أساسيات الكهرومغناطيسية", name: "Fundamentals of Electromagnetism", hours: 3, level: "المستوى الرابع", prerequisite: "PHYS 101" },
+        ],
+      },
+      {
+        level: "المستوى الخامس",
+        courses: [
+          { slug: "csp-cs313", code: "CS 313", nameAr: "لغة برمجة متقدمة", name: "Advanced Programming Language", hours: 3, level: "المستوى الخامس", prerequisite: "CS 111" },
+          { slug: "csp-cs340", code: "CS 340", nameAr: "نظم التشغيل", name: "Operating Systems", hours: 3, level: "المستوى الخامس", prerequisite: "CS 212" },
+          { slug: "csp-cs370", code: "CS 370", nameAr: "الذكاء الاصطناعي", name: "Artificial Intelligence", hours: 3, level: "المستوى الخامس", prerequisite: "CS 111، CS 220" },
+          { slug: "csp-cs380", code: "CS 380", nameAr: "أخلاقيات المهنة", name: "Professional Ethics", hours: 1, level: "المستوى الخامس", prerequisite: "لا يوجد" },
+          { slug: "csp-cs385", code: "CS 385", nameAr: "هندسة البرمجيات", name: "Software Engineering", hours: 3, level: "المستوى الخامس", prerequisite: "IS 220" },
+          { slug: "csp-it311", code: "IT 311", nameAr: "أمن المعلومات", name: "Information Security", hours: 3, level: "المستوى الخامس", prerequisite: "IT 221" },
+        ],
+      },
+      {
+        level: "المستوى السادس",
+        courses: [
+          { slug: "csp-cs351", code: "CS 351", nameAr: "التفاعل بين الإنسان والحاسب", name: "Human-Computer Interaction", hours: 3, level: "المستوى السادس", prerequisite: "CS 212" },
+          { slug: "csp-cs360", code: "CS 360", nameAr: "رسومات الحاسب", name: "Computer Graphics", hours: 3, level: "المستوى السادس", prerequisite: "CS 220، MATH 242" },
+          { slug: "csp-is350", code: "IS 350", nameAr: "إدارة المشاريع", name: "Projects Management", hours: 3, level: "المستوى السادس", prerequisite: "CS 212" },
+          { slug: "csp-math353", code: "MATH 353", nameAr: "مدخل إلى التحليل العددي", name: "Introduction to Numerical Analysis", hours: 4, level: "المستوى السادس", prerequisite: "CS 110، MATH 103، MATH 242" },
+        ],
+      },
+      {
+        level: "المستوى السابع",
+        courses: [
+          { slug: "csp-cs430", code: "CS 430", nameAr: "مبادئ لغات البرمجة", name: "Programming Languages Concepts", hours: 3, level: "المستوى السابع", prerequisite: "CS 212" },
+          { slug: "csp-cs487", code: "CS 487", nameAr: "مشروع التخرج (1)", name: "Graduation Project (1)", hours: 3, level: "المستوى السابع", prerequisite: "اجتياز 102 وحدة + CS 385 + IS 350" },
+        ],
+      },
+      {
+        level: "المستوى الثامن",
+        courses: [
+          { slug: "csp-cs488", code: "CS 488", nameAr: "مشروع التخرج (2)", name: "Graduation Project (2)", hours: 3, level: "المستوى الثامن", prerequisite: "CS 487" },
+          { slug: "csp-cs489", code: "CS 489", nameAr: "التدريب الميداني", name: "Internship", hours: 6, level: "المستوى الثامن", prerequisite: "اجتياز 120 وحدة" },
+        ],
+      },
+      {
+        level: "مقررات اختيارية",
+        courses: [
+          { slug: "csp-cs321", code: "CS 321", nameAr: "الخوارزميات المتقدمة", name: "Advanced Algorithms", hours: 3, level: "اختياري", prerequisite: "CS 220" },
+          { slug: "csp-cs322", code: "CS 322", nameAr: "اللغات المنضبطة والنظرية الآلية", name: "Formal Languages and Automata Theory", hours: 3, level: "اختياري", prerequisite: "CS 100" },
+          { slug: "csp-cs350", code: "CS 350", nameAr: "أنظمة الوسائط المتعددة", name: "Multimedia Systems", hours: 3, level: "اختياري", prerequisite: "CS 212" },
+          { slug: "csp-cs486", code: "CS 486", nameAr: "تطوير تطبيقات للشبكة العنكبوتية", name: "Web Applications Development", hours: 3, level: "اختياري", prerequisite: "IS 220" },
+          { slug: "csp-cs372", code: "CS 372", nameAr: "موضوعات مختارة (1)", name: "Selected Topics (1)", hours: 3, level: "اختياري", prerequisite: "CS 212" },
+          { slug: "csp-cs391", code: "CS 391", nameAr: "موضوعات مختارة (2)", name: "Selected Topics (2)", hours: 3, level: "اختياري", prerequisite: "CS 212" },
+          { slug: "csp-cs392", code: "CS 392", nameAr: "موضوعات مختارة (3)", name: "Selected Topics (3)", hours: 3, level: "اختياري", prerequisite: "CS 212" },
+          { slug: "csp-cs390", code: "CS 390", nameAr: "النمذجة والمحاكاة", name: "Modeling and Simulation", hours: 3, level: "اختياري", prerequisite: "MATH 161" },
+          { slug: "csp-cs408", code: "CS 408", nameAr: "عمارة وبرمجة الحاسبات المتوازية", name: "Parallel Computers Architecture and Programming", hours: 3, level: "اختياري", prerequisite: "IT 221" },
+          { slug: "csp-cs409", code: "CS 409", nameAr: "النظم الموزعة", name: "Distributed Systems", hours: 3, level: "اختياري", prerequisite: "CS 340" },
+          { slug: "csp-cs431", code: "CS 431", nameAr: "تصميم المترجمات", name: "Compilers Design", hours: 3, level: "اختياري", prerequisite: "CS 430" },
+          { slug: "csp-cs471", code: "CS 471", nameAr: "مبادئ الإنسان الآلي", name: "Robotics Fundamentals", hours: 3, level: "اختياري", prerequisite: "CS 370" },
+          { slug: "csp-cs386", code: "CS 386", nameAr: "اختبار البرمجيات", name: "Software Testing", hours: 3, level: "اختياري", prerequisite: "CS 385" },
+          { slug: "csp-cs387", code: "CS 387", nameAr: "منهجية تصميم البرامج", name: "Software Design Methodology", hours: 3, level: "اختياري", prerequisite: "CS 212" },
+          { slug: "csp-cs388", code: "CS 388", nameAr: "تطوير البرمجيات السريع", name: "Agile Software Development", hours: 3, level: "اختياري", prerequisite: "IS 350" },
+          { slug: "csp-cs410", code: "CS 410", nameAr: "برمجة تطبيقات الجوال", name: "Mobile Application Programming", hours: 3, level: "اختياري", prerequisite: "CS 313" },
+          { slug: "csp-cs411", code: "CS 411", nameAr: "برمجة تطبيقات الجوال المتقدمة", name: "Advanced Mobile Programming", hours: 3, level: "اختياري", prerequisite: "CS 410" },
+          { slug: "csp-cs412", code: "CS 412", nameAr: "تصميم واجهة النظام", name: "System Interface Design", hours: 3, level: "اختياري", prerequisite: "CS 351" },
+          { slug: "csp-cs361", code: "CS 361", nameAr: "الرؤية بالحاسب ومعالجة الصور", name: "Computer Vision and Image Processing", hours: 3, level: "اختياري", prerequisite: "CS 370" },
+          { slug: "csp-cs460", code: "CS 460", nameAr: "مبادئ الصور المتحركة", name: "Principles of Computer Animation", hours: 3, level: "اختياري", prerequisite: "CS 360" },
+          { slug: "csp-cs461", code: "CS 461", nameAr: "حسابات الأشكال الفراغية", name: "Computational Geometry", hours: 3, level: "اختياري", prerequisite: "CS 212" },
+        ],
+      },
+    ],
   },
   {
     slug: "ai",
@@ -835,14 +937,114 @@ export const majorsCourses: MajorCourses[] = [
   {
     slug: "se",
     name: "Software Engineering",
-    levels: [{ level: "المستوى الأول", courses: [] }],
+    levels: [
+      {
+        level: "المستوى الأول",
+        courses: [
+          { slug: "sep-sw100", code: "SW 100", nameAr: "مبادئ البرمجة ومهارات حل المشكلات", name: "Principles of Programming and Problem-Solving Skills", hours: 2, level: "المستوى الأول", prerequisite: "لا يوجد" },
+          { slug: "sep-cs100", code: "CS 100", nameAr: "التراكيب المحددة", name: "Discrete Structures", hours: 3, level: "المستوى الأول", prerequisite: "لا يوجد" },
+          { slug: "sep-cs110", code: "CS 110", nameAr: "لغة برمجة (1)", name: "Programming Language (1)", hours: 4, level: "المستوى الأول", prerequisite: "لا يوجد" },
+          { slug: "sep-math101", code: "MATH 101", nameAr: "حساب التفاضل والتكامل (1)", name: "Calculus (1)", hours: 3, level: "المستوى الأول", prerequisite: "لا يوجد" },
+          { slug: "sep-eng101", code: "ENG 101-1", nameAr: "اللغة الإنجليزية (1)", name: "English Language (1)", hours: 3, level: "المستوى الأول", prerequisite: "لا يوجد" },
+        ],
+      },
+      {
+        level: "المستوى الثاني",
+        courses: [
+          { slug: "sep-sw101", code: "SW 101", nameAr: "مدخل إلى هندسة البرمجيات", name: "Introduction to Software Engineering", hours: 2, level: "المستوى الثاني", prerequisite: "لا يوجد" },
+          { slug: "sep-cs111", code: "CS 111", nameAr: "لغة برمجة (2)", name: "Programming Language (2)", hours: 4, level: "المستوى الثاني", prerequisite: "CS 110" },
+          { slug: "sep-math242", code: "MATH 242", nameAr: "مبادئ الجبر الخطي", name: "Principles of Linear Algebra", hours: 3, level: "المستوى الثاني", prerequisite: "MATH 101" },
+          { slug: "sep-math161", code: "MATH 161", nameAr: "إحصاء عام", name: "General Statistics", hours: 3, level: "المستوى الثاني", prerequisite: "لا يوجد" },
+          { slug: "sep-eng102", code: "ENG 102-2", nameAr: "اللغة الإنجليزية (2)", name: "English Language (2)", hours: 3, level: "المستوى الثاني", prerequisite: "ENG 101-1" },
+        ],
+      },
+      {
+        level: "المستوى الثالث",
+        courses: [
+          { slug: "sep-sw210", code: "SW 210", nameAr: "هندسة متطلبات البرمجيات", name: "Software Requirements Engineering", hours: 3, level: "المستوى الثالث", prerequisite: "SW 101، CS 111" },
+          { slug: "sep-cs212", code: "CS 212", nameAr: "هياكل البيانات", name: "Data Structures", hours: 3, level: "المستوى الثالث", prerequisite: "CS 111" },
+          { slug: "sep-is220", code: "IS 220", nameAr: "أساسيات قواعد البيانات", name: "Database Fundamentals", hours: 4, level: "المستوى الثالث", prerequisite: "CS 111" },
+          { slug: "sep-phys101", code: "PHYS 101", nameAr: "فيزياء عامة (1)", name: "General Physics (1)", hours: 3, level: "المستوى الثالث", prerequisite: "لا يوجد" },
+          { slug: "sep-math103", code: "MATH 103", nameAr: "التفاضل والتكامل (II)", name: "Calculus (II)", hours: 4, level: "المستوى الثالث", prerequisite: "MATH 101" },
+        ],
+      },
+      {
+        level: "المستوى الرابع",
+        courses: [
+          { slug: "sep-sw220", code: "SW 220", nameAr: "عمليات ونمذجة البرمجيات", name: "Software Process and Modeling", hours: 3, level: "المستوى الرابع", prerequisite: "SW 210" },
+          { slug: "sep-sw222", code: "SW 222", nameAr: "تنظيم وعمارة الحاسبات", name: "Computer Organization and Architecture", hours: 3, level: "المستوى الرابع", prerequisite: "لا يوجد" },
+          { slug: "sep-sw230", code: "SW 230", nameAr: "برمجة تطبيقات الشبكة العنكبوتية", name: "Web Application Programming", hours: 3, level: "المستوى الرابع", prerequisite: "IS 220" },
+          { slug: "sep-cs220", code: "CS 220", nameAr: "تحليل وتصميم الخوارزميات", name: "Algorithms Design and Analysis", hours: 3, level: "المستوى الرابع", prerequisite: "CS 100، CS 212" },
+          { slug: "sep-it221", code: "IT 221", nameAr: "أساسيات شبكات الحاسب", name: "Computer Networks Fundamentals", hours: 3, level: "المستوى الرابع", prerequisite: "CS 110" },
+          { slug: "sep-chem101", code: "CHEM 101", nameAr: "كيمياء عامة (1)", name: "General Chemistry (1)", hours: 3, level: "المستوى الرابع", prerequisite: "لا يوجد" },
+        ],
+      },
+      {
+        level: "المستوى الخامس",
+        courses: [
+          { slug: "sep-sw331", code: "SW 331", nameAr: "البرمجة المتقدمة", name: "Advanced Programming", hours: 3, level: "المستوى الخامس", prerequisite: "IS 220" },
+          { slug: "sep-sw332", code: "SW 332", nameAr: "بناء البرمجيات باستخدام منهجية التطوير السريع", name: "Agile Based Software Construction", hours: 3, level: "المستوى الخامس", prerequisite: "SW 220" },
+          { slug: "sep-sw340", code: "SW 340", nameAr: "ضمان جودة البرمجيات", name: "Software Quality Assurance", hours: 2, level: "المستوى الخامس", prerequisite: "SW 210" },
+          { slug: "sep-sw341", code: "SW 341", nameAr: "هندسة أمن البرمجيات", name: "Software Security Engineering", hours: 2, level: "المستوى الخامس", prerequisite: "IT 221" },
+          { slug: "sep-sw350", code: "SW 350", nameAr: "البحث العلمي الجامعي", name: "Undergraduate Scientific Research", hours: 2, level: "المستوى الخامس", prerequisite: "ENG 102-2" },
+          { slug: "sep-cs340", code: "CS 340", nameAr: "نظم التشغيل", name: "Operating Systems", hours: 3, level: "المستوى الخامس", prerequisite: "CS 212" },
+          { slug: "sep-cs380", code: "CS 380", nameAr: "أخلاقيات المهنة", name: "Professional Ethics", hours: 1, level: "المستوى الخامس", prerequisite: "لا يوجد" },
+        ],
+      },
+      {
+        level: "المستوى السادس",
+        courses: [
+          { slug: "sep-sw303", code: "SW 303", nameAr: "بحوث العمليات", name: "Operational Research", hours: 2, level: "المستوى السادس", prerequisite: "MATH 242" },
+          { slug: "sep-sw321", code: "SW 321", nameAr: "تصميم وعمارة البرمجيات", name: "Software Architecture and Design", hours: 3, level: "المستوى السادس", prerequisite: "SW 210، SW 341" },
+          { slug: "sep-sw342", code: "SW 342", nameAr: "الاختبار والتحقق من البرمجيات", name: "Software Verification and Validation", hours: 2, level: "المستوى السادس", prerequisite: "SW 340، SW 332" },
+          { slug: "sep-cs351", code: "CS 351", nameAr: "التفاعل بين الإنسان والحاسب", name: "Human-Computer Interaction", hours: 3, level: "المستوى السادس", prerequisite: "CS 212" },
+          { slug: "sep-is350", code: "IS 350", nameAr: "إدارة المشاريع", name: "Projects Management", hours: 3, level: "المستوى السادس", prerequisite: "CS 212" },
+          { slug: "sep-math367", code: "MATH 367", nameAr: "نظرية الاحتمالات", name: "Theory of Probability", hours: 3, level: "المستوى السادس", prerequisite: "MATH 103، MATH 161" },
+        ],
+      },
+      {
+        level: "المستوى السابع",
+        courses: [
+          { slug: "sep-sw411", code: "SW 411", nameAr: "صيانة وتطوير البرمجيات", name: "Software Maintenance and Evolution", hours: 2, level: "المستوى السابع", prerequisite: "SW 342" },
+          { slug: "sep-sw451", code: "SW 451", nameAr: "مشروع تخرج (1)", name: "Graduation Project (1)", hours: 3, level: "المستوى السابع", prerequisite: "اجتياز 110 وحدة + SW 332 + SW 350" },
+          { slug: "sep-math353", code: "MATH 353", nameAr: "مدخل إلى التحليل العددي", name: "Introduction to Numerical Analysis", hours: 4, level: "المستوى السابع", prerequisite: "CS 110، MATH 103، MATH 242" },
+          { slug: "sep-math368", code: "MATH 368", nameAr: "التحليل الإحصائي للبيانات", name: "Statistical Analysis for Data", hours: 3, level: "المستوى السابع", prerequisite: "MATH 367" },
+        ],
+      },
+      {
+        level: "المستوى الثامن",
+        courses: [
+          { slug: "sep-sw452", code: "SW 452", nameAr: "مشروع تخرج (2)", name: "Graduation Project (2)", hours: 3, level: "المستوى الثامن", prerequisite: "SW 451" },
+          { slug: "sep-sw491", code: "SW 491", nameAr: "التدريب الميداني", name: "Internship", hours: 6, level: "المستوى الثامن", prerequisite: "اجتياز 130 وحدة" },
+        ],
+      },
+      {
+        level: "مقررات اختيارية",
+        courses: [
+          { slug: "sep-sw302", code: "SW 302", nameAr: "الحوسبة السحابية", name: "Cloud Computing", hours: 3, level: "اختياري", prerequisite: "CS 340، IS 220، IT 221" },
+          { slug: "sep-sw412", code: "SW 412", nameAr: "هندسة قابلية استخدام البرامج", name: "Software Usability Engineering", hours: 3, level: "اختياري", prerequisite: "SW 321" },
+          { slug: "sep-sw413", code: "SW 413", nameAr: "استكشاف وعرض البيانات", name: "Data Exploration and Visualization", hours: 3, level: "اختياري", prerequisite: "CS 212" },
+          { slug: "sep-sw423", code: "SW 423", nameAr: "أنماط تصميم البرامج", name: "Design Patterns", hours: 3, level: "اختياري", prerequisite: "SW 321" },
+          { slug: "sep-sw430", code: "SW 430", nameAr: "إنترنت الأشياء", name: "Internet of Things", hours: 3, level: "اختياري", prerequisite: "IT 221" },
+          { slug: "sep-sw433", code: "SW 433", nameAr: "برمجة تطبيقات الجوال", name: "Mobile Application Programming", hours: 3, level: "اختياري", prerequisite: "SW 331" },
+          { slug: "sep-sw434", code: "SW 434", nameAr: "مقدمة في علم الآلة", name: "Introduction to Machine Learning", hours: 3, level: "اختياري", prerequisite: "MATH 367، CS 111" },
+          { slug: "sep-sw436", code: "SW 436", nameAr: "تطوير الألعاب", name: "Game Development", hours: 3, level: "اختياري", prerequisite: "SW 331" },
+          { slug: "sep-sw435", code: "SW 435", nameAr: "البرمجة بلغة سويفت", name: "Swift Programming", hours: 3, level: "اختياري", prerequisite: "CS 212" },
+          { slug: "sep-cs350", code: "CS 350", nameAr: "أنظمة الوسائط المتعددة", name: "Multimedia Systems", hours: 3, level: "اختياري", prerequisite: "CS 212" },
+          { slug: "sep-cai211", code: "CAI 211", nameAr: "التنقيب عن البيانات واسترجاع المعلومات", name: "Data Mining & Information Retrieval", hours: 3, level: "اختياري", prerequisite: "IS 220" },
+          { slug: "sep-sw360", code: "SW 360", nameAr: "موضوعات مختارة (1)", name: "Selected Topics (1)", hours: 3, level: "اختياري", prerequisite: "لا يوجد" },
+          { slug: "sep-sw361", code: "SW 361", nameAr: "موضوعات مختارة (2)", name: "Selected Topics (2)", hours: 3, level: "اختياري", prerequisite: "لا يوجد" },
+          { slug: "sep-sw362", code: "SW 362", nameAr: "موضوعات مختارة (3)", name: "Selected Topics (3)", hours: 3, level: "اختياري", prerequisite: "لا يوجد" },
+        ],
+      },
+    ],
   },
 ];
 
 export const courseHub = {
   infoTitle: "معلومات المقرر",
-  ratingTitle: "تقييمات الطالبات",
-  experiencesTitle: "تجارب الطالبات",
+  ratingTitle: "تقييمات الطلبة",
+  experiencesTitle: "تجارب الطلبة",
   tipsTitle: "نصائح ممن سبقوكم",
   filesTitle: "بنك الملفات",
   imtidadTitle: "شروحات امتداد",
@@ -852,7 +1054,7 @@ export const courseHub = {
   faqTitle: "الأسئلة الشائعة",
   contributeTitle: "ساهم في هذا المقرر",
   contributeDescription:
-    "شاركي تقييمك، تجربتك، نصيحتك، ملفاتك، أو تقدّمي لتكوني سفيرة لهذا المقرر. جميع المشاركات تُراجع وتُعتمد من الإدارة قبل النشر.",
+    "شارك تقييمك، تجربتك، نصيحتك، ملفاتك، أو تقدّم لتكون سفيرًا لهذا المقرر. جميع المشاركات تُراجع وتُعتمد من الإدارة قبل النشر.",
   contributeOptions: [
     "تقييم",
     "تجربة",
@@ -864,10 +1066,10 @@ export const courseHub = {
     "رابط مفيد",
     "اقتراح منصة تعليمية",
     "اقتراح مدرس خصوصي",
-    "التقديم كسفيرة للمقرر",
+    "التقديم كسفير للمقرر",
   ],
   contributeComingSoon:
-    "استقبال المساهمات مباشرة من الموقع قيد التجهيز حاليًا. للمساهمة الآن، تواصلي معنا عبر القنوات الموضّحة أسفل الصفحة.",
+    "استقبال المساهمات مباشرة من الموقع قيد التجهيز حاليًا. للمساهمة الآن، تواصل معنا عبر القنوات الموضّحة أسفل الصفحة.",
   noDataYet: "لا توجد بيانات كافية بعد لعرضها لهذا المقرر.",
   effortOptions: ["أقل من ٣ ساعات أسبوعيًا", "من ٣ إلى ٦ ساعات أسبوعيًا", "أكثر من ٦ ساعات أسبوعيًا"],
   fileTabs: ["الملخصات", "السلايدات", "الخرائط الذهنية", "نماذج وتقارير", "ملفات أخرى"],
@@ -891,17 +1093,17 @@ export const imtidad = {
   title: "امتداد",
   quote: "ويبقى أجمل الأثر ما امتد من إنسان إلى إنسان.",
   description:
-    "امتداد هو أحد برامج أجيالنا الواعدة، يهدف إلى نقل المعرفة والخبرات بين الطالبات، من خلال تقديم شروحات تطوعية في المقررات الجامعية، بما يسهم في دعم الطالبات، وتعزيز ثقافة العطاء، وصناعة أثر مستدام يمتد من طالبة إلى أخرى.",
+    "امتداد هو أحد برامج أجيالنا الواعدة، يهدف إلى نقل المعرفة والخبرات بين الطلبة، من خلال تقديم شروحات تطوعية في المقررات الجامعية، بما يسهم في دعم الطلبة، وتعزيز ثقافة العطاء، وصناعة أثر مستدام يمتد من طالب إلى آخر.",
   howTitle: "كيف تعمل امتداد؟",
   steps: [
-    "تنضم الطالبة.",
-    "يتم التواصل معها.",
-    "تحدد المقررات التي ترغب بشرحها.",
-    "ترفع المحتوى.",
+    "ينضم الطالب.",
+    "يتم التواصل معه.",
+    "يحدد المقررات التي يرغب بشرحها.",
+    "يرفع المحتوى.",
     "يراجع المحتوى.",
     "ينشر ليستفيد منه الجميع.",
   ],
-  button: "انضمي إلى امتداد",
+  button: "انضم إلى امتداد",
   formUrl: "https://forms.gle/kZ6ThAf6KLHTMhTh7",
 };
 
@@ -920,15 +1122,15 @@ export const tracksSection = {
 
 export const tracks: Track[] = [
   {
-    title: "أجيالنا الواعدة للمستجدات",
+    title: "أجيالنا الواعدة للمستجدين",
     description:
-      "يركز على دعم الطالبات منذ لحظة قبولهن وحتى اندماجهن في الحياة الجامعية، من خلال الإرشاد الأكاديمي، والإجابة عن الاستفسارات، ونقل الخبرات.",
+      "يركز على دعم الطلبة منذ لحظة قبولهم وحتى اندماجهم في الحياة الجامعية، من خلال الإرشاد الأكاديمي، والإجابة عن الاستفسارات، ونقل الخبرات.",
     available: true,
   },
   {
-    title: "أجيالنا الواعدة للخريجات",
+    title: "أجيالنا الواعدة للخريجين",
     description:
-      "يرافق الطالبات ابتداءً من التدريب التعاوني (Co-op)، وحتى دخول سوق العمل، من خلال الإرشاد المهني، وبناء السيرة الذاتية، وتحسين LinkedIn، والاستعداد للمقابلات، ومتابعة الفرص الوظيفية.",
+      "يرافق الطلبة ابتداءً من التدريب التعاوني (Co-op)، وحتى دخول سوق العمل، من خلال الإرشاد المهني، وبناء السيرة الذاتية، وتحسين LinkedIn، والاستعداد للمقابلات، ومتابعة الفرص الوظيفية.",
     available: false,
   },
 ];
@@ -944,6 +1146,6 @@ export const chatbot = {
 
 export const contact = {
   eyebrow: "تواصل معنا",
-  title: "هل لديك سؤال أو ترغبين في الانضمام إلينا؟",
-  description: "راسلينا عبر أي من القنوات التالية، وسنكون سعداء بالرد عليك في أقرب وقت.",
+  title: "هل لديك سؤال أو ترغب في الانضمام إلينا؟",
+  description: "راسلنا عبر أي من القنوات التالية، وسنكون سعداء بالرد عليك في أقرب وقت.",
 };
