@@ -60,9 +60,21 @@ function CommitteeCard({ committee, index }: { committee: CommitteeEntry; index:
           <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-sky/20">
             <Crown className="h-3.5 w-3.5 text-sky-deep" />
           </span>
-          <div>
+          <div className="flex-1 min-w-0">
             <p className="text-[11px] text-muted">القائدة</p>
-            <p className="text-sm font-medium">{committee.leader}</p>
+            <p className="text-sm font-medium flex items-center gap-1.5">
+              {committee.leader}
+              {committee.leaderLinkedin && (
+                <a
+                  href={committee.leaderLinkedin}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`لينكدإن ${committee.leader}`}
+                >
+                  <Linkedin className="h-3 w-3 text-sky-deep shrink-0" />
+                </a>
+              )}
+            </p>
           </div>
         </div>
         {committee.deputy && (
@@ -70,9 +82,21 @@ function CommitteeCard({ committee, index }: { committee: CommitteeEntry; index:
             <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-sky/10">
               <UserRound className="h-3.5 w-3.5 text-sky-deep" />
             </span>
-            <div>
+            <div className="flex-1 min-w-0">
               <p className="text-[11px] text-muted">النائبة</p>
-              <p className="text-sm font-medium">{committee.deputy}</p>
+              <p className="text-sm font-medium flex items-center gap-1.5">
+                {committee.deputy}
+                {committee.deputyLinkedin && (
+                  <a
+                    href={committee.deputyLinkedin}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={`لينكدإن ${committee.deputy}`}
+                  >
+                    <Linkedin className="h-3 w-3 text-sky-deep shrink-0" />
+                  </a>
+                )}
+              </p>
             </div>
           </div>
         )}
