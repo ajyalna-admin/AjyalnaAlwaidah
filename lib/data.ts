@@ -302,24 +302,110 @@ export const topics: Topic[] = [
   - قسم نظم المعلومات (ccis-is@pnu.edu.sa) — ويشمل: نظم المعلومات، علم البيانات وتحليلها.
   - قسم علوم الحاسبات (ccis-cs@pnu.edu.sa) — ويشمل: علوم الحاسبات، علوم الذكاء الاصطناعي، هندسة البرمجيات.`,
   },
-  { slug: "majors-overview", title: "التعرف على التخصصات داخل الكلية" },
-  { slug: "level-placement", title: "تحديد المستوى وروابط الأنظمة" },
-  { slug: "student-card-email", title: "البطاقة الجامعية والبريد الجامعي" },
-  { slug: "smart-bag-bus-card", title: "الحقيبة الذكية وبطاقة الحافلات" },
-  { slug: "banner-blackboard", title: "النظام الأكاديمي (Banner) والجدول الدراسي ونظام إدارة التعلم (Blackboard)" },
-  { slug: "campus-facilities-metro", title: "مباني الحرم الجامعي ومرافق الكلية ونظام المترو" },
-  { slug: "shared-courses-first-term", title: "المواد المشتركة في الفصل الأول" },
-  { slug: "study-plan-minors", title: "الخطة الدراسية والتخصصات الفرعية (Minors)" },
-  { slug: "library-resources", title: "مكتبة الكلية والمكتبة المركزية والمصادر التعليمية" },
-  { slug: "navigation-housing", title: "التنقل داخل الكلية والسكن الجامعي" },
-  { slug: "services-facilities-uniform", title: "خدمات الجامعة، والمرافق، والزي الجامعي" },
-  { slug: "registration-add-drop", title: "التسجيل والحذف والإضافة" },
-  { slug: "withdrawal-deferral", title: "الاعتذار عن الفصل الدراسي وتأجيل الدراسة" },
-  { slug: "gpa-academic-warning", title: "المعدل الأكاديمي والإنذار الأكاديمي" },
-  { slug: "transfer-majors-colleges", title: "التحويل بين التخصصات والكليات" },
-  { slug: "clubs-activities", title: "الأندية الطلابية والأنشطة" },
-  { slug: "coop-training-opportunities", title: "التدريب التعاوني والفرص المهنية" },
-  { slug: "graduation-requirements", title: "التخرج ومتطلباته" },
+  {
+    slug: "college-majors",
+    title: "التعريف بتخصصات كلية علوم الحاسب والمعلومات",
+  },
+  {
+    slug: "recommended-devices",
+    title: "الأجهزة المناسبة للدراسة",
+  },
+  {
+    slug: "admission-services",
+    title: "خدمة طلب أو تغيير القبول",
+  },
+  {
+    slug: "partial-acceleration",
+    title: "خدمة التسريع الجزئي",
+  },
+  {
+    slug: "placement-test",
+    title: "اختبار تحديد المستوى والدورات التعليمية",
+  },
+  {
+    slug: "student-card",
+    title: "البطاقة الجامعية",
+  },
+  {
+    slug: "university-email",
+    title: "البريد الجامعي",
+  },
+  {
+    slug: "smart-bag",
+    title: "الحقيبة الذكية",
+  },
+  {
+    slug: "bank-card",
+    title: "بطاقة الصراف",
+  },
+  {
+    slug: "banner-system",
+    title: "النظام الأكاديمي (Banner)",
+  },
+  {
+    slug: "class-schedule",
+    title: "الجدول الدراسي",
+  },
+  {
+    slug: "blackboard",
+    title: "نظام إدارة التعلم (Blackboard)",
+  },
+  {
+    slug: "campus-map",
+    title: "مخطط الجامعة",
+  },
+  {
+    slug: "campus-metro",
+    title: "المترو الجامعي",
+  },
+  {
+    slug: "first-semester-courses",
+    title: "المواد المشتركة في الفصل الأول",
+  },
+  {
+    slug: "study-resources",
+    title: "مراجع الدراسة",
+  },
+  {
+    slug: "study-plan",
+    title: "الخطة الدراسية",
+  },
+  {
+    slug: "minors",
+    title: "التخصصات الفرعية (Minors)",
+  },
+  {
+    slug: "college-library",
+    title: "مكتبة كلية علوم الحاسب والمعلومات",
+  },
+  {
+    slug: "central-library",
+    title: "المكتبة المركزية",
+  },
+  {
+    slug: "skill-record",
+    title: "السجل المهاري",
+  },
+  {
+    slug: "internal-transfer",
+    title: "التحويل داخل الكلية وخارجها",
+  },
+  {
+    slug: "student-housing",
+    title: "السكن الجامعي",
+  },
+  {
+    slug: "campus-buses",
+    title: "الحافلات الجامعية",
+  },
+  {
+    slug: "university-services",
+    title: "الخدمات الجامعية",
+  },
+  {
+    slug: "dress-code",
+    title: "ضوابط الزي الجامعي",
+  },
 ];
 
 // ==================== من نحن ====================
