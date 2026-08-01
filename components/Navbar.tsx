@@ -21,9 +21,6 @@ const MORE_LINKS = [
   { href: "/courses", label: "دليل المقررات" },
   { href: "/tracks", label: "مساراتنا" },
   { href: "/imtidad", label: "امتداد" },
-  { href: "/team", label: "الفريق" },
-  { href: "/faq", label: "الأسئلة الشائعة" },
-  { href: "/contact", label: "تواصل" },
 ];
 
 export function Navbar() {
@@ -114,12 +111,12 @@ export function Navbar() {
         </nav>
 
         <div className="flex items-center gap-3">
-          <Link
-            href="/contact"
+          <button
+            onClick={() => goToSection("contact")}
             className="hidden sm:inline-flex items-center gap-2 bg-navy text-cream px-5 py-2.5 rounded-full text-sm font-medium hover:bg-navy-light transition-colors duration-200"
           >
             تواصلي معنا
-          </Link>
+          </button>
           <button
             className="lg:hidden h-10 w-10 flex items-center justify-center rounded-full border border-line"
             onClick={() => setOpen((v) => !v)}
