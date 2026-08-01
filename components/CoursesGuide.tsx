@@ -63,7 +63,8 @@ export function CoursesGuide() {
                         className="glass-card rounded-2xl p-5 flex flex-col gap-2 h-full"
                       >
                         <p className="text-xs font-bold text-sky-deep">{course.code}</p>
-                        <p className="font-display font-bold">{course.name}</p>
+                        <p className="font-display font-bold">{course.nameAr}</p>
+                        <p className="text-xs text-muted mt-0.5" dir="ltr">{course.name}</p>
                         <span className="mt-auto inline-flex items-center gap-1.5 text-xs text-muted">
                           التفاصيل <ArrowLeft className="h-3 w-3" />
                         </span>

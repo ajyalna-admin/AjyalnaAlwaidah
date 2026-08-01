@@ -1,15 +1,32 @@
 "use client";
 
 import { motion } from "framer-motion";
+import {
+  PartyPopper,
+  Landmark,
+  Laptop,
+  IdCard,
+  CalendarCheck,
+  BookOpen,
+  Target,
+  GraduationCap,
+  type LucideIcon,
+} from "lucide-react";
 import { SectionHeading } from "@/components/SectionHeading";
 import { journeySection, journeyStages } from "@/lib/data";
 
-const barColors = [
-  "bg-navy",
-  "bg-sky-deep",
-  "bg-sky",
-  "bg-navy-light",
-];
+const iconMap: Record<string, LucideIcon> = {
+  PartyPopper,
+  Landmark,
+  Laptop,
+  IdCard,
+  CalendarCheck,
+  BookOpen,
+  Target,
+  GraduationCap,
+};
+
+const barColors = ["bg-navy", "bg-sky-deep", "bg-sky", "bg-navy-light"];
 
 export function Journey() {
   return (
@@ -26,6 +43,7 @@ export function Journey() {
             {journeyStages.map((stage, i) => {
               const isTop = i % 2 === 0;
               const color = barColors[i % barColors.length];
+              const Icon = iconMap[stage.icon] ?? BookOpen;
               return (
                 <motion.div
                   key={stage.title}
@@ -38,9 +56,9 @@ export function Journey() {
                   {isTop && (
                     <>
                       <span
-                        className={`flex h-16 w-16 items-center justify-center rounded-full ${color} text-2xl shadow-md mb-1`}
+                        className={`flex h-16 w-16 items-center justify-center rounded-full ${color} shadow-md mb-1`}
                       >
-                        {stage.emoji}
+                        <Icon className="h-6 w-6 text-cream" />
                       </span>
                       <span className="h-6 w-px bg-navy/25" aria-hidden="true" />
                     </>
@@ -54,9 +72,9 @@ export function Journey() {
                     <>
                       <span className="h-6 w-px bg-navy/25" aria-hidden="true" />
                       <span
-                        className={`flex h-16 w-16 items-center justify-center rounded-full ${color} text-2xl shadow-md mt-1`}
+                        className={`flex h-16 w-16 items-center justify-center rounded-full ${color} shadow-md mt-1`}
                       >
-                        {stage.emoji}
+                        <Icon className="h-6 w-6 text-cream" />
                       </span>
                     </>
                   )}

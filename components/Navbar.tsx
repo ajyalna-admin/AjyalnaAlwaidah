@@ -2,6 +2,8 @@
 
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
+import { usePathname, useRouter } from "next/navigation";
 import { Menu, X, ChevronDown } from "lucide-react";
 import { brand } from "@/lib/data";
 
@@ -12,16 +14,16 @@ const MAIN_LINKS = [
 ];
 
 const MORE_LINKS = [
-  { id: "vision", label: "رؤيتنا وأهدافنا" },
-  { id: "summary", label: "ملخص المحتوى" },
-  { id: "resources", label: "موضوعات الإرشاد" },
-  { id: "journey", label: "رحلتك معنا" },
-  { id: "courses", label: "دليل المقررات" },
-  { id: "tracks", label: "مساراتنا" },
-  { id: "imtidad", label: "امتداد" },
-  { id: "team", label: "الفريق" },
-  { id: "faq", label: "الأسئلة الشائعة" },
-  { id: "contact", label: "تواصل" },
+  { href: "/vision", label: "رؤيتنا وأهدافنا" },
+  { href: "/summary", label: "ملخص المحتوى" },
+  { href: "/resources", label: "موضوعات الإرشاد" },
+  { href: "/journey", label: "رحلتك معنا" },
+  { href: "/courses", label: "دليل المقررات" },
+  { href: "/tracks", label: "مساراتنا" },
+  { href: "/imtidad", label: "امتداد" },
+  { href: "/team", label: "الفريق" },
+  { href: "/faq", label: "الأسئلة الشائعة" },
+  { href: "/contact", label: "تواصل" },
 ];
 
 export function Navbar() {
@@ -29,6 +31,8 @@ export function Navbar() {
   const [open, setOpen] = useState(false);
   const [moreOpen, setMoreOpen] = useState(false);
   const moreRef = useRef<HTMLDivElement>(null);
+  const pathname = usePathname();
+  const router = useRouter();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
@@ -47,10 +51,14 @@ export function Navbar() {
     return () => document.removeEventListener("mousedown", onClickOutside);
   }, []);
 
-  const scrollTo = (id: string) => {
+  const goToSection = (id: string) => {
     setOpen(false);
     setMoreOpen(false);
-    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+    if (pathname === "/") {
+      document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+    } else {
+      router.push(id === "hero" ? "/" : `/#${id}`);
+    }
   };
 
   return (
@@ -61,7 +69,7 @@ export function Navbar() {
     >
       <div className="container-content flex items-center justify-between px-6 sm:px-10 lg:px-16 h-20">
         <button
-          onClick={() => scrollTo("hero")}
+          onClick={() => goToSection("hero")}
           className="flex items-center gap-2.5"
           aria-label={brand.name}
         >
@@ -72,7 +80,7 @@ export function Navbar() {
           {MAIN_LINKS.map((l) => (
             <button
               key={l.id}
-              onClick={() => scrollTo(l.id)}
+              onClick={() => goToSection(l.id)}
               className="px-3 py-2 text-[13px] font-medium text-navy/70 hover:text-navy transition-colors duration-200 whitespace-nowrap"
             >
               {l.label}
@@ -91,13 +99,14 @@ export function Navbar() {
             {moreOpen && (
               <div className="absolute top-full mt-2 left-0 min-w-[190px] glass-card rounded-2xl p-2 flex flex-col">
                 {MORE_LINKS.map((l) => (
-                  <button
-                    key={l.id}
-                    onClick={() => scrollTo(l.id)}
+                  <Link
+                    key={l.href}
+                    href={l.href}
+                    onClick={() => setMoreOpen(false)}
                     className="text-right px-3.5 py-2.5 rounded-xl text-[13px] font-medium text-navy/80 hover:bg-sky/15 hover:text-navy transition-colors duration-200 whitespace-nowrap"
                   >
                     {l.label}
-                  </button>
+                  </Link>
                 ))}
               </div>
             )}
@@ -105,12 +114,12 @@ export function Navbar() {
         </nav>
 
         <div className="flex items-center gap-3">
-          <button
-            onClick={() => scrollTo("contact")}
+          <Link
+            href="/contact"
             className="hidden sm:inline-flex items-center gap-2 bg-navy text-cream px-5 py-2.5 rounded-full text-sm font-medium hover:bg-navy-light transition-colors duration-200"
           >
             تواصلي معنا
-          </button>
+          </Link>
           <button
             className="lg:hidden h-10 w-10 flex items-center justify-center rounded-full border border-line"
             onClick={() => setOpen((v) => !v)}
@@ -127,7 +136,7 @@ export function Navbar() {
             {MAIN_LINKS.map((l) => (
               <button
                 key={l.id}
-                onClick={() => scrollTo(l.id)}
+                onClick={() => goToSection(l.id)}
                 className="text-right py-2.5 text-base font-bold text-navy"
               >
                 {l.label}
@@ -135,13 +144,14 @@ export function Navbar() {
             ))}
             <div className="h-px bg-line my-1.5" />
             {MORE_LINKS.map((l) => (
-              <button
-                key={l.id}
-                onClick={() => scrollTo(l.id)}
+              <Link
+                key={l.href}
+                href={l.href}
+                onClick={() => setOpen(false)}
                 className="text-right py-2.5 text-base text-navy/80"
               >
                 {l.label}
-              </button>
+              </Link>
             ))}
           </div>
         </nav>

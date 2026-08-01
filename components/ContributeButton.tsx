@@ -102,7 +102,7 @@ export function ContributeButton({ defaultCourseSlug }: { defaultCourseSlug?: st
               {status === "sent" ? (
                 <div className="text-center py-6">
                   <CheckCircle2 className="h-10 w-10 text-sky-deep mx-auto mb-4" />
-                  <h3 className="font-display text-lg font-bold mb-2">تم إرسال مساهمتك 🎉</h3>
+                  <h3 className="font-display text-lg font-bold mb-2">تم إرسال مساهمتك</h3>
                   <p className="text-sm text-muted">شكرًا لك! مساهمتك الآن قيد المراجعة، وستظهر فور اعتمادها.</p>
                   <button
                     onClick={close}

@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowLeft, X, CheckCircle2, Clock } from "lucide-react";
 import { hero, journeySelector, regions } from "@/lib/data";
@@ -23,6 +24,7 @@ function scrollToId(id: string) {
 
 export function Hero() {
   const [step, setStep] = useState<Step>("closed");
+  const router = useRouter();
 
   const close = () => setStep("closed");
 
@@ -33,7 +35,7 @@ export function Hero() {
   const handleCollegePick = (available: boolean) => {
     if (available) {
       close();
-      scrollToId("summary");
+      router.push("/summary");
     } else {
       setStep("comingSoonCollege");
     }
