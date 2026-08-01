@@ -14,7 +14,7 @@ const typeLabels: Record<string, string> = {
   link: "رابط مفيد",
   platform: "منصة تعليمية",
   tutor: "مدرس خصوصي",
-  ambassador: "سفيرة مقرر",
+  ambassador: "سفير مقرر",
 };
 
 export default function AdminPage() {
@@ -132,7 +132,7 @@ export default function AdminPage() {
         )}
 
         {!notAdmin && pending.length === 0 && (
-          <p className="glass-card rounded-2xl p-6 text-sm text-muted">لا توجد مساهمات بانتظار المراجعة حاليًا 🎉</p>
+          <p className="glass-card rounded-2xl p-6 text-sm text-muted">لا توجد مساهمات بانتظار المراجعة حاليًا</p>
         )}
 
         <div className="grid gap-4 max-w-3xl">
