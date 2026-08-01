@@ -19,6 +19,7 @@ import { Footer } from "@/components/Footer";
 import { BackToTop } from "@/components/BackToTop";
 import { ContributeButton } from "@/components/ContributeButton";
 import { majorsCourses, courseHub, learningPlatforms } from "@/lib/data";
+import { supabase } from "@/lib/supabase";
 
 function findCourse(slug: string) {
   for (const major of majorsCourses) {
@@ -39,6 +40,19 @@ export default async function CoursePage({
   const found = findCourse(slug);
   if (!found) notFound();
   const { course, major } = found;
+
+  const { data: approved } = await supabase
+    .from("submissions")
+    .select("*")
+    .eq("course_slug", slug)
+    .eq("status", "approved")
+    .order("created_at", { ascending: false });
+
+  const reviews = (approved ?? []).filter((s) => s.type === "review");
+  const dbTips = (approved ?? []).filter((s) => s.type === "tip");
+  const files = (approved ?? []).filter((s) => s.type === "file");
+  const ambassadors = (approved ?? []).filter((s) => s.type === "ambassador");
+  const allTips = [...(course.tips ?? []), ...dbTips.map((t) => t.payload.content)];
 
   return (
     <>
@@ -119,7 +133,17 @@ export default async function CoursePage({
                 <MessageSquare className="h-4 w-4 text-sky-deep" />
                 {courseHub.experiencesTitle}
               </h2>
-              <p className="text-sm text-muted">{courseHub.noDataYet}</p>
+              {reviews.length > 0 ? (
+                <div className="space-y-3">
+                  {reviews.map((r) => (
+                    <p key={r.id} className="text-sm glass-chip rounded-xl p-4 leading-relaxed">
+                      "{r.payload.content}"
+                    </p>
+                  ))}
+                </div>
+              ) : (
+                <p className="text-sm text-muted">{courseHub.noDataYet}</p>
+              )}
             </section>
 
             {/* نصائح */}
@@ -128,10 +152,10 @@ export default async function CoursePage({
                 <Lightbulb className="h-4 w-4 text-sky-deep" />
                 {courseHub.tipsTitle}
               </h2>
-              {course.tips && course.tips.length > 0 ? (
+              {allTips.length > 0 ? (
                 <ul className="space-y-2">
-                  {course.tips.map((t) => (
-                    <li key={t} className="text-sm flex items-start gap-2">
+                  {allTips.map((t, i) => (
+                    <li key={i} className="text-sm flex items-start gap-2">
                       <span className="h-1.5 w-1.5 rounded-full bg-sky-deep/60 mt-1.5 shrink-0" />
                       {t}
                     </li>
@@ -171,7 +195,23 @@ export default async function CoursePage({
                   </span>
                 ))}
               </div>
-              <p className="text-sm text-muted">{courseHub.noDataYet}</p>
+              {files.length > 0 ? (
+                <div className="space-y-2">
+                  {files.map((f) => (
+                    <a
+                      key={f.id}
+                      href={f.payload.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="block glass-chip rounded-xl p-3.5 text-sm hover:bg-sky/15 transition-colors duration-200"
+                    >
+                      {f.payload.content}
+                    </a>
+                  ))}
+                </div>
+              ) : (
+                <p className="text-sm text-muted">{courseHub.noDataYet}</p>
+              )}
             </section>
 
             {/* شروحات امتداد */}
@@ -223,7 +263,18 @@ export default async function CoursePage({
                 <Users className="h-4 w-4 text-sky-deep" />
                 {courseHub.ambassadorsTitle}
               </h2>
-              <p className="text-sm text-muted">{courseHub.noDataYet}</p>
+              {ambassadors.length > 0 ? (
+                <div className="grid sm:grid-cols-2 gap-3">
+                  {ambassadors.map((a) => (
+                    <div key={a.id} className="glass-chip rounded-xl p-4">
+                      <p className="font-bold text-sm mb-1">{a.payload.name}</p>
+                      <p className="text-xs text-muted leading-relaxed">{a.payload.content}</p>
+                    </div>
+                  ))}
+                </div>
+              ) : (
+                <p className="text-sm text-muted">{courseHub.noDataYet}</p>
+              )}
             </section>
 
             {/* الأسئلة الشائعة */}
@@ -248,7 +299,7 @@ export default async function CoursePage({
 
             {/* ساهم في هذا المقرر */}
             <div className="text-center py-6">
-              <ContributeButton />
+              <ContributeButton defaultCourseSlug={course.slug} />
             </div>
           </div>
         </div>
