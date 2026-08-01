@@ -8,7 +8,7 @@ import { supabase, type SubmissionType } from "@/lib/supabase";
 
 const typeMap: Record<string, { type: SubmissionType; contentLabel: string; showLink: boolean; showName: boolean }> = {
   "تقييم": { type: "rating", contentLabel: "اكتبي تقييمك (مثال: سهل، عبء متوسط، جودة محتوى ممتازة)", showLink: false, showName: false },
-  "تجربة": { type: "review", contentLabel: "شاركينا تجربتك مع المقرر", showLink: false, showName: false },
+  "تجربة": { type: "review", contentLabel: "شاركنا تجربتك مع المقرر", showLink: false, showName: false },
   "نصيحة": { type: "tip", contentLabel: "نصيحتك لمن يدرس هذا المقرر", showLink: false, showName: false },
   "ملخص": { type: "file", contentLabel: "وصف مختصر للملخص", showLink: true, showName: false },
   "سلايدات": { type: "file", contentLabel: "وصف مختصر للسلايدات", showLink: true, showName: false },
@@ -17,7 +17,7 @@ const typeMap: Record<string, { type: SubmissionType; contentLabel: string; show
   "رابط مفيد": { type: "link", contentLabel: "لماذا هذا الرابط مفيد؟", showLink: true, showName: false },
   "اقتراح منصة تعليمية": { type: "platform", contentLabel: "وصف مختصر للمنصة", showLink: true, showName: true },
   "اقتراح مدرس خصوصي": { type: "tutor", contentLabel: "نبذة ووسيلة التواصل", showLink: false, showName: true },
-  "التقديم كسفيرة للمقرر": { type: "ambassador", contentLabel: "نبذة قصيرة عنك ولماذا ترغبين تكونين سفيرة", showLink: false, showName: true },
+  "التقديم كسفير للمقرر": { type: "ambassador", contentLabel: "نبذة قصيرة عنك ولماذا ترغب تكون سفيرًا", showLink: false, showName: true },
 };
 
 const allCourses = majorsCourses.flatMap((m) =>
