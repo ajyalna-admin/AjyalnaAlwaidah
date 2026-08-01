@@ -144,6 +144,7 @@ export const journeyStages: JourneyStage[] = [
 // ==================== موضوعات الإرشاد ====================
 
 export type Topic = {
+  slug: string;
   title: string;
   content?: string;
 };
