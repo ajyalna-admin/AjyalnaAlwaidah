@@ -302,110 +302,32 @@ export const topics: Topic[] = [
   - قسم نظم المعلومات (ccis-is@pnu.edu.sa) — ويشمل: نظم المعلومات، علم البيانات وتحليلها.
   - قسم علوم الحاسبات (ccis-cs@pnu.edu.sa) — ويشمل: علوم الحاسبات، علوم الذكاء الاصطناعي، هندسة البرمجيات.`,
   },
-  {
-    slug: "college-majors",
-    title: "التعريف بتخصصات كلية علوم الحاسب والمعلومات",
-  },
-  {
-    slug: "recommended-devices",
-    title: "الأجهزة المناسبة للدراسة",
-  },
-  {
-    slug: "admission-services",
-    title: "خدمة طلب أو تغيير القبول",
-  },
-  {
-    slug: "partial-acceleration",
-    title: "خدمة التسريع الجزئي",
-  },
-  {
-    slug: "placement-test",
-    title: "اختبار تحديد المستوى والدورات التعليمية",
-  },
-  {
-    slug: "student-card",
-    title: "البطاقة الجامعية",
-  },
-  {
-    slug: "university-email",
-    title: "البريد الجامعي",
-  },
-  {
-    slug: "smart-bag",
-    title: "الحقيبة الذكية",
-  },
-  {
-    slug: "bank-card",
-    title: "بطاقة الصراف",
-  },
-  {
-    slug: "banner-system",
-    title: "النظام الأكاديمي (Banner)",
-  },
-  {
-    slug: "class-schedule",
-    title: "الجدول الدراسي",
-  },
-  {
-    slug: "blackboard",
-    title: "نظام إدارة التعلم (Blackboard)",
-  },
-  {
-    slug: "campus-map",
-    title: "مخطط الجامعة",
-  },
-  {
-    slug: "campus-metro",
-    title: "المترو الجامعي",
-  },
-  {
-    slug: "first-semester-courses",
-    title: "المواد المشتركة في الفصل الأول",
-  },
-  {
-    slug: "study-resources",
-    title: "مراجع الدراسة",
-  },
-  {
-    slug: "study-plan",
-    title: "الخطة الدراسية",
-  },
-  {
-    slug: "minors",
-    title: "التخصصات الفرعية (Minors)",
-  },
-  {
-    slug: "college-library",
-    title: "مكتبة كلية علوم الحاسب والمعلومات",
-  },
-  {
-    slug: "central-library",
-    title: "المكتبة المركزية",
-  },
-  {
-    slug: "skill-record",
-    title: "السجل المهاري",
-  },
-  {
-    slug: "internal-transfer",
-    title: "التحويل داخل الكلية وخارجها",
-  },
-  {
-    slug: "student-housing",
-    title: "السكن الجامعي",
-  },
-  {
-    slug: "campus-buses",
-    title: "الحافلات الجامعية",
-  },
-  {
-    slug: "university-services",
-    title: "الخدمات الجامعية",
-  },
-  {
-    slug: "dress-code",
-    title: "ضوابط الزي الجامعي",
-  },
+  { slug: "intro-majors", title: "التعريف بتخصصات كلية علوم الحاسب والمعلومات" },
+  { slug: "suitable-devices", title: "الأجهزة المناسبة للدراسة" },
+  { slug: "admission-request-change", title: "خدمة طلب/ تغيير القبول" },
+  { slug: "partial-acceleration", title: "خدمة التسريع الجزئي" },
+  { slug: "placement-test-courses", title: "اختبار تحديد المستوى ودورات تعليمية" },
+  { slug: "student-card", title: "البطاقة الجامعية" },
+  { slug: "university-email", title: "البريد الجامعي" },
+  { slug: "smart-bag", title: "الحقيبة الذكية" },
+  { slug: "debit-card", title: "بطاقة الصراف" },
+  { slug: "banner-system", title: "النظام الأكاديمي (Banner)" },
+  { slug: "class-schedule", title: "الجدول الدراسي" },
+  { slug: "blackboard-system", title: "نظام التعلم (Blackboard)" },
+  { slug: "campus-map", title: "مخطط الجامعة" },
+  { slug: "campus-metro", title: "المترو الجامعي" },
+  { slug: "shared-courses-first-term", title: "المواد المشتركة في الترم الأول" },
+  { slug: "study-references", title: "مراجع للدراسة" },
+  { slug: "study-plan", title: "الخطة الدراسية" },
+  { slug: "minors", title: "التخصصات الفرعية" },
+  { slug: "college-library", title: "مكتبة كلية علوم الحاسب والمعلومات" },
+  { slug: "central-library", title: "المكتبة المركزية" },
+  { slug: "skills-record", title: "السجل المهاري" },
+  { slug: "transfer-within-college", title: "التحويل داخل الكلية وخارجها" },
+  { slug: "student-housing", title: "السكن الجامعي" },
+  { slug: "university-buses", title: "الحافلات الجامعية" },
+  { slug: "university-services", title: "خدمات تقدمها الجامعة" },
+  { slug: "uniform-regulations", title: "ضوابط الزي الجامعي" },
 ];
 
 // ==================== من نحن ====================
@@ -503,8 +425,13 @@ export const leadership: LeadershipMember[] = [
   },
   {
     name: "لينا الشريف",
-    role: "نائبة المبادرة",
+    role: "نائبة أجيالنا الواعدة — مسار المستجدات",
     linkedin: "https://www.linkedin.com/search/results/all/?keywords=Lina%20Alsharif",
+  },
+  {
+    name: "لمى عسيري",
+    role: "نائبة أجيالنا الواعدة — مسار الخريجات",
+    linkedin: "https://www.linkedin.com/search/results/all/?keywords=Lama%20Asiri",
   },
 ];
 
@@ -551,8 +478,7 @@ export const guidanceCommittees: CommitteeEntry[] = [
     name: "لجنة علم البيانات وتحليلها",
     leader: "لين القويفل",
     deputy: "هيفاء المطيري",
-    leaderLinkedin: li("Leen AlQuwayfil"),
-    deputyLinkedin: li("Haifa M."),
+    leaderLinkedin: li("Leen AlQuwaifil"),
   },
   {
     name: "لجنة الأمن السيبراني",
@@ -1510,117 +1436,3 @@ export const majorsCourses: MajorCourses[] = [
 export const courseHub = {
   infoTitle: "معلومات المقرر",
   ratingTitle: "تقييمات الطلبة",
-  experiencesTitle: "تجارب الطلبة",
-  tipsTitle: "نصائح ممن سبقوكم",
-  filesTitle: "بنك الملفات",
-  imtidadTitle: "شروحات امتداد",
-  platformsTitle: "منصات موصى بها لهذا المقرر",
-  tutorsTitle: "مدرسون وخصوصيون للمقرر",
-  ambassadorsTitle: "سفراء المقرر",
-  faqTitle: "الأسئلة الشائعة",
-  contributeTitle: "ساهم في هذا المقرر",
-  contributeDescription:
-    "شارك تقييمك، تجربتك، نصيحتك، ملفاتك، أو تقدّم لتكون سفيرًا لهذا المقرر. جميع المشاركات تُراجع وتُعتمد من الإدارة قبل النشر.",
-  contributeOptions: [
-    "تقييم",
-    "تجربة",
-    "نصيحة",
-    "ملخص",
-    "سلايدات",
-    "خرائط ذهنية",
-    "ملفات",
-    "رابط مفيد",
-    "اقتراح منصة تعليمية",
-    "اقتراح مدرس خصوصي",
-    "التقديم كسفير للمقرر",
-  ],
-  contributeComingSoon:
-    "استقبال المساهمات مباشرة من الموقع قيد التجهيز حاليًا. للمساهمة الآن، تواصل معنا عبر القنوات الموضّحة أسفل الصفحة.",
-  noDataYet: "لا توجد بيانات كافية بعد لعرضها لهذا المقرر.",
-  effortOptions: ["أقل من ٣ ساعات أسبوعيًا", "من ٣ إلى ٦ ساعات أسبوعيًا", "أكثر من ٦ ساعات أسبوعيًا"],
-  fileTabs: ["الملخصات", "السلايدات", "الخرائط الذهنية", "نماذج وتقارير", "ملفات أخرى"],
-};
-
-export type LearningPlatform = { name: string; description: string; url: string };
-
-export const learningPlatforms: LearningPlatform[] = [
-  { name: "أكاديمية سطر", description: "دورات عربية في البرمجة وعلوم الحاسب.", url: "https://satr.academy" },
-  { name: "Coursera", description: "دورات جامعية معتمدة بمختلف المجالات التقنية.", url: "https://www.coursera.org" },
-  { name: "Udemy", description: "دورات عملية مباشرة بأسعار مناسبة.", url: "https://www.udemy.com" },
-  { name: "freeCodeCamp", description: "تعلّم البرمجة مجانًا بمشاريع تطبيقية.", url: "https://www.freecodecamp.org" },
-  { name: "W3Schools", description: "مرجع سريع لتعلّم لغات البرمجة والويب.", url: "https://www.w3schools.com" },
-  { name: "GeeksforGeeks", description: "مقالات وتمارين في الخوارزميات وهياكل البيانات.", url: "https://www.geeksforgeeks.org" },
-];
-
-// ==================== امتداد ====================
-
-export const imtidad = {
-  eyebrow: "امتداد",
-  title: "امتداد",
-  quote: "ويبقى أجمل الأثر ما امتد من إنسان إلى إنسان.",
-  description:
-    "امتداد هو أحد برامج أجيالنا الواعدة، يهدف إلى نقل المعرفة والخبرات بين الطلبة، من خلال تقديم شروحات تطوعية في المقررات الجامعية، بما يسهم في دعم الطلبة، وتعزيز ثقافة العطاء، وصناعة أثر مستدام يمتد من طالب إلى آخر.",
-  howTitle: "كيف تعمل امتداد؟",
-  steps: [
-    "ينضم الطالب.",
-    "يتم التواصل معه.",
-    "يحدد المقررات التي يرغب بشرحها.",
-    "يرفع المحتوى.",
-    "يراجع المحتوى.",
-    "ينشر ليستفيد منه الجميع.",
-  ],
-  button: "انضم إلى امتداد",
-  formUrl: "https://forms.gle/kZ6ThAf6KLHTMhTh7",
-};
-
-// ==================== مسارات أجيالنا الواعدة ====================
-
-export type Track = {
-  title: string;
-  description: string;
-  available: boolean;
-};
-
-export const tracksSection = {
-  eyebrow: "مساراتنا",
-  title: "مسارات أجيالنا الواعدة",
-};
-
-export const tracks: Track[] = [
-  {
-    title: "أجيالنا الواعدة للمستجدين",
-    description:
-      "يركز على دعم الطلبة منذ لحظة قبولهم وحتى اندماجهم في الحياة الجامعية، من خلال الإرشاد الأكاديمي، والإجابة عن الاستفسارات، ونقل الخبرات.",
-    available: true,
-  },
-  {
-    title: "أجيالنا الواعدة للخريجين",
-    description:
-      "يرافق الطلبة ابتداءً من التدريب التعاوني (Co-op)، وحتى دخول سوق العمل، من خلال الإرشاد المهني، وبناء السيرة الذاتية، وتحسين LinkedIn، والاستعداد للمقابلات، ومتابعة الفرص الوظيفية.",
-    available: false,
-  },
-];
-
-// ==================== الشات بوت ====================
-
-export const chatbot = {
-  label: "اسأل أجيالنا",
-  welcome: "أهلًا بك في أجيالنا الواعدة\nأنا هنا عشان أساعدك تفهم كل شي عن المبادرة وحياتك الجامعية. اسأل عن أي شي؟",
-  placeholder: "اكتب سؤالك هنا…",
-  starters: [
-    "وش تقدم المبادرة؟",
-    "كيف أنضم لفريق أجيالنا؟",
-    "كيف أتواصل معكم؟",
-    "هل استخدام المنصة مجاني؟",
-  ],
-  errorMessage: "صار خلل بالاتصال. تأكد من الشبكة وحاول مرة ثانية.",
-  footNote: "إجابات مبنية على محتوى موقع أجيالنا الواعدة",
-};
-
-// ==================== التواصل ====================
-
-export const contact = {
-  eyebrow: "تواصل معنا",
-  title: "هل لديك سؤال أو ترغب في الانضمام إلينا؟",
-  description: "راسلنا عبر أي من القنوات التالية، وسنكون سعداء بالرد عليك في أقرب وقت.",
-};
