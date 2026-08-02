@@ -551,7 +551,8 @@ export const guidanceCommittees: CommitteeEntry[] = [
     name: "لجنة علم البيانات وتحليلها",
     leader: "لين القويفل",
     deputy: "هيفاء المطيري",
-    leaderLinkedin: li("Leen AlQuwaifil"),
+    leaderLinkedin: li("Leen AlQuwayfil"),
+    deputyLinkedin: li("Haifa M."),
   },
   {
     name: "لجنة الأمن السيبراني",
