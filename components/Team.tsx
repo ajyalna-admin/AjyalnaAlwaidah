@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Crown, UserRound, Linkedin } from "lucide-react";
+import { UserRound, Linkedin } from "lucide-react";
 import { SectionHeading } from "@/components/SectionHeading";
 import {
   teamSection,
@@ -58,7 +58,7 @@ function CommitteeCard({ committee, index }: { committee: CommitteeEntry; index:
       <div className="space-y-2.5">
         <div className="flex items-center gap-2.5">
           <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-sky/20">
-            <Crown className="h-3.5 w-3.5 text-sky-deep" />
+            <UserRound className="h-3.5 w-3.5 text-sky-deep" />
           </span>
           <div className="flex-1 min-w-0">
             <p className="text-[11px] text-muted">القائدة</p>
