@@ -1505,6 +1505,7 @@ export type Track = {
   title: string;
   description: string;
   available: boolean;
+  registerUrl?: string;
 };
 
 export const tracksSection = {
@@ -1518,6 +1519,7 @@ export const tracks: Track[] = [
     description:
       "يركز على دعم الطلبة منذ لحظة قبولهم وحتى اندماجهم في الحياة الجامعية، من خلال الإرشاد الأكاديمي، والإجابة عن الاستفسارات، ونقل الخبرات.",
     available: true,
+    registerUrl: "https://forms.gle/H9UV6bzuQ5QJcMV68",
   },
   {
     title: "أجيالنا الواعدة للخريجين",
