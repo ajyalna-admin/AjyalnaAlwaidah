@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
-import { ArrowLeft, X, CheckCircle2, Clock } from "lucide-react";
+import { GraduationCap, ArrowLeft, X, CheckCircle2, Clock } from "lucide-react";
 import { hero, journeySelector, regions } from "@/lib/data";
 
 type Step = "closed" | "university" | "college" | "comingSoonUni" | "comingSoonCollege";
@@ -45,6 +45,14 @@ export function Hero() {
     <section id="hero" className="relative overflow-hidden">
       <div className="container-content section-pad pt-36 sm:pt-44 pb-24">
         <motion.div variants={container} initial="hidden" animate="show" className="max-w-2xl">
+          <motion.button
+            variants={item}
+            onClick={() => setStep("university")}
+            className="inline-flex items-center gap-2 rounded-full glass-chip px-4 py-2 text-xs font-bold text-sky-deep mb-6 hover:bg-sky/20 transition-colors duration-200"
+          >
+            <GraduationCap className="h-3.5 w-3.5" />
+            {hero.chooseUniversity}
+          </motion.button>
           <motion.p variants={item} className="text-sm font-medium text-sky-deep mb-6">
             {hero.eyebrow}
           </motion.p>
@@ -61,13 +69,15 @@ export function Hero() {
             {hero.description}
           </motion.p>
           <motion.div variants={item} className="mt-10 flex flex-wrap items-center gap-4">
-            <button
-              onClick={() => setStep("university")}
+            <a
+              href={hero.registerUrl}
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex items-center gap-2 rounded-full bg-navy text-cream px-7 py-3.5 text-sm font-bold hover:bg-navy-light transition-colors duration-200"
             >
               {hero.ctaPrimary}
               <ArrowLeft className="h-4 w-4" />
-            </button>
+            </a>
             <button
               onClick={() => scrollToId("about")}
               className="inline-flex items-center gap-2 rounded-full glass-card px-7 py-3.5 text-sm font-bold text-navy"
