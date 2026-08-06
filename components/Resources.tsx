@@ -4,6 +4,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { BookOpen, ChevronDown, Info, Clock } from "lucide-react";
 import { SectionHeading } from "@/components/SectionHeading";
+import { AccelerationExamTable } from "@/components/AccelerationExamTable";
 import { resourcesSection, topics } from "@/lib/data";
 
 export function Resources() {
@@ -78,9 +79,14 @@ export function Resources() {
                     >
                       <div className="px-6 pb-7 pt-1 border-t border-white/40">
                         {hasContent ? (
-                          <p className="whitespace-pre-line text-sm leading-relaxed text-navy/85 mt-5">
-                            {t.content}
-                          </p>
+                          <>
+                            <p className="whitespace-pre-line text-sm leading-relaxed text-navy/85 mt-5">
+                              {t.content}
+                            </p>
+                            {t.slug === "partial-acceleration" && (
+                              <AccelerationExamTable />
+                            )}
+                          </>
                         ) : (
                           <div className="flex items-center gap-2.5 mt-5 text-sm text-muted">
                             <BookOpen className="h-4 w-4 text-sky-deep shrink-0" />
