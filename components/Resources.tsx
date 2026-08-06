@@ -1,14 +1,42 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { BookOpen, ChevronDown, Info, Clock } from "lucide-react";
+import { BookOpen, ChevronDown, Info, Clock, Link2, Check } from "lucide-react";
 import { SectionHeading } from "@/components/SectionHeading";
 import { AccelerationExamTable } from "@/components/AccelerationExamTable";
 import { resourcesSection, topics } from "@/lib/data";
 
 export function Resources() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
+  const [copiedSlug, setCopiedSlug] = useState<string | null>(null);
+
+  // فتح الموضوع المطابق تلقائيًا لو الرابط يحتوي على #slug (رابط مباشر منسوخ)
+  useEffect(() => {
+    const hash = window.location.hash.replace("#", "");
+    if (!hash) return;
+    const idx = topics.findIndex((t) => t.slug === hash);
+    if (idx !== -1) {
+      setOpenIndex(idx);
+      requestAnimationFrame(() => {
+        document
+          .getElementById(hash)
+          ?.scrollIntoView({ behavior: "smooth", block: "start" });
+      });
+    }
+  }, []);
+
+  const handleCopyLink = async (e: React.MouseEvent, slug: string) => {
+    e.stopPropagation();
+    const url = `${window.location.origin}${window.location.pathname}#${slug}`;
+    try {
+      await navigator.clipboard.writeText(url);
+      setCopiedSlug(slug);
+      window.setTimeout(() => setCopiedSlug(null), 1800);
+    } catch {
+      // تجاهل فشل النسخ (متصفح لا يدعم Clipboard API مثلًا)
+    }
+  };
 
   return (
     <section id="resources" className="section-pad border-b border-line">
@@ -28,16 +56,18 @@ export function Resources() {
           {topics.map((t, i) => {
             const isOpen = openIndex === i;
             const hasContent = Boolean(t.content);
+            const isCopied = copiedSlug === t.slug;
             const num = String(i + 1).padStart(2, "0");
             return (
               <motion.div
                 key={t.title}
+                id={t.slug}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-60px" }}
                 transition={{ duration: 0.5, delay: (i % 5) * 0.05, ease: [0.16, 1, 0.3, 1] }}
                 whileHover={{ y: -4 }}
-                className="glass-card rounded-2xl overflow-hidden"
+                className="glass-card rounded-2xl overflow-hidden scroll-mt-24"
               >
                 <button
                   type="button"
@@ -60,6 +90,26 @@ export function Resources() {
                         قريبًا
                       </span>
                     )}
+                    <span
+                      role="button"
+                      tabIndex={0}
+                      onClick={(e) => handleCopyLink(e, t.slug)}
+                      onKeyDown={(e) => {
+                        if (e.key === "Enter" || e.key === " ") {
+                          e.preventDefault();
+                          handleCopyLink(e as unknown as React.MouseEvent, t.slug);
+                        }
+                      }}
+                      title="نسخ رابط هذا الموضوع"
+                      aria-label="نسخ رابط هذا الموضوع"
+                      className="flex h-7 w-7 items-center justify-center rounded-full text-sky-deep/70 transition-colors hover:bg-sky/15 hover:text-sky-deep"
+                    >
+                      {isCopied ? (
+                        <Check className="h-3.5 w-3.5" />
+                      ) : (
+                        <Link2 className="h-3.5 w-3.5" />
+                      )}
+                    </span>
                     <ChevronDown
                       className={`h-4 w-4 text-sky-deep transition-transform duration-300 ${
                         isOpen ? "rotate-180" : ""
