@@ -75,6 +75,11 @@ function CommitteeCard({ committee, index }: { committee: CommitteeEntry; index:
                 </a>
               )}
             </p>
+            {committee.leaderQuote && (
+              <p className="whitespace-pre-line text-xs text-muted italic leading-relaxed mt-1.5">
+                "{committee.leaderQuote}"
+              </p>
+            )}
           </div>
         </div>
         {committee.deputy && (
@@ -97,6 +102,11 @@ function CommitteeCard({ committee, index }: { committee: CommitteeEntry; index:
                   </a>
                 )}
               </p>
+              {committee.deputyQuote && (
+                <p className="whitespace-pre-line text-xs text-muted italic leading-relaxed mt-1.5">
+                  "{committee.deputyQuote}"
+                </p>
+              )}
             </div>
           </div>
         )}
