@@ -1,7 +1,8 @@
 "use client";
 
+import Link from "next/link";
 import { motion } from "framer-motion";
-import { FileText } from "lucide-react";
+import { FileText, ArrowLeft } from "lucide-react";
 import { SectionHeading } from "@/components/SectionHeading";
 import { summarySection, summaryCards } from "@/lib/data";
 
@@ -23,12 +24,20 @@ export function Summary() {
               viewport={{ once: true, margin: "-60px" }}
               transition={{ duration: 0.5, delay: (i % 5) * 0.06, ease: [0.16, 1, 0.3, 1] }}
               whileHover={{ y: -6 }}
-              className="glass-card rounded-2xl p-5 flex flex-col items-center text-center gap-3"
             >
-              <span className="flex h-10 w-10 items-center justify-center rounded-full bg-sky/20">
-                <FileText className="h-4 w-4 text-sky-deep" />
-              </span>
-              <p className="text-sm font-bold leading-snug">{card}</p>
+              <Link
+                href="/resources"
+                className="glass-card rounded-2xl p-5 flex flex-col items-center text-center gap-3 h-full"
+              >
+                <span className="flex h-10 w-10 items-center justify-center rounded-full bg-sky/20">
+                  <FileText className="h-4 w-4 text-sky-deep" />
+                </span>
+                <p className="text-sm font-bold leading-snug">{card}</p>
+                <span className="mt-auto inline-flex items-center gap-1.5 text-xs text-sky-deep font-medium">
+                  اطّلع بالتفصيل
+                  <ArrowLeft className="h-3 w-3" />
+                </span>
+              </Link>
             </motion.div>
           ))}
         </div>
