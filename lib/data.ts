@@ -309,7 +309,7 @@ export const topics: Topic[] = [
   { slug: "admission-request-change", title: "خدمة طلب/ تغيير القبول" },
   {
     slug: "partial-acceleration",
-    title: "خدمة التسريع الجزئي",
+    title: "خدمة التسريع الأكاديمي",
     content: `برنامج استقطاب الموهوبات
 
 ما هو البرنامج؟
@@ -593,6 +593,8 @@ export const guidanceCommittees: CommitteeEntry[] = [
     deputyLinkedin: li("Rayan Almanquri"),
     leaderQuote:
       "لكل بداية حكاية، وأجمل ما يمكن أن نتركه خلفنا هو أثرٌ يستمر بعدنا؛ لذلك في أجيالنا الواعدة نصنع اليوم ما نأمل أن تجده الأجيال القادمة غدًا 🩵",
+    deputyQuote:
+      "عيشوا اللحظة .. من قلبكم! حتى لو صعبة لأنها بتكون ذكرياتكم اللي تعتزون بها يومًا ما",
   },
   {
     name: "لجنة هندسة البرمجيات",
@@ -610,6 +612,8 @@ export const guidanceCommittees: CommitteeEntry[] = [
     leader: "لين القويفل",
     deputy: "هيفاء المطيري",
     leaderLinkedin: li("Leen AlQuwaifil"),
+    deputyQuote:
+      "اجعلي الله دايم أول وجهتك في رحلتك الجامعية، واستعيني فيه بكل خطوة، احصري أن نيتك الطيبة ودعاءك رفيقك في كل بداية\nوإذا صعب عليك الطريق، تذكري إن الله يشوف سعيك وتعبك، وإن كل خطوة اليوم بتصنع منك شخص أقوى وأوعى بكرة",
   },
   {
     name: "لجنة الأمن السيبراني",
@@ -646,6 +650,8 @@ export const subCommittees: CommitteeEntry[] = [
     deputy: "نورة الدوسري",
     leaderLinkedin: li("Mays Khormi"),
     deputyLinkedin: li("Norah Aldossari"),
+    leaderQuote:
+      "في لجنة كتابة المحتوى كتابتنا هي خلاصة تجربة عشناها قبلكم لعلكم تجدون بين كلماتنا ما يختصر عليكم طريقًا طويلًا، بالتوفيق في رحلتكم🤍",
     deputyQuote:
       "لا تخشَ بدايةً لم تُحسنها؛ فالبدايات خُلقت للمحاولة، والإتقان حكايةٌ يكتبها الاستمرار. امضوا بثقة؛ ففيكم من القدرة ما ستكشفه لكم الأيام، ومن الوصول أكثر مما تتخيلون.",
   },
@@ -667,6 +673,8 @@ export const subCommittees: CommitteeEntry[] = [
     deputy: "راما الشريف",
     leaderLinkedin: li("Shiekah mazen"),
     deputyLinkedin: li("Rama Alshareef"),
+    leaderQuote:
+      "ابدؤوا مستعينين بالله ومستحضرين نيّة طلب العلم، فكل خطوة تسعون فيها اليوم هي رفعة لأجوركم، وبركة يمتدّ أثرها الطيب لطريقكم ومستقبلكم.",
   },
 ];
 
