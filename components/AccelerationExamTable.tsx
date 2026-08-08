@@ -13,14 +13,20 @@ export function AccelerationExamTable() {
       </div>
 
       {accelerationExamSection.fileUrl && (
-        <a
-          href={accelerationExamSection.fileUrl}
-          download
-          className="mb-5 flex items-center justify-center gap-2 rounded-xl bg-navy px-4 py-3 text-sm font-bold text-white transition-opacity hover:opacity-90"
-        >
-          <FileDown className="h-4 w-4" />
-          {accelerationExamSection.fileLabel}
-        </a>
+        <div className="mb-5">
+          <p className="mb-2 text-center text-[13px] font-semibold text-muted">
+            المصادر والمراجع الكاملة لمقررات التسريع الأكاديمي:
+          </p>
+          <a
+            href={accelerationExamSection.fileUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center justify-center gap-2 rounded-xl bg-navy px-4 py-3 text-sm font-bold text-white transition-opacity hover:opacity-90"
+          >
+            <FileDown className="h-4 w-4" />
+            {accelerationExamSection.fileLabel}
+          </a>
+        </div>
       )}
 
       {/* عرض الجدول — شاشات متوسطة وأكبر */}
