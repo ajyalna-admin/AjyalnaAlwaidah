@@ -1,3 +1,4 @@
+import { FileDown } from "lucide-react";
 import { accelerationExamSection, accelerationExamSchedule } from "@/lib/data";
 
 // جدول مواعيد اختبارات التسريع الأكاديمي — يستخدم نفس عناصر تصميم الموقع
@@ -10,6 +11,17 @@ export function AccelerationExamTable() {
         <span className="mt-0.5 h-1.5 w-1.5 shrink-0 rounded-full bg-sky-deep" />
         <p>{accelerationExamSection.description}</p>
       </div>
+
+      {accelerationExamSection.fileUrl && (
+        <a
+          href={accelerationExamSection.fileUrl}
+          download
+          className="mb-5 flex items-center justify-center gap-2 rounded-xl bg-navy px-4 py-3 text-sm font-bold text-white transition-opacity hover:opacity-90"
+        >
+          <FileDown className="h-4 w-4" />
+          {accelerationExamSection.fileLabel}
+        </a>
+      )}
 
       {/* عرض الجدول — شاشات متوسطة وأكبر */}
       <div className="hidden overflow-hidden rounded-2xl glass-card md:block">
