@@ -1611,8 +1611,8 @@ export const accelerationExamSection = {
   description:
     "جدول مواعيد اختبارات التسريع الأكاديمي، موضح فيه اليوم والتاريخ ومكان الاختبار. جميع الاختبارات تُعقد في كلية علوم الحاسب والمعلومات — محطة A3، مبنى (170).",
   note: "رقم المعمل في جميع الأيام: 1.204 – 1.207 – 1.208 – 1.210 – 1.211 – 1.212",
-  fileUrl: "/files/مراجع-ومواعيد-التسريع-الاكاديمي.pdf",
-  fileLabel: "تحميل ملف مراجع ومواعيد اختبارات مقررات التسريع الأكاديمي (PDF)",
+  fileUrl: "https://drive.google.com/drive/folders/1QvpAC1iPyPmgHQ75-VgFDVhqKrnzbZR_?usp=sharing",
+  fileLabel: "فتح ملف مراجع ومواعيد اختبارات مقررات التسريع الأكاديمي",
 };
 
 export const accelerationExamSchedule: AccelerationExamDay[] = [
