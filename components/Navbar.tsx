@@ -21,6 +21,7 @@ const MORE_LINKS = [
   { href: "/courses", label: "دليل المقررات" },
   { href: "/tracks", label: "مساراتنا" },
   { href: "/imtidad", label: "امتداد" },
+  { href: "/team", label: "فريق المبادرة" },
 ];
 
 export function Navbar() {
@@ -156,3 +157,4 @@ export function Navbar() {
     </header>
   );
 }
+
