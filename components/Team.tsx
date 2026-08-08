@@ -30,6 +30,11 @@ function LeadershipCard({ member, index }: { member: LeadershipMember; index: nu
       </div>
       <p className="font-display font-bold text-lg">{member.name}</p>
       <p className="text-sm text-muted mt-1">{member.role}</p>
+      {member.quote && (
+        <p className="whitespace-pre-line text-xs text-muted italic leading-relaxed mt-3">
+          "{member.quote}"
+        </p>
+      )}
       {member.linkedin && (
         <a
           href={member.linkedin}
