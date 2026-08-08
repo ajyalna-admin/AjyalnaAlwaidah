@@ -669,6 +669,8 @@ export const subCommittees: CommitteeEntry[] = [
     name: "لجنة التوسّع الاستراتيجي",
     leader: "عهد الشيحه",
     leaderLinkedin: li("Ahad Alshehah"),
+    leaderQuote:
+      "The more you learn, the more you realize how much you don't know.\nكلما اتسعت معرفتك، اتسع وعيك بحجم ما لا تعرفه\n\nمحدثتكم طالبة في سنتي الأخيرة، لكن نصيحتي لكم دائمًا: أشبعوا فضولكم وتعلّموا مهما كانت مرحلتكم في الحياة ومهما كان المجال.\n\nLive as if you were to die tomorrow.\nLearn as if you were to live forever.",
   },
   {
     name: "لجنة الجودة",
