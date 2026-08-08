@@ -1,7 +1,8 @@
 "use client";
 
+import { useState } from "react";
 import { motion } from "framer-motion";
-import { UserRound, Linkedin } from "lucide-react";
+import { UserRound, Linkedin, Link2, Check } from "lucide-react";
 import { SectionHeading } from "@/components/SectionHeading";
 import {
   teamSection,
@@ -116,14 +117,45 @@ function CommitteeCard({ committee, index }: { committee: CommitteeEntry; index:
 }
 
 export function Team() {
+  const [copied, setCopied] = useState(false);
+
+  const handleCopyLink = async () => {
+    const url = `${window.location.origin}${window.location.pathname}#team`;
+    try {
+      await navigator.clipboard.writeText(url);
+      setCopied(true);
+      window.setTimeout(() => setCopied(false), 1800);
+    } catch {
+      // تجاهل فشل النسخ (متصفح لا يدعم Clipboard API مثلًا)
+    }
+  };
+
   return (
-    <section id="team" className="section-pad border-b border-line">
+    <section id="team" className="section-pad border-b border-line scroll-mt-24">
       <div className="container-content">
         <SectionHeading
           eyebrow={teamSection.eyebrow}
           title={teamSection.title}
           description={teamSection.description}
         />
+
+        <button
+          type="button"
+          onClick={handleCopyLink}
+          className="mb-10 -mt-6 inline-flex items-center gap-1.5 rounded-full glass-chip px-3.5 py-1.5 text-xs font-bold text-sky-deep transition-colors hover:bg-sky/15"
+        >
+          {copied ? (
+            <>
+              <Check className="h-3.5 w-3.5" />
+              تم نسخ الرابط
+            </>
+          ) : (
+            <>
+              <Link2 className="h-3.5 w-3.5" />
+              نسخ رابط هذا القسم
+            </>
+          )}
+        </button>
 
         <div className="mb-14">
           <h3 className="font-display text-lg font-bold mb-6">{teamSection.leadershipNote}</h3>
