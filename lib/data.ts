@@ -1583,3 +1583,72 @@ export const contact = {
   title: "هل لديك سؤال أو ترغب في الانضمام إلينا؟",
   description: "راسلنا عبر أي من القنوات التالية، وسنكون سعداء بالرد عليك في أقرب وقت.",
 };
+
+// ==================== اختبارات التسريع الأكاديمي ====================
+// ملاحظة: البيانات أدناه (التواريخ، المقررات، الأماكن) بيانات تجريبية Placeholder مؤقتة
+// لإصلاح خطأ البناء على Vercel. يُرجى استبدالها بالبيانات الفعلية للجدول عند توفرها.
+
+export type AccelerationExamSection = {
+  description: string;
+  fileUrl?: string;
+  fileLabel?: string;
+  note: string;
+};
+
+export type AccelerationExamSubject = {
+  code: string;
+  nameAr: string;
+};
+
+export type AccelerationExamSession = {
+  day: string;
+  dateGregorian: string;
+  dateHijri: string;
+  subjects: AccelerationExamSubject[];
+  location: string;
+  time: string;
+};
+
+export const accelerationExamSection: AccelerationExamSection = {
+  description:
+    "الجدول التالي يوضّح مواعيد اختبارات التسريع الأكاديمي (بيانات تجريبية مبدئية، سيتم تحديثها بالمواعيد الرسمية فور اعتمادها).",
+  fileUrl: "",
+  fileLabel: "تحميل دليل مقررات التسريع الأكاديمي (PDF)",
+  note: "المواعيد أعلاه أولية وقابلة للتغيير، يُرجى متابعة القنوات الرسمية للجامعة والتأكد من آخر التحديثات قبل موعد الاختبار.",
+};
+
+export const accelerationExamSchedule: AccelerationExamSession[] = [
+  {
+    day: "الأحد",
+    dateGregorian: "٠١ / ٠٢ / ٢٠٢٦",
+    dateHijri: "١٤ / ٠٨ / ١٤٤٧هـ",
+    subjects: [
+      { code: "MATH 101", nameAr: "حساب التفاضل والتكامل (1)" },
+      { code: "CS 111", nameAr: "مقدمة في البرمجة" },
+    ],
+    location: "مبنى الاختبارات المركزي - القاعة A",
+    time: "9:00 صباحًا",
+  },
+  {
+    day: "الثلاثاء",
+    dateGregorian: "٠٣ / ٠٢ / ٢٠٢٦",
+    dateHijri: "١٦ / ٠٨ / ١٤٤٧هـ",
+    subjects: [
+      { code: "ENG 101", nameAr: "مهارات اللغة الإنجليزية (1)" },
+      { code: "IT 100", nameAr: "مقدمة في تقنية المعلومات" },
+    ],
+    location: "مبنى الاختبارات المركزي - القاعة B",
+    time: "11:00 صباحًا",
+  },
+  {
+    day: "الخميس",
+    dateGregorian: "٠٥ / ٠٢ / ٢٠٢٦",
+    dateHijri: "١٨ / ٠٨ / ١٤٤٧هـ",
+    subjects: [
+      { code: "MATH 103", nameAr: "الجبر الخطي" },
+      { code: "CS 112", nameAr: "هياكل البيانات" },
+    ],
+    location: "مبنى الاختبارات المركزي - القاعة C",
+    time: "9:00 صباحًا",
+  },
+];
