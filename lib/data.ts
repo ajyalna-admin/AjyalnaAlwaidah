@@ -508,6 +508,7 @@ export type LeadershipMember = {
   name: string;
   role: string;
   linkedin?: string;
+  quote?: string;
 };
 
 export type CommitteeEntry = {
@@ -535,6 +536,8 @@ export const leadership: LeadershipMember[] = [
     name: "رِناد المحيسني",
     role: "قائدة المبادرة",
     linkedin: "https://www.linkedin.com/search/results/all/?keywords=Renad%20Almuhaysini",
+    quote:
+      "إلى الجيل الجديد الواعد، اتمنى أن تعيشوا هذه السنوات بكل ما فيها، أن تجرّبوا أكثر، وتتعلّموا أكثر، وتتركوا في كل خطوة أثرًا يشبهكم. فخذوا من هذه المرحلة ما تستطيعون، واتركوا فيها ما يستحق أن يبقى. نحن بدأنا من هنا، وحان دوركم لتكملوا ما بدأناه وتتجاوزوا ما وصلنا إليه.",
   },
   {
     name: "لينا الشريف",
