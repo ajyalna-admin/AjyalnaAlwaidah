@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { BookOpen, ChevronDown, Info, Clock, Link2, Check, FileDown } from "lucide-react";
 import { SectionHeading } from "@/components/SectionHeading";
 import { AccelerationExamTable } from "@/components/AccelerationExamTable";
+import { MajorsOverview } from "@/components/MajorsOverview";
 import { resourcesSection, topics } from "@/lib/data";
 
 export function Resources() {
@@ -147,6 +148,7 @@ export function Resources() {
                             {t.slug === "partial-acceleration" && (
                               <AccelerationExamTable />
                             )}
+                            {t.slug === "intro-majors" && <MajorsOverview />}
                           </>
                         ) : (
                           <div className="flex items-center gap-2.5 mt-5 text-sm text-muted">
