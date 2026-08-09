@@ -1689,6 +1689,22 @@ export const majorsCourses: MajorCourses[] = [
           { slug: "iote-481", code: "IOTE 481", nameAr: "مشروع التخرج (2)", name: "Graduation Project (2)", hours: 3, level: "المستوى الثامن", prerequisite: "IOTE 480" },
         ],
       },
+      {
+        level: "مقررات اختيارية",
+        courses: [
+          { slug: "iote-315", code: "IOTE 315", nameAr: "موضوعات مختارة في إنترنت الأشياء", name: "Selected Topics in IoT", hours: 3, level: "اختياري", prerequisite: "IOTE 200" },
+          { slug: "iote-416", code: "IOTE 416", nameAr: "الحوسبة المتنقلة", name: "Mobile Computing", hours: 3, level: "اختياري", prerequisite: "IOTE 313" },
+          { slug: "iote-421", code: "IOTE 421", nameAr: "تصميم شبكات إنترنت الأشياء", name: "IoT Networks Design", hours: 3, level: "اختياري", prerequisite: "IOTE 200" },
+          { slug: "iot-it434", code: "IT 434", nameAr: "الشبكات الضوئية", name: "Optical Networks", hours: 3, level: "اختياري", prerequisite: "IT 221" },
+          { slug: "iot-cy302", code: "CY 302", nameAr: "إدارة أمن المعلومات", name: "Information Security Management", hours: 3, level: "اختياري", prerequisite: "لا يوجد" },
+          { slug: "iot-cy322", code: "CY 322", nameAr: "القياسات الحيوية والأمن", name: "Biometrics and Security", hours: 3, level: "اختياري", prerequisite: "لا يوجد" },
+          { slug: "iot-cy431", code: "CY 431", nameAr: "أمن الأنظمة المتنقلة واللاسلكية", name: "Mobile and Wireless Systems Security", hours: 3, level: "اختياري", prerequisite: "لا يوجد" },
+          { slug: "iote-432", code: "IOTE 432", nameAr: "أنظمة الوقت الحقيقي", name: "Real-Time Systems", hours: 3, level: "اختياري", prerequisite: "CS 340" },
+          { slug: "iote-453", code: "IOTE 453", nameAr: "مقدمة في نظرية المعلومات والتشفير", name: "Introduction to Information Theory and Coding", hours: 3, level: "اختياري", prerequisite: "IOTE 351" },
+          { slug: "iote-442", code: "IOTE 442", nameAr: "مقدمة في الدوائر الرقمية المتكاملة عالية المدى لإنترنت الأشياء", name: "Introduction to Digital VLSI for IoT", hours: 3, level: "اختياري", prerequisite: "IOTE 241" },
+          { slug: "iote-443", code: "IOTE 443", nameAr: "مقدمة إلى الإلكترونيات النانوية لإنترنت الأشياء", name: "Introduction to Nano-Electronics for IoT", hours: 3, level: "اختياري", prerequisite: "IOTE 241" },
+        ],
+      },
     ],
   },
 ];
@@ -1881,3 +1897,4 @@ export const accelerationExamSchedule: AccelerationExamSession[] = [
     time: "9:00 صباحًا",
   },
 ];
+
