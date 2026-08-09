@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { BookOpen, ChevronDown, Info, Clock, Link2, Check } from "lucide-react";
+import { BookOpen, ChevronDown, Info, Clock, Link2, Check, FileDown } from "lucide-react";
 import { SectionHeading } from "@/components/SectionHeading";
 import { AccelerationExamTable } from "@/components/AccelerationExamTable";
 import { resourcesSection, topics } from "@/lib/data";
@@ -133,6 +133,17 @@ export function Resources() {
                             <p className="whitespace-pre-line text-sm leading-relaxed text-navy/85 mt-5">
                               {t.content}
                             </p>
+                            {t.fileUrl && (
+                              <a
+                                href={t.fileUrl}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="mt-5 flex items-center justify-center gap-2 rounded-xl bg-navy px-4 py-3 text-sm font-bold text-white transition-opacity hover:opacity-90"
+                              >
+                                <FileDown className="h-4 w-4" />
+                                {t.fileLabel ?? "تحميل الملف"}
+                              </a>
+                            )}
                             {t.slug === "partial-acceleration" && (
                               <AccelerationExamTable />
                             )}
