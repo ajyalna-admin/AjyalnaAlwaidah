@@ -625,6 +625,7 @@ export type LeadershipMember = {
   name: string;
   role: string;
   linkedin?: string;
+  quote?: string;
 };
 
 export type CommitteeEntry = {
