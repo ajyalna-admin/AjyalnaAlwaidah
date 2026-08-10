@@ -6,8 +6,6 @@ import { BookOpen, ChevronDown, Info, Clock, Link2, Check, FileDown } from "luci
 import { SectionHeading } from "@/components/SectionHeading";
 import { AccelerationExamTable } from "@/components/AccelerationExamTable";
 import { MajorsOverview } from "@/components/MajorsOverview";
-import { NotificationOptIn } from "@/components/NotificationOptIn";
-import { EmailSubscribe } from "@/components/EmailSubscribe";
 import { resourcesSection, topics } from "@/lib/data";
 
 export function Resources() {
@@ -50,15 +48,9 @@ export function Resources() {
           description={resourcesSection.description}
         />
 
-        <div className="flex flex-wrap items-center justify-between gap-4 mb-10">
-          <div className="flex items-start gap-2.5 max-w-xl text-sm text-muted glass-chip rounded-xl p-4">
-            <Info className="h-4 w-4 shrink-0 mt-0.5 text-sky-deep" />
-            <p>{resourcesSection.note}</p>
-          </div>
-          <div className="flex flex-wrap items-center gap-3">
-            <NotificationOptIn />
-            <EmailSubscribe />
-          </div>
+        <div className="flex items-start gap-2.5 mb-10 max-w-xl text-sm text-muted glass-chip rounded-xl p-4">
+          <Info className="h-4 w-4 shrink-0 mt-0.5 text-sky-deep" />
+          <p>{resourcesSection.note}</p>
         </div>
 
         <div className="grid gap-4">
