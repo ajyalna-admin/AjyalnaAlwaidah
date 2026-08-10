@@ -2,32 +2,56 @@
 
 import { useState } from "react";
 
-// صفحة داخلية بسيطة لإرسال تنبيه للمشتركين — لا تُربط من القائمة الرئيسية،
-// يُفضّل حفظ رابطها خاصًا (مثلًا: yoursite.com/send-notification)
+// صفحة داخلية بسيطة لإرسال تنبيه + بريد للمشتركين — لا تُربط من القائمة الرئيسية
 
 export default function SendNotificationPage() {
   const [adminSecret, setAdminSecret] = useState("");
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
   const [url, setUrl] = useState("/");
+  const [sendPush, setSendPush] = useState(true);
+  const [sendEmail, setSendEmail] = useState(true);
   const [status, setStatus] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
 
   const handleSend = async () => {
     setLoading(true);
     setStatus(null);
+    const results: string[] = [];
+
     try {
-      const res = await fetch("/api/push/send", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ adminSecret, title, body, url }),
-      });
-      const data = await res.json();
-      if (!res.ok) {
-        setStatus(`خطأ: ${data.error || "فشل الإرسال"}`);
-      } else {
-        setStatus(`تم الإرسال ✅ — نجح: ${data.sent} / فشل: ${data.failed} من أصل ${data.total}`);
+      if (sendPush) {
+        const res = await fetch("/api/push/send", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ adminSecret, title, body, url }),
+        });
+        const data = await res.json();
+        results.push(
+          res.ok
+            ? `تنبيهات: نجح ${data.sent} / فشل ${data.failed} من ${data.total}`
+            : `تنبيهات: خطأ — ${data.error}`
+        );
       }
+
+      if (sendEmail) {
+        const fullUrl = url?.startsWith("http")
+          ? url
+          : `${window.location.origin}${url || "/"}`;
+        const res = await fetch("/api/email/send", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ adminSecret, subject: title, body, url: fullUrl }),
+        });
+        const data = await res.json();
+        results.push(
+          res.ok
+            ? `بريد إلكتروني: نجح ${data.sent} / فشل ${data.failed} من ${data.total}`
+            : `بريد إلكتروني: خطأ — ${data.error}`
+        );
+      }
+
+      setStatus(results.join("  •  "));
     } catch {
       setStatus("خطأ بالاتصال");
     } finally {
@@ -54,7 +78,7 @@ export default function SendNotificationPage() {
 
         <div>
           <label className="mb-1 block text-sm font-medium text-navy">
-            عنوان التنبيه
+            عنوان التنبيه / موضوع البريد
           </label>
           <input
             type="text"
@@ -67,7 +91,7 @@ export default function SendNotificationPage() {
 
         <div>
           <label className="mb-1 block text-sm font-medium text-navy">
-            نص التنبيه
+            النص
           </label>
           <textarea
             value={body}
@@ -91,9 +115,28 @@ export default function SendNotificationPage() {
           />
         </div>
 
+        <div className="flex gap-4">
+          <label className="flex items-center gap-2 text-sm text-navy">
+            <input
+              type="checkbox"
+              checked={sendPush}
+              onChange={(e) => setSendPush(e.target.checked)}
+            />
+            إرسال تنبيه متصفح
+          </label>
+          <label className="flex items-center gap-2 text-sm text-navy">
+            <input
+              type="checkbox"
+              checked={sendEmail}
+              onChange={(e) => setSendEmail(e.target.checked)}
+            />
+            إرسال بريد إلكتروني
+          </label>
+        </div>
+
         <button
           onClick={handleSend}
-          disabled={loading || !adminSecret || !title || !body}
+          disabled={loading || !adminSecret || !title || !body || (!sendPush && !sendEmail)}
           className="w-full rounded-xl bg-navy px-4 py-3 text-sm font-bold text-white disabled:opacity-50"
         >
           {loading ? "جارٍ الإرسال..." : "إرسال للجميع"}
