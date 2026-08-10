@@ -2,11 +2,12 @@
 
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { BookOpen, ChevronDown, Info, Clock, Link2, Check, FileDown } from "lucide-react";
+import { BookOpen, ChevronDown, Info, Clock, Link2, Check, FileDown, ExternalLink } from "lucide-react";
 import { SectionHeading } from "@/components/SectionHeading";
 import { AccelerationExamTable } from "@/components/AccelerationExamTable";
 import { MajorsOverview } from "@/components/MajorsOverview";
 import { resourcesSection, topics } from "@/lib/data";
+import { LinkedText } from "@/components/LinkedText";
 
 export function Resources() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
@@ -132,7 +133,7 @@ export function Resources() {
                         {hasContent ? (
                           <>
                             <p className="whitespace-pre-line text-sm leading-relaxed text-navy/85 mt-5">
-                              {t.content}
+                              <LinkedText text={t.content ?? ""} />
                             </p>
                             {t.fileUrl && (
                               <a
@@ -144,6 +145,22 @@ export function Resources() {
                                 <FileDown className="h-4 w-4" />
                                 {t.fileLabel ?? "تحميل الملف"}
                               </a>
+                            )}
+                            {t.links && t.links.length > 0 && (
+                              <div className="mt-5 grid gap-2.5 sm:grid-cols-2">
+                                {t.links.map((link) => (
+                                  <a
+                                    key={link.url}
+                                    href={link.url}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="flex items-center gap-2 rounded-xl glass-chip px-4 py-3 text-xs font-bold text-navy transition-colors hover:bg-sky/15"
+                                  >
+                                    <ExternalLink className="h-3.5 w-3.5 shrink-0 text-sky-deep" />
+                                    <span>{link.label}</span>
+                                  </a>
+                                ))}
+                              </div>
                             )}
                             {t.slug === "partial-acceleration" && (
                               <AccelerationExamTable />
