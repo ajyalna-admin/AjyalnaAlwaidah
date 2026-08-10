@@ -1,3 +1,4 @@
+import { MessageCircle, ExternalLink } from "lucide-react";
 import { accelerationExamSection, accelerationExamSchedule } from "@/lib/data";
 
 // جدول مواعيد اختبارات التسريع الأكاديمي — يستخدم نفس عناصر تصميم الموقع
@@ -12,6 +13,33 @@ export function AccelerationExamTable() {
         <span className="mt-0.5 h-1.5 w-1.5 shrink-0 rounded-full bg-sky-deep" />
         <p>{accelerationExamSection.description}</p>
       </div>
+
+      {(accelerationExamSection.platformUrl || accelerationExamSection.whatsappUrl) && (
+        <div className="mb-5 grid gap-3 sm:grid-cols-2">
+          {accelerationExamSection.platformUrl && (
+            <a
+              href={accelerationExamSection.platformUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center justify-center gap-2 rounded-xl bg-navy px-4 py-3.5 text-center text-sm font-bold text-white transition-opacity hover:opacity-90"
+            >
+              <ExternalLink className="h-4 w-4 shrink-0" />
+              {accelerationExamSection.platformLabel}
+            </a>
+          )}
+          {accelerationExamSection.whatsappUrl && (
+            <a
+              href={accelerationExamSection.whatsappUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center justify-center gap-2 rounded-xl bg-[#25D366] px-4 py-3.5 text-center text-sm font-bold text-white transition-opacity hover:opacity-90"
+            >
+              <MessageCircle className="h-4 w-4 shrink-0" />
+              {accelerationExamSection.whatsappLabel}
+            </a>
+          )}
+        </div>
+      )}
 
       {/* عرض الجدول — شاشات متوسطة وأكبر */}
       <div className="hidden overflow-hidden rounded-2xl glass-card md:block">
