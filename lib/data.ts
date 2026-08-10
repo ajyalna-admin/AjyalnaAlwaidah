@@ -145,6 +145,11 @@ export const journeyStages: JourneyStage[] = [
 
 // ==================== موضوعات الإرشاد ====================
 
+export type TopicLink = {
+  label: string;
+  url: string;
+};
+
 export type Topic = {
   slug: string;
   title: string;
@@ -152,6 +157,7 @@ export type Topic = {
   fileUrl?: string;
   fileLabel?: string;
   isNew?: boolean;
+  links?: TopicLink[];
 };
 
 export const resourcesSection = {
@@ -525,7 +531,7 @@ export const topics: Topic[] = [
 - ألا يكون قد سبق فصلها نهائيًا من السكن.
 - القبول يتم حسب توفر الأماكن الشاغرة ووفق معايير المفاضلة.
 - توقيع إقرار خطي بالالتزام بأنظمة الجامعة وتعليماتها، وإحضار المستندات المطلوبة.
-- فتح ملف طبي في مستشفى الملك عبدالله الجامعي عبر الرابط: https://www.kaauh.edu.sa/patientReg/Regestration_form.aspx (وفي حال واجهتكِ صعوبة، تواصلي مع قسم التسجيل: 0118203344)
+- فتح ملف طبي في مستشفى الملك عبدالله الجامعي (رابط التسجيل بالأسفل ضمن الروابط)، وفي حال واجهتكِ صعوبة تواصلي مع قسم التسجيل: 0118203344
 - إشعار القبول في بوابة القبول الموحد يُغني عن البطاقة الجامعية.
 
 موقع السكن:
@@ -548,7 +554,7 @@ export const topics: Topic[] = [
 لا يُسمح بالخروج والدخول إلى السكن بعد الساعة 12 بعد منتصف الليل سواءً بأيام الأسبوع أو إجازة نهاية الأسبوع (قد يتغير الوقت). وفي حال التأخير، توقّع الطالبة على مخالفة تحذيرية، وبعد ثالث تحذير تُمنع من الخروج لمدة أسبوعين.
 
 التقديم على السكن:
-يبدأ استقبال طلبات السكن الجامعي لعام 1448هـ من يوم الأربعاء 29 صفر 1448هـ الموافق 12 أغسطس 2026م، وحتى يوم الخميس 30 صفر 1448هـ الموافق 13 أغسطس 2026م، عبر الرابط: https://xess.pnu.edu.sa/StudentSelfService
+يبدأ استقبال طلبات السكن الجامعي لعام 1448هـ من يوم الأربعاء 29 صفر 1448هـ الموافق 12 أغسطس 2026م، وحتى يوم الخميس 30 صفر 1448هـ الموافق 13 أغسطس 2026م (رابط التقديم بالأسفل ضمن الروابط).
 
 المستندات المطلوبة للتقديم:
 - تعبئة الطلب عبر خدمة (طلب السكن) إلكترونيًا عن طريق البانر.
@@ -560,8 +566,6 @@ export const topics: Topic[] = [
 - مشهد ضمان (تابع) حديث.
 - شهادات موهبة أو الجوائز والإنجازات المعتمدة الحاصلة عليها الطالبة خلال آخر ثلاث سنوات (إن وجدت).
 
-رابط رفع المستندات المطلوبة: https://app.pnu.edu.sa/UploadDH/Login.aspx
-
 مواعيد إرسال رسائل المقابلات: يوم الأحد 3 ربيع الأول 1448هـ
 ملاحظة: سيتم إرسال بريد إلكتروني للطالبات المقبولات قبولًا مبدئيًا فقط بموعد وموقع المقابلة الشخصية، ولا يعد قبولًا نهائيًا.
 
@@ -571,12 +575,15 @@ export const topics: Topic[] = [
 
 تنويه: يُحدّد موعد الفحص الطبي مع موعد المقابلة الشخصية.
 
-نماذج لبعض المرفقات: https://drive.google.com/drive/folders/1lTngm3Q01W2_VEMtvhDCVWNBlxofzFpK
-
-لائحة السكن الجامعي: https://pnu.edu.sa/ar/Deanship/studaffairs/Lists/Guidelines/Attachments/6/لائحة%20اسكان%20الطالبات.pdf
-
-نموذج إثبات السكن: عمدة المدينة هو الشخص المسؤول عن إدارة شؤون المدينة على المستوى البلدي، وهو رئيس البلدية أو الحاكم الإداري للمدينة، ويكون مقر عمله في مركز الشرطة التابع لها.
-رابط النموذج: https://drive.google.com/file/d/10GiX6dbBrC7ylAWu4sH_ApT3rXgAUFKM/view?usp=sharing`,
+نموذج إثبات السكن: عمدة المدينة هو الشخص المسؤول عن إدارة شؤون المدينة على المستوى البلدي، وهو رئيس البلدية أو الحاكم الإداري للمدينة، ويكون مقر عمله في مركز الشرطة التابع لها.`,
+    links: [
+      { label: "التقديم على السكن الجامعي", url: "https://xess.pnu.edu.sa/StudentSelfService" },
+      { label: "رفع المستندات المطلوبة", url: "https://app.pnu.edu.sa/UploadDH/Login.aspx" },
+      { label: "فتح ملف طبي (مستشفى الملك عبدالله الجامعي)", url: "https://www.kaauh.edu.sa/patientReg/Regestration_form.aspx" },
+      { label: "نماذج لبعض المرفقات (Drive)", url: "https://drive.google.com/drive/folders/1lTngm3Q01W2_VEMtvhDCVWNBlxofzFpK" },
+      { label: "لائحة السكن الجامعي (PDF)", url: "https://pnu.edu.sa/ar/Deanship/studaffairs/Lists/Guidelines/Attachments/6/%D9%84%D8%A7%D8%A6%D8%AD%D8%A9%20%D8%A7%D8%B3%D9%83%D8%A7%D9%86%20%D8%A7%D9%84%D8%B7%D8%A7%D9%84%D8%A8%D8%A7%D8%AA.pdf" },
+      { label: "نموذج إثبات السكن", url: "https://drive.google.com/file/d/10GiX6dbBrC7ylAWu4sH_ApT3rXgAUFKM/view?usp=sharing" },
+    ],
   },
   { slug: "university-buses", title: "الحافلات الجامعية" },
   { slug: "university-services", title: "خدمات تقدمها الجامعة" },
