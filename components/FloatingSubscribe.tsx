@@ -9,7 +9,7 @@ export function FloatingSubscribe() {
   const [open, setOpen] = useState(false);
 
   return (
-    <div className="fixed bottom-6 left-6 z-40 flex flex-col items-start gap-3">
+    <div className="fixed bottom-6 right-6 z-40 flex flex-col items-start gap-3">
       {open && (
         <div className="w-72 max-w-[calc(100vw-3rem)] rounded-2xl glass-card p-4 shadow-lg">
           <p className="mb-3 text-xs font-bold text-navy">
