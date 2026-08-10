@@ -774,7 +774,7 @@ export const topics: Topic[] = [
 
 للاستفادة من الخصم يُشترط تقديم ما يثبت الانتماء للجامعة قبل توقيع العقد.
 
-للاستفسارات عن سكن Lavuren، التواصل عبر الرقم: 966114504458+`,
+للاستفسارات عن سكن Lavuren، رقم التواصل متوفر بالأسفل ضمن الروابط.`,
     links: [
       { label: "التقديم على السكن الجامعي", url: "https://xess.pnu.edu.sa/StudentSelfService" },
       { label: "رفع المستندات المطلوبة", url: "https://app.pnu.edu.sa/UploadDH/Login.aspx" },
@@ -783,6 +783,7 @@ export const topics: Topic[] = [
       { label: "لائحة السكن الجامعي (PDF)", url: "https://pnu.edu.sa/ar/Deanship/studaffairs/Lists/Guidelines/Attachments/6/%D9%84%D8%A7%D8%A6%D8%AD%D8%A9%20%D8%A7%D8%B3%D9%83%D8%A7%D9%86%20%D8%A7%D9%84%D8%B7%D8%A7%D9%84%D8%A8%D8%A7%D8%AA.pdf" },
       { label: "نموذج إثبات السكن", url: "https://drive.google.com/file/d/10GiX6dbBrC7ylAWu4sH_ApT3rXgAUFKM/view?usp=sharing" },
       { label: "موقع سكن Lavuren على الخريطة", url: "https://maps.app.goo.gl/Ta5pTZpXRfQ7WcuG9?g_st=iw" },
+      { label: "الاتصال بسكن Lavuren", url: "tel:+966114504458" },
     ],
   },
   { slug: "smart-bag", title: "الحقيبة الذكية" },
@@ -2447,3 +2448,5 @@ export const majorsOverview: MajorOverview[] = [
     ],
   },
 ];
+
+           
