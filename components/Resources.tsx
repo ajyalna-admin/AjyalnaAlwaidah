@@ -6,6 +6,7 @@ import { BookOpen, ChevronDown, Info, Clock, Link2, Check, FileDown, ExternalLin
 import { SectionHeading } from "@/components/SectionHeading";
 import { AccelerationExamTable } from "@/components/AccelerationExamTable";
 import { MajorsOverview } from "@/components/MajorsOverview";
+import { EnglishExemptionTables } from "@/components/EnglishExemptionTables";
 import { resourcesSection, topics } from "@/lib/data";
 import { LinkedText } from "@/components/LinkedText";
 
@@ -166,6 +167,9 @@ export function Resources() {
                               <AccelerationExamTable />
                             )}
                             {t.slug === "intro-majors" && <MajorsOverview />}
+                            {t.slug === "placement-test-courses" && (
+                              <EnglishExemptionTables />
+                            )}
                           </>
                         ) : (
                           <div className="flex items-center gap-2.5 mt-5 text-sm text-muted">
