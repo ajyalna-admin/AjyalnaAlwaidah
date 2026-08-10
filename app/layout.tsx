@@ -3,6 +3,7 @@ import { IBM_Plex_Sans_Arabic } from "next/font/google";
 import "./globals.css";
 import { brand } from "@/lib/data";
 import { FloatingSubscribe } from "@/components/FloatingSubscribe";
+import { WelcomeConfetti } from "@/components/WelcomeConfetti";
 
 const ibmPlexArabic = IBM_Plex_Sans_Arabic({
   subsets: ["arabic"],
@@ -36,6 +37,7 @@ export default function RootLayout({
         </div>
         {children}
         <FloatingSubscribe />
+        <WelcomeConfetti />
       </body>
     </html>
   );
