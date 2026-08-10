@@ -7,6 +7,7 @@ import { SectionHeading } from "@/components/SectionHeading";
 import { AccelerationExamTable } from "@/components/AccelerationExamTable";
 import { MajorsOverview } from "@/components/MajorsOverview";
 import { NotificationOptIn } from "@/components/NotificationOptIn";
+import { EmailSubscribe } from "@/components/EmailSubscribe";
 import { resourcesSection, topics } from "@/lib/data";
 
 export function Resources() {
@@ -54,7 +55,10 @@ export function Resources() {
             <Info className="h-4 w-4 shrink-0 mt-0.5 text-sky-deep" />
             <p>{resourcesSection.note}</p>
           </div>
-          <NotificationOptIn />
+          <div className="flex flex-wrap items-center gap-3">
+            <NotificationOptIn />
+            <EmailSubscribe />
+          </div>
         </div>
 
         <div className="grid gap-4">
