@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Bell, X, Sparkles } from "lucide-react";
+import { Sparkles, X } from "lucide-react";
 import { NotificationOptIn } from "@/components/NotificationOptIn";
 import { EmailSubscribe } from "@/components/EmailSubscribe";
 
@@ -20,9 +20,9 @@ export function FloatingSubscribe() {
             <div className="flex items-start gap-2.5">
               <Sparkles className="h-4 w-4 shrink-0 mt-0.5 text-sky-deep" />
               <div>
-                <p className="text-xs font-bold text-navy">تنبيهات المحتوى الجديد قريبًا</p>
+                <p className="text-xs font-bold text-navy">شي جديد بالطريق... ✨</p>
                 <p className="mt-1 text-[11px] text-muted">
-                  ترقّبي هذي الخاصية، بتوصلك بأول جديد يُضاف للموقع أول بأول.
+                  ترقّبي إعلاننا القريب، بتحبين هالخاصية.
                 </p>
               </div>
             </div>
@@ -43,10 +43,16 @@ export function FloatingSubscribe() {
       <button
         type="button"
         onClick={() => setOpen((v) => !v)}
-        aria-label={open ? "إغلاق التنبيهات" : "تفعيل التنبيهات"}
-        className="flex h-12 w-12 items-center justify-center rounded-full bg-navy text-white shadow-lg transition-transform hover:scale-105"
+        aria-label={open ? "إغلاق" : "شي جديد قريبًا، اضغطي لمعرفة المزيد"}
+        className="relative flex h-12 w-12 items-center justify-center rounded-full bg-navy text-white shadow-lg transition-transform hover:scale-105"
       >
-        {open ? <X className="h-5 w-5" /> : <Bell className="h-5 w-5" />}
+        {COMING_SOON && !open && (
+          <>
+            <span className="absolute inset-0 rounded-full bg-sky-deep/60 animate-ping" />
+            <span className="absolute -top-0.5 -left-0.5 h-3 w-3 rounded-full bg-sky-deep ring-2 ring-cream" />
+          </>
+        )}
+        {open ? <X className="h-5 w-5" /> : <Sparkles className="h-5 w-5" />}
       </button>
     </div>
   );
