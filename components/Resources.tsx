@@ -58,7 +58,7 @@ export function Resources() {
         <div className="grid gap-4">
           {topics.map((t, i) => {
             const isOpen = openIndex === i;
-            const hasContent = Boolean(t.content);
+            const hasContent = Boolean(t.content) || Boolean(t.sections && t.sections.length > 0);
             const isCopied = copiedSlug === t.slug;
             const num = String(i + 1).padStart(2, "0");
             return (
@@ -133,9 +133,47 @@ export function Resources() {
                       <div className="px-6 pb-7 pt-1 border-t border-white/40">
                         {hasContent ? (
                           <>
-                            <p className="whitespace-pre-line text-sm leading-relaxed text-navy/85 mt-5">
-                              <LinkedText text={t.content ?? ""} />
-                            </p>
+                            {t.content && (
+                              <p className="whitespace-pre-line text-sm leading-relaxed text-navy/85 mt-5">
+                                <LinkedText text={t.content} />
+                              </p>
+                            )}
+                            {t.sections && t.sections.length > 0 && (
+                              <div className="mt-5 space-y-6">
+                                {t.sections.map((section, si) => (
+                                  <div
+                                    key={section.title}
+                                    className={si > 0 ? "border-t border-dashed border-sky-deep/25 pt-6" : ""}
+                                  >
+                                    <h4 className="mb-3 flex items-center gap-2.5 font-display text-sm font-bold text-navy">
+                                      <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-navy text-[11px] font-bold text-white">
+                                        {si + 1}
+                                      </span>
+                                      {section.title}
+                                    </h4>
+                                    <p className="whitespace-pre-line text-sm leading-relaxed text-navy/85">
+                                      <LinkedText text={section.content} />
+                                    </p>
+                                    {section.links && section.links.length > 0 && (
+                                      <div className="mt-4 grid gap-2.5 sm:grid-cols-2">
+                                        {section.links.map((link) => (
+                                          <a
+                                            key={link.url}
+                                            href={link.url}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="flex items-center gap-2 rounded-xl glass-chip px-4 py-3 text-xs font-bold text-navy transition-colors hover:bg-sky/15"
+                                          >
+                                            <ExternalLink className="h-3.5 w-3.5 shrink-0 text-sky-deep" />
+                                            <span>{link.label}</span>
+                                          </a>
+                                        ))}
+                                      </div>
+                                    )}
+                                  </div>
+                                ))}
+                              </div>
+                            )}
                             {t.fileUrl && (
                               <a
                                 href={t.fileUrl}
