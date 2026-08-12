@@ -8,6 +8,7 @@ import { AccelerationExamTable } from "@/components/AccelerationExamTable";
 import { MajorsOverview } from "@/components/MajorsOverview";
 import { EnglishExemptionTables } from "@/components/EnglishExemptionTables";
 import { LoginCredentials } from "@/components/LoginCredentials";
+import { BlackboardNavList } from "@/components/BlackboardNavList";
 import { resourcesSection, topics } from "@/lib/data";
 import { LinkedText } from "@/components/LinkedText";
 
@@ -210,6 +211,7 @@ export function Resources() {
                               <EnglishExemptionTables />
                             )}
                             {t.slug === "banner-system" && <LoginCredentials />}
+                            {t.slug === "blackboard-system" && <BlackboardNavList />}
                           </>
                         ) : (
                           <div className="flex items-center gap-2.5 mt-5 text-sm text-muted">
