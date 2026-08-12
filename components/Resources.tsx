@@ -7,6 +7,7 @@ import { SectionHeading } from "@/components/SectionHeading";
 import { AccelerationExamTable } from "@/components/AccelerationExamTable";
 import { MajorsOverview } from "@/components/MajorsOverview";
 import { EnglishExemptionTables } from "@/components/EnglishExemptionTables";
+import { LoginCredentials } from "@/components/LoginCredentials";
 import { resourcesSection, topics } from "@/lib/data";
 import { LinkedText } from "@/components/LinkedText";
 
@@ -208,6 +209,7 @@ export function Resources() {
                             {t.slug === "placement-test-courses" && (
                               <EnglishExemptionTables />
                             )}
+                            {t.slug === "banner-system" && <LoginCredentials />}
                           </>
                         ) : (
                           <div className="flex items-center gap-2.5 mt-5 text-sm text-muted">
