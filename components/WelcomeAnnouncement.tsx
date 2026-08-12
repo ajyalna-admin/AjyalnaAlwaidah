@@ -103,33 +103,18 @@ export function WelcomeAnnouncement() {
 
       <AnimatePresence>
         {!dismissed && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 z-50 flex items-center justify-center bg-navy/50 backdrop-blur-sm p-4"
-          >
+          <>
+            {/* شريط إشعار منفصل أعلى الصفحة يحمل التعريف بيوم الحبور */}
             <motion.div
-              initial={{ opacity: 0, y: 30, scale: 0.96 }}
-              animate={{ opacity: 1, y: 0, scale: 1 }}
-              exit={{ opacity: 0, y: 20, scale: 0.96 }}
+              initial={{ y: -60, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              exit={{ y: -60, opacity: 0 }}
               transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-              className="relative w-full max-w-[340px] overflow-hidden rounded-3xl bg-cream shadow-2xl"
+              className="fixed inset-x-0 top-0 z-50 mx-auto max-w-md px-4 pt-4"
             >
-              <button
-                type="button"
-                onClick={handleDismiss}
-                aria-label="إغلاق الإعلان"
-                className="absolute top-3 left-3 z-10 flex h-8 w-8 items-center justify-center rounded-full bg-white/90 text-navy shadow-md transition-colors hover:bg-white"
-              >
-                <X className="h-4 w-4" />
-              </button>
-
-              <div className="px-5 pb-4 pt-6 text-center">
-                <p className="font-display text-sm font-bold text-navy">
-                  يوم الحبور
-                </p>
-                <p className="mt-2 text-xs leading-relaxed text-navy/75">
+              <div className="rounded-2xl glass-card px-5 py-3.5 text-center shadow-lg">
+                <p className="font-display text-sm font-bold text-navy">يوم الحبور 🎈</p>
+                <p className="mt-1.5 text-[11px] leading-relaxed text-navy/75">
                   يومنا اللي نخفف فيه من جدية الجامعة شوي، ونعطي المستجدات فرصة
                   يتعرفون على بعض بعيدًا عن المواضيع الجامعية. وقت نقضيه ما بين
                   مسابقات، فيها منافسة وضحك وتعارف، والأهم نصنع مع بعض ذكرى
@@ -137,21 +122,47 @@ export function WelcomeAnnouncement() {
                   نحتفل فيه بالبدايات بطريقتنا.
                 </p>
               </div>
-
-              <Image
-                src="/hubour-day-poster.jpg"
-                alt="في طريقه إليكم — يوم الحبور، موعد الوصول الأربعاء 12 أغسطس"
-                width={900}
-                height={1313}
-                className="h-auto w-full"
-                priority
-              />
             </motion.div>
-          </motion.div>
+
+            {/* نافذة البوستر المنبثقة، مستقلة تمامًا عن الشريط أعلاه */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="fixed inset-0 z-40 flex items-center justify-center bg-navy/50 backdrop-blur-sm p-4"
+            >
+              <motion.div
+                initial={{ opacity: 0, y: 30, scale: 0.96 }}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
+                exit={{ opacity: 0, y: 20, scale: 0.96 }}
+                transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+                className="relative w-full max-w-[340px] overflow-hidden rounded-3xl shadow-2xl"
+              >
+                <button
+                  type="button"
+                  onClick={handleDismiss}
+                  aria-label="إغلاق الإعلان"
+                  className="absolute top-3 left-3 z-10 flex h-8 w-8 items-center justify-center rounded-full bg-white/90 text-navy shadow-md transition-colors hover:bg-white"
+                >
+                  <X className="h-4 w-4" />
+                </button>
+
+                <Image
+                  src="/hubour-day-poster.jpg"
+                  alt="في طريقه إليكم — يوم الحبور، موعد الوصول الأربعاء 12 أغسطس"
+                  width={900}
+                  height={1313}
+                  className="h-auto w-full"
+                  priority
+                />
+              </motion.div>
+            </motion.div>
+          </>
         )}
       </AnimatePresence>
     </>
   );
 }
+
 
 
