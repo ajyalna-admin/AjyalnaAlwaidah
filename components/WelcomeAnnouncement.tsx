@@ -1,19 +1,32 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { X } from "lucide-react";
 
-const DISMISS_KEY = "hubour-day-banner-dismissed-v1";
+const DISMISS_KEY = "hubour-day-banner-dismissed-v2";
 
-// شكل منطاد صغير مبسّط، يُستخدم بالبانر وبالمنطادات المتحركة بالخلفية
+// شكل منطاد صغير مبسّط، يُستخدم فقط بالمنطادات المتحركة بالخلفية
 function BalloonIcon({ className }: { className?: string }) {
   return (
-    <svg viewBox="0 0 40 56" className={className} fill="none">
-      <ellipse cx="20" cy="20" rx="18" ry="20" fill="currentColor" />
-      <path d="M14 38 L26 38 L23 48 L17 48 Z" fill="currentColor" opacity="0.85" />
-      <line x1="15" y1="37" x2="17" y2="48" stroke="currentColor" strokeWidth="0.6" opacity="0.6" />
-      <line x1="25" y1="37" x2="23" y2="48" stroke="currentColor" strokeWidth="0.6" opacity="0.6" />
+    <svg viewBox="0 0 40 64" className={className} fill="none">
+      {/* غلاف المنطاد */}
+      <path
+        d="M20 2C10 2 4 14 4 24C4 34 11 41 16 44L15 48H25L24 44C29 41 36 34 36 24C36 14 30 2 20 2Z"
+        fill="currentColor"
+      />
+      {/* خطوط الفصوص تعطي إحساس القماش المضلّع */}
+      <path d="M20 2C16 10 14 30 15 48" stroke="#16223f" strokeWidth="0.7" opacity="0.25" fill="none" />
+      <path d="M20 2C24 10 26 30 25 48" stroke="#16223f" strokeWidth="0.7" opacity="0.25" fill="none" />
+      <path d="M20 2C20 12 20 36 20 48" stroke="#16223f" strokeWidth="0.7" opacity="0.2" fill="none" />
+      {/* فوهة المنطاد */}
+      <path d="M15 48H25L23 52H17Z" fill="currentColor" opacity="0.9" />
+      {/* حبال */}
+      <line x1="17" y1="51" x2="12" y2="58" stroke="currentColor" strokeWidth="0.9" opacity="0.75" />
+      <line x1="23" y1="51" x2="28" y2="58" stroke="currentColor" strokeWidth="0.9" opacity="0.75" />
+      {/* السلة */}
+      <rect x="12" y="58" width="16" height="6" rx="1.5" fill="currentColor" opacity="0.9" />
     </svg>
   );
 }
@@ -22,7 +35,6 @@ type Balloon = {
   id: number;
   left: number;
   duration: number;
-  delay: number;
   scale: number;
   color: string;
 };
@@ -41,7 +53,6 @@ function RisingBalloons() {
         id: balloonIdCounter++,
         left: 4 + Math.random() * 92,
         duration: 14 + Math.random() * 10,
-        delay: 0,
         scale: 0.5 + Math.random() * 0.6,
         color: BALLOON_COLORS[Math.floor(Math.random() * BALLOON_COLORS.length)],
       };
@@ -93,38 +104,36 @@ export function WelcomeAnnouncement() {
       <AnimatePresence>
         {!dismissed && (
           <motion.div
-            initial={{ y: -80, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            exit={{ y: -80, opacity: 0 }}
-            transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-            className="fixed inset-x-0 top-0 z-50"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-50 flex items-center justify-center bg-navy/50 backdrop-blur-sm p-4"
           >
-            <div
-              className="relative mx-auto flex max-w-3xl items-center gap-4 rounded-b-2xl px-5 py-3.5 shadow-lg sm:px-6"
-              style={{
-                background: "linear-gradient(135deg, #dbe9ee 0%, #eef4f2 55%, #f6f2ea 100%)",
-              }}
+            <motion.div
+              initial={{ opacity: 0, y: 30, scale: 0.96 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, y: 20, scale: 0.96 }}
+              transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+              className="relative w-full max-w-[340px] overflow-hidden rounded-3xl shadow-2xl"
             >
-              <BalloonIcon className="h-10 w-10 shrink-0 text-navy" />
-
-              <div className="min-w-0 flex-1">
-                <p className="font-display text-sm font-bold text-navy sm:text-base">
-                  في طريقه إليكم — يوم الحبور 🎈
-                </p>
-                <p className="mt-0.5 text-xs text-navy/70">
-                  موعد الوصول: الأربعاء | 12 أغسطس
-                </p>
-              </div>
-
               <button
                 type="button"
                 onClick={handleDismiss}
                 aria-label="إغلاق الإعلان"
-                className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-navy/10 text-navy transition-colors hover:bg-navy/20"
+                className="absolute top-3 left-3 z-10 flex h-8 w-8 items-center justify-center rounded-full bg-white/90 text-navy shadow-md transition-colors hover:bg-white"
               >
                 <X className="h-4 w-4" />
               </button>
-            </div>
+
+              <Image
+                src="/hubour-day-poster.jpg"
+                alt="في طريقه إليكم — يوم الحبور، موعد الوصول الأربعاء 12 أغسطس"
+                width={900}
+                height={1313}
+                className="h-auto w-full"
+                priority
+              />
+            </motion.div>
           </motion.div>
         )}
       </AnimatePresence>
