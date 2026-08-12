@@ -114,7 +114,7 @@ export function WelcomeAnnouncement() {
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: 20, scale: 0.96 }}
               transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-              className="relative w-full max-w-[340px] overflow-hidden rounded-3xl shadow-2xl"
+              className="relative w-full max-w-[340px] overflow-hidden rounded-3xl bg-cream shadow-2xl"
             >
               <button
                 type="button"
@@ -124,6 +124,19 @@ export function WelcomeAnnouncement() {
               >
                 <X className="h-4 w-4" />
               </button>
+
+              <div className="px-5 pb-4 pt-6 text-center">
+                <p className="font-display text-sm font-bold text-navy">
+                  يوم الحبور
+                </p>
+                <p className="mt-2 text-xs leading-relaxed text-navy/75">
+                  يومنا اللي نخفف فيه من جدية الجامعة شوي، ونعطي المستجدات فرصة
+                  يتعرفون على بعض بعيدًا عن المواضيع الجامعية. وقت نقضيه ما بين
+                  مسابقات، فيها منافسة وضحك وتعارف، والأهم نصنع مع بعض ذكرى
+                  حلوة من بداية مشوارنا الجامعي. يوم الحبور هو يومنا اللي
+                  نحتفل فيه بالبدايات بطريقتنا.
+                </p>
+              </div>
 
               <Image
                 src="/hubour-day-poster.jpg"
@@ -140,3 +153,5 @@ export function WelcomeAnnouncement() {
     </>
   );
 }
+
+
