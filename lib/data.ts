@@ -232,6 +232,40 @@ export const englishExemptionSections: EnglishExemptionSection[] = [
   },
 ];
 
+export type BlackboardNavItem = {
+  icon: "home" | "messages" | "updates" | "grades" | "calendar";
+  title: string;
+  description: string;
+};
+
+export const blackboardNavItems: BlackboardNavItem[] = [
+  {
+    icon: "home",
+    title: "الصفحة الرئيسية",
+    description: "تحوي التقديرات المضافة حديثًا، وتاريخ اليوم والمهام الخاصة به، بالإضافة إلى مهام الأسبوع كاملًا.",
+  },
+  {
+    icon: "messages",
+    title: "الرسائل",
+    description: "تتضمن المنشورات، والتعليقات المرتبطة بموادك، وردود لوحات المناقشة.",
+  },
+  {
+    icon: "updates",
+    title: "التحديثات",
+    description: "تحوي جميع التنبيهات والإشعارات والإعلانات الخاصة بمستجدات مقرراتك الدراسية.",
+  },
+  {
+    icon: "grades",
+    title: "التقديرات",
+    description: "توجد فيها جميع التقديرات المستحقة للمواد.",
+  },
+  {
+    icon: "calendar",
+    title: "التقويم",
+    description: "يمكنكِ من خلاله معرفة أوقات التسليم، وأيضًا تنظيم وإدراج المهام بسلاسة.",
+  },
+];
+
 
 export const resourcesSection = {
   eyebrow: "موضوعات الإرشاد",
