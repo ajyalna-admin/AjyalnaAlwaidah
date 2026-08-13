@@ -23,7 +23,7 @@ function linkifyText(text: string): string {
 
 export async function POST(request: Request) {
   try {
-    const { adminSecret, subject, body, url } = await request.json();
+    const { adminSecret, subject, body, url, targetEmail } = await request.json();
 
     if (!process.env.PUSH_ADMIN_SECRET || adminSecret !== process.env.PUSH_ADMIN_SECRET) {
       return NextResponse.json({ error: "غير مصرح" }, { status: 401 });
@@ -33,21 +33,29 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: "العنوان والنص مطلوبان" }, { status: 400 });
     }
 
-    const { data: subscribers, error } = await supabaseAdmin
-      .from("email_subscribers")
-      .select("email");
+    let emails: string[];
 
-    if (error) {
-      console.error("Supabase fetch error:", error);
-      return NextResponse.json({ error: "تعذّر جلب المشتركين" }, { status: 500 });
+    if (targetEmail && typeof targetEmail === "string" && targetEmail.trim()) {
+      // إرسال لإيميل محدد فقط، بدون حاجة للتحقق من وجوده بقائمة المشتركين
+      emails = [targetEmail.trim().toLowerCase()];
+    } else {
+      // إرسال جماعي لكل المشتركين (السلوك الافتراضي)
+      const { data: subscribers, error } = await supabaseAdmin
+        .from("email_subscribers")
+        .select("email");
+
+      if (error) {
+        console.error("Supabase fetch error:", error);
+        return NextResponse.json({ error: "تعذّر جلب المشتركين" }, { status: 500 });
+      }
+
+      emails = (subscribers || []).map((s) => s.email);
     }
 
-    const emails = (subscribers || []).map((s) => s.email);
     if (emails.length === 0) {
       return NextResponse.json({ success: true, sent: 0, failed: 0, total: 0 });
     }
 
-    // أي روابط داخل نص الرسالة تتحول تلقائيًا لروابط قابلة للضغط (يدعم أكثر من رابط)
     const bodyHtml = linkifyText(body).replace(/\n/g, "<br />");
 
     const linkHtml = url
