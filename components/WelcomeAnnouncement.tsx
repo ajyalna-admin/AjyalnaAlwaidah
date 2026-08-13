@@ -29,7 +29,7 @@ function RisingElements() {
         id: bellIdCounter++,
         left: 4 + Math.random() * 92,
         duration: 16 + Math.random() * 10,
-        scale: 0.5 + Math.random() * 0.5,
+        scale: 0.7 + Math.random() * 0.5,
         color: BELL_COLORS[Math.floor(Math.random() * BELL_COLORS.length)],
       };
       setBells((prev) => [...prev.slice(-5), bell]);
@@ -61,7 +61,7 @@ function RisingElements() {
           }
           style={{ position: "absolute", left: `${b.left}%`, color: b.color, transformOrigin: "50% 0%" }}
         >
-          <Bell style={{ width: 22 * b.scale, height: 22 * b.scale }} fill="currentColor" strokeWidth={0} />
+          <Bell style={{ width: 64 * b.scale, height: 64 * b.scale }} fill="currentColor" strokeWidth={0} />
         </motion.div>
       ))}
     </div>
@@ -70,11 +70,18 @@ function RisingElements() {
 
 export function WelcomeAnnouncement() {
   const [dismissed, setDismissed] = useState(true); // نبدأ مخفي لحد ما نتأكد من localStorage (لتفادي وميض بالعرض)
+  const [introDone, setIntroDone] = useState(false);
 
   useEffect(() => {
     const alreadyDismissed = localStorage.getItem(DISMISS_KEY);
     setDismissed(Boolean(alreadyDismissed));
   }, []);
+
+  useEffect(() => {
+    if (dismissed) return;
+    const timer = window.setTimeout(() => setIntroDone(true), 1500);
+    return () => window.clearTimeout(timer);
+  }, [dismissed]);
 
   const handleDismiss = () => {
     localStorage.setItem(DISMISS_KEY, "1");
@@ -86,7 +93,37 @@ export function WelcomeAnnouncement() {
       <RisingElements />
 
       <AnimatePresence>
-        {!dismissed && (
+        {!dismissed && !introDone && (
+          // مقدمة: جرس كبير واحد يرن بمنتصف الشاشة قبل ظهور الإعلان
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-50 flex items-center justify-center bg-navy/30 backdrop-blur-sm"
+          >
+            <motion.div
+              initial={{ scale: 0.5, opacity: 0 }}
+              animate={{
+                scale: 1,
+                opacity: 1,
+                rotate: [0, -18, 15, -13, 10, -7, 4, 0],
+              }}
+              transition={{
+                scale: { duration: 0.35, ease: [0.16, 1, 0.3, 1] },
+                opacity: { duration: 0.35 },
+                rotate: { duration: 1.1, delay: 0.3, ease: "easeInOut" },
+              }}
+              style={{ transformOrigin: "50% 0%" }}
+              className="text-navy"
+            >
+              <Bell className="h-24 w-24" fill="currentColor" strokeWidth={0} />
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      <AnimatePresence>
+        {!dismissed && introDone && (
           <>
             {/* شريط إشعار منفصل أعلى الصفحة */}
             <motion.div
