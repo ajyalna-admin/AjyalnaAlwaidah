@@ -6,7 +6,7 @@ const supabaseAdmin = createClient(
   process.env.SUPABASE_SERVICE_ROLE_KEY!
 );
 
-// يحوّل أي رابط خام داخل النص إلى زر أزرق كحلي قابل للضغط (بدل نص أزرق تحته خط)،
+// يحوّل أي رابط خام داخل النص إلى زر كحلي قابل للضغط،
 // عشان تقدر تكتبين أكثر من رابط بنص الرسالة نفسه وكل واحد يطلع كزر منفصل
 function linkifyText(text: string): string {
   const urlRegex = /(https?:\/\/[^\s<]+)/g;
@@ -17,7 +17,7 @@ function linkifyText(text: string): string {
   return escaped.replace(
     urlRegex,
     (url) =>
-      `<a href="${url}" style="display:inline-block;background-color:#16223f;color:#f6f2ea;padding:10px 22px;border-radius:24px;text-decoration:none;font-weight:bold;font-size:13px;margin:6px 2px;">فتح الرابط</a>`
+      `<a href="${url}" style="display:inline-block;background-color:#16223f;color:#f6f2ea;padding:10px 22px;border-radius:24px;text-decoration:none;font-weight:bold;font-size:13px;margin:6px 2px;font-family:'IBM Plex Sans Arabic',Tahoma,Arial,sans-serif;">فتح الرابط</a>`
   );
 }
 
@@ -36,10 +36,8 @@ export async function POST(request: Request) {
     let emails: string[];
 
     if (targetEmail && typeof targetEmail === "string" && targetEmail.trim()) {
-      // إرسال لإيميل محدد فقط، بدون حاجة للتحقق من وجوده بقائمة المشتركين
       emails = [targetEmail.trim().toLowerCase()];
     } else {
-      // إرسال جماعي لكل المشتركين (السلوك الافتراضي)
       const { data: subscribers, error } = await supabaseAdmin
         .from("email_subscribers")
         .select("email");
@@ -59,17 +57,55 @@ export async function POST(request: Request) {
     const bodyHtml = linkifyText(body).replace(/\n/g, "<br />");
 
     const linkHtml = url
-      ? `<p style="margin-top:16px"><a href="${url}" style="display:inline-block;background-color:#16223f;color:#f6f2ea;padding:12px 26px;border-radius:24px;text-decoration:none;font-weight:bold;font-size:14px;">اضغطي هنا للاطلاع</a></p>`
+      ? `<div style="text-align:center;margin-top:20px">
+           <a href="${url}" style="display:inline-block;background-color:#16223f;color:#f6f2ea;padding:13px 28px;border-radius:26px;text-decoration:none;font-weight:bold;font-size:14px;font-family:'IBM Plex Sans Arabic',Tahoma,Arial,sans-serif;">اضغطي هنا للاطلاع</a>
+         </div>`
       : "";
 
     const html = `
-      <div dir="rtl" style="font-family:Tahoma,Arial,sans-serif;max-width:480px;margin:0 auto;padding:24px;color:#16223f">
-        <h2 style="margin:0 0 12px">${subject}</h2>
-        <p style="line-height:1.9">${bodyHtml}</p>
-        ${linkHtml}
-        <hr style="margin:24px 0;border:none;border-top:1px solid #e5e5e5" />
-        <p style="font-size:12px;color:#888">أجيالنا الواعدة</p>
-      </div>
+      <!DOCTYPE html>
+      <html dir="rtl" lang="ar">
+      <head>
+        <meta charset="utf-8" />
+        <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;600;700&display=swap" rel="stylesheet" />
+      </head>
+      <body style="margin:0;padding:0;background-color:#f6f2ea;font-family:'IBM Plex Sans Arabic',Tahoma,Arial,sans-serif;">
+        <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background-color:#f6f2ea;padding:32px 16px;">
+          <tr>
+            <td align="center">
+              <table role="presentation" width="100%" style="max-width:480px;background-color:#ffffff;border-radius:24px;overflow:hidden;border:1px solid rgba(22,34,63,0.08);">
+
+                <!-- الهيدر بهوية الموقع -->
+                <tr>
+                  <td style="background-color:#16223f;padding:28px 32px;text-align:center;">
+                    <p style="margin:0;color:#f6f2ea;font-size:19px;font-weight:700;">أجيالنا الواعدة</p>
+                    <p style="margin:6px 0 0;color:#5f95a0;font-size:12px;">جيلٌ يُمكّن جيلاً</p>
+                  </td>
+                </tr>
+
+                <!-- المحتوى -->
+                <tr>
+                  <td style="padding:32px;">
+                    <h2 style="margin:0 0 16px;color:#16223f;font-size:20px;font-weight:700;line-height:1.5;">${subject}</h2>
+                    <p style="margin:0;color:#16223f;font-size:14.5px;line-height:2;opacity:0.9;">${bodyHtml}</p>
+                    ${linkHtml}
+                  </td>
+                </tr>
+
+                <!-- الفوتر -->
+                <tr>
+                  <td style="background-color:#f6f2ea;padding:20px 32px;text-align:center;border-top:1px solid rgba(22,34,63,0.08);">
+                    <p style="margin:0;color:#16223f;opacity:0.7;font-size:12px;">أجيالنا الواعدة — منصة الإرشاد الجامعي</p>
+                    <p style="margin:6px 0 0;color:#5f95a0;font-size:12px;">ajyalnaalwaidah.com</p>
+                  </td>
+                </tr>
+
+              </table>
+            </td>
+          </tr>
+        </table>
+      </body>
+      </html>
     `;
 
     const batchSize = 45;
