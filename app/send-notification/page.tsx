@@ -11,6 +11,8 @@ export default function SendNotificationPage() {
   const [url, setUrl] = useState("/");
   const [sendPush, setSendPush] = useState(true);
   const [sendEmail, setSendEmail] = useState(true);
+  const [sendToSpecific, setSendToSpecific] = useState(false);
+  const [targetEmail, setTargetEmail] = useState("");
   const [status, setStatus] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
 
@@ -20,7 +22,7 @@ export default function SendNotificationPage() {
     const results: string[] = [];
 
     try {
-      if (sendPush) {
+      if (sendPush && !sendToSpecific) {
         const res = await fetch("/api/push/send", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -41,7 +43,13 @@ export default function SendNotificationPage() {
         const res = await fetch("/api/email/send", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ adminSecret, subject: title, body, url: fullUrl }),
+          body: JSON.stringify({
+            adminSecret,
+            subject: title,
+            body,
+            url: fullUrl,
+            targetEmail: sendToSpecific ? targetEmail : undefined,
+          }),
         });
         const data = await res.json();
         results.push(
@@ -115,31 +123,66 @@ export default function SendNotificationPage() {
           />
         </div>
 
-        <div className="flex gap-4">
-          <label className="flex items-center gap-2 text-sm text-navy">
+        <div className="rounded-xl border border-line p-3.5 space-y-3">
+          <label className="flex items-center gap-2 text-sm font-medium text-navy">
             <input
               type="checkbox"
-              checked={sendPush}
-              onChange={(e) => setSendPush(e.target.checked)}
+              checked={sendToSpecific}
+              onChange={(e) => setSendToSpecific(e.target.checked)}
             />
-            إرسال تنبيه متصفح
+            إرسال لإيميل محدد بدل الجميع
           </label>
-          <label className="flex items-center gap-2 text-sm text-navy">
-            <input
-              type="checkbox"
-              checked={sendEmail}
-              onChange={(e) => setSendEmail(e.target.checked)}
-            />
-            إرسال بريد إلكتروني
-          </label>
+
+          {sendToSpecific && (
+            <>
+              <input
+                type="email"
+                value={targetEmail}
+                onChange={(e) => setTargetEmail(e.target.value)}
+                placeholder="example@email.com"
+                className="w-full rounded-xl border border-line px-4 py-2.5 text-sm"
+              />
+              <p className="text-[11px] text-muted">
+                ملاحظة: بهذا الوضع يُرسل بريد إلكتروني فقط لهذا العنوان (تنبيه
+                المتصفح غير متاح لإيميل محدد لأنه مرتبط بجهاز الزائرة لا بريدها).
+              </p>
+            </>
+          )}
         </div>
+
+        {!sendToSpecific && (
+          <div className="flex gap-4">
+            <label className="flex items-center gap-2 text-sm text-navy">
+              <input
+                type="checkbox"
+                checked={sendPush}
+                onChange={(e) => setSendPush(e.target.checked)}
+              />
+              إرسال تنبيه متصفح
+            </label>
+            <label className="flex items-center gap-2 text-sm text-navy">
+              <input
+                type="checkbox"
+                checked={sendEmail}
+                onChange={(e) => setSendEmail(e.target.checked)}
+              />
+              إرسال بريد إلكتروني
+            </label>
+          </div>
+        )}
 
         <button
           onClick={handleSend}
-          disabled={loading || !adminSecret || !title || !body || (!sendPush && !sendEmail)}
+          disabled={
+            loading ||
+            !adminSecret ||
+            !title ||
+            !body ||
+            (sendToSpecific ? !targetEmail : !sendPush && !sendEmail)
+          }
           className="w-full rounded-xl bg-navy px-4 py-3 text-sm font-bold text-white disabled:opacity-50"
         >
-          {loading ? "جارٍ الإرسال..." : "إرسال للجميع"}
+          {loading ? "جارٍ الإرسال..." : sendToSpecific ? "إرسال لهذا الإيميل" : "إرسال للجميع"}
         </button>
 
         {status && <p className="text-sm text-navy">{status}</p>}
