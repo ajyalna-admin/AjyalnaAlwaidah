@@ -109,7 +109,7 @@ export const summaryCards: string[] = [
   "تحديد المستوى والدورات والروابط التعليمية",
   "البطاقة الجامعية والبريد الجامعي",
   "الحقيبة الذكية وبطاقة الصراف",
-  "النظام الأكاديمي (Banner) ونظام التعلم (Blackboard)",
+  "النظام الأكاديمي (Banner) والجدول الدراسي ونظام التعلم (Blackboard)",
   "مباني الحرم الجامعي ومخطط الجامعة ومركز خدمات الطالبات ونظام النقل والمترو",
   "المواد المشتركة في الترم الأول ومراجع الدراسة",
   "الخطة الدراسية والتخصصات الفرعية (Minors)",
@@ -1044,6 +1044,7 @@ export const topics: Topic[] = [
       },
     ],
   },
+  { slug: "class-schedule", title: "الجدول الدراسي" },
   {
     slug: "blackboard-system",
     title: "نظام التعلم (Blackboard)",
@@ -1104,10 +1105,159 @@ export const topics: Topic[] = [
       },
     ],
   },
+  {
+    slug: "shared-courses-first-term",
+    title: "المواد المشتركة في الترم الأول",
+    content: `ما المقصود بالمقررات المشتركة؟
+هي مواد إلزامية تُدرس لجميع طالبات كلية علوم الحاسب والمعلومات في المستوى الأول، وتهدف إلى تزويد الطالبة بالأساسيات اللازمة لدراسة التخصص، مما يساعدها على فهم المقررات التخصصية والتعمق فيها لاحقًا.
+
+التراكيب المحددة | CS100 (عال 100)
+هي مادة تربط بين مفاهيم الرياضيات وعلوم الحاسب، وتهدف إلى تنمية التفكير المنطقي وحل المشكلات، من خلال دراسة مفاهيم مثل المجموعات، والدوال، والعلاقات، والمنطق، وطرق الإثبات، والعد، والرسوم البيانية والأشجار، وتُعد أساسًا لفهم العديد من المقررات التخصصية لاحقًا.
+
+لغة برمجة 1 | CS110 (عال 110)
+هي مادة يتم فيها دراسة أساسيات البرمجة من الصفر، حيث تتعلم الطالبة المفاهيم الأساسية للبرمجة وكيفية استخدامها في حل المشكلات وتنمية التفكير المنطقي. ويعتمد المقرر على لغة جافا (Java)، وهي من أشهر لغات البرمجة الكائنية، كما يتضمن جانبًا عمليًا لتطبيق ما يتم تعلمه باستخدام برنامج NetBeans.
+
+حساب التفاضل والتكامل | Math 161 (ريض 161)
+مقرر تابع لكلية العلوم، يهدف إلى تنمية مهارات التحليل الرياضي وحل المشكلات من خلال دراسة خصائص الدوال، والنهايات، والاتصال، واشتقاق الدوال. ويُعد من الأساسيات التي تساعد الطالبة على فهم العديد من مواد التخصص وتطبيقات علوم الحاسب، مثل الذكاء الاصطناعي والرسوميات الحاسوبية والألعاب الإلكترونية.
+
+متطلبات الجامعة الإجبارية:
+
+ما المقصود بمتطلبات الجامعة الإجبارية؟
+هي مقررات إلزامية يدرسها جميع طالبات الجامعة، بغض النظر عن الكلية أو التخصص، وتشمل:
+
+1. اللغة الإنجليزية (1) | ENG 101-1 (انج 101-1) واللغة الإنجليزية (2) | ENG 102-2 (انج 102-2)
+تهدف هذه المقررات إلى تطوير مهارات الطالبة في اللغة الإنجليزية، من خلال تنمية مهارات الاستماع، والتحدث، والقراءة، والكتابة، إلى جانب تعلم القواعد اللغوية، وزيادة المفردات، واستخدام التعابير الصحيحة.
+
+2. مقررات مجال تعزيز القيم الإسلامية
+من المقررات الدراسية العامة التي تهدف إلى تعزيز القيم والمعارف الإسلامية لدى الطالبة. تُقدَّم إلكترونيًا (عن بُعد)، ويُطلب من الطالبة دراسة مقررين من المقررات الآتية:
+- القيم والأخلاق الإسلامية | GNR 070 (عام 070)
+- الاقتصاد والمصارف الإسلامية | GNR 071 (عام 071)
+- بناء المجتمع في الإسلام | GNR 072 (عام 072)
+
+متطلبات الجامعة الاختيارية:
+
+ما المقصود بمتطلبات الجامعة الاختيارية؟
+من المقررات الدراسية العامة التي تتيح للطالبة اختيار مواد محددة حسب الخطة الدراسية، وتهدف إلى توسيع معارفها وتنمية مهاراتها في مجالات متنوعة خارج نطاق التخصص. تُقدَّم إلكترونيًا (عن بُعد)، ويُطلب من الطالبة دراسة 4 مقررات من المقررات الآتية، بشرط اختيار مقرر واحد من كل مجال.
+
+المجال الأول: تعزيز الهوية الوطنية
+- تاريخ المملكة العربية السعودية ودورها الريادي | GNR 010 (عام 010)
+- قيم المواطنة الصالحة | GNR 012 (عام 012)
+- الفنون والتراث السعودي | GNR 013 (عام 013)
+
+المجال الثاني: التواصل الفعال
+- مهارات التواصل | GNR 020 (عام 020)
+- الكتابة الإبداعية | GNR 021 (عام 021)
+- الكتابة الأكاديمية للتقارير | GNR 022 (عام 022)
+- الذكاء العاطفي | GNR 023 (عام 023)
+
+المجال الثالث: الابتكار وريادة الأعمال
+- أساسيات ريادة الأعمال | GNR 030 (عام 030)
+- الموهبة والتفوق العقلي | GNR 032 (عام 032)
+- مبادئ التجارة الإلكترونية | GNR 033 (عام 033)
+- الثقافة المالية | GNR 034 (عام 034)
+- القيادة وإدارة التغيير | GNR 035 (عام 035)
+
+المجال الرابع: تعزيز جودة الحياة
+- الوعي الصحي | GNR 050 (عام 050)
+- الشعر والنثر بالأدب العربي | GNR 051 (عام 051)
+- الرفاه وجودة الحياة | GNR 052 (عام 052)
+- اللياقة وعلوم الرياضة | GNR 053 (عام 053)
+
+المجال الخامس: التنمية المستدامة
+- التنمية المستدامة | GNR 060 (عام 060)
+- المواطنة العالمية | GNR 061 (عام 061)
+- مهارات التعلم مدى الحياة | GNR 062 (عام 062)
+- النظم البيئية المستدامة | GNR 063 (عام 063)`,
+  },
+  {
+    slug: "study-references",
+    title: "مراجع للدراسة",
+    content: `مع بداية مرحلة جديدة في حياتك الجامعية، قد تواجهين تحديًا في العثور على المصادر التعليمية المناسبة لفهم المقررات الدراسية. لذلك جمعنا لكِ مجموعة من أفضل المصادر والمنصات، المجانية والمدفوعة، لتكون عونًا لكِ في فهم المواد، لا سيما مقررات المستوى الأول، مع توصيات لدورات تُسهم في تطوير مهاراتكِ واستثمار وقت الإجازات.
+
+أولًا: منصات إلكترونية مدفوعة تقدم شروحات مسجلة لمعظم المقررات (روابط المنصات بالأسفل ضمن الروابط).
+
+ثانيًا: مصادر مجانية لشرح مقررات المستوى الأول
+ملاحظة: موقع كورسات يوفر شروحات مجانية لبعض المقررات المتنوعة (رابطه بالأسفل).
+
+1. لغة البرمجة (1) — CS110 (عال 110)
+مقرر يدرس أساسيات البرمجة بلغة Java: المتغيرات، الجمل الشرطية، الحلقات التكرارية، الدوال، المصفوفات، الكائنات، ومقدمة في البرمجة الكائنية (OOP).
+مصادر عربية: منصة هرمش، عبدالله الحربي، محمد الدعسوقي، أكاديمية سنا العلم.
+مصادر أجنبية: Programming Knowledge، Alex Lee، McProgramming، Bro Code (كورس جافا شامل للمبتدئين)، freeCodeCamp، W3Schools (للتطبيق المباشر).
+
+2. تراكيب محددة — CS100 (عال 100)
+مقرر يدرس أساسيات الرياضيات المتقطعة: المنطق، المجموعات، العلاقات، الدوال، طرق الإثبات، العد، والرسوم البيانية.
+مصادر عربية: رولا محمد، أكاديمية سنا العلم، د. أحمد حجاج.
+مصادر أجنبية: Neso Academy، Dr. Trefor Bazett، The Organic Chemistry Tutor، TrevTutor.
+
+3. التفاضل والتكامل (1) — MATH 101 (ريض 101)
+مقرر يدرس أساسيات التفاضل والتكامل: الدوال، النهايات، الاتصال، الاشتقاق، وتطبيقاتها.
+مصادر عربية: د. إيمان المعلم (Think and be Creative)، خان أكاديمي بالعربية.
+مصادر أجنبية: The Organic Chemistry Tutor، Professor Leonard (شرح تفصيلي بأسلوب محاضرات).
+
+4. اللغة الإنجليزية — English Language
+تهدف إلى تنمية مهارات القراءة والكتابة والاستماع، مع التركيز على المفردات والمصطلحات الأكاديمية.
+مصادر عربية: دروس أونلاين، ZAmericanEnglish.
+مصادر أجنبية: Learn English with Rebecca، English with Lucy، BBC Learning English.
+
+ثالثًا: استثمري إجازتكِ في تطوير مهاراتك
+منصات مجانية: سطر (برمجة وأمن سيبراني وذكاء اصطناعي بالعربية من أكاديمية طويق)، دروب، إدراك، edX، الاتحاد السعودي للأمن السيبراني والبرمجة والدرونز (SAFCSP)، مهارات من Google، CS50 من هارفارد (مدخل ممتاز لعلوم الحاسب).
+منصات مدفوعة: فلكس كورسز، يوداسيتي (معظم محتواها باشتراك).
+منصات توفر دورات مجانية ومدفوعة: يوديمي، كورسيرا، مسك (Misk Hub)، أكاديمية سيسكو، هارفارد، إثرائي.
+
+جميع الروابط منظمة بالأسفل ضمن قائمة الروابط.`,
+    links: [
+      { label: "أكاديمية فجن (Vision Academy)", url: "https://visionacademy.online/en/courses" },
+      { label: "شروح التعليمية", url: "https://www.shroo7.com/beta/browse_course/?uni=pnu" },
+      { label: "بيمز (Baims)", url: "https://app.baims.com/ar/home/sa/KSA-Universities/PNU/" },
+      { label: "شغوف (Shaguf)", url: "https://shaguf.com/subjects/gamaa-alamyr-nor" },
+      { label: "فهيم (Faheem)", url: "https://www.faheemapp.com/" },
+      { label: "آي كيو أكاديمي (IQ Academy)", url: "https://iq-academy-saudi.com/" },
+      { label: "موقع كورسات (شروحات مجانية)", url: "https://www.coursat.org/" },
+      { label: "منصة هرمش — CS110", url: "https://harmash.com/" },
+      { label: "عبدالله الحربي — CS110", url: "https://youtube.com/playlist?list=PLLIGeRasrtyFY_q9D7DkUfX8AVQ3wD_fo" },
+      { label: "محمد الدعسوقي — CS110", url: "https://youtube.com/playlist?list=PL1DUmTEdeA6K7rdxKiWJq6JIxTvHalY8f" },
+      { label: "أكاديمية سنا العلم — CS110", url: "https://youtube.com/playlist?list=PLM9hcHCTjuq9ALuzrWgbC1emKaO5IMjRb" },
+      { label: "Programming Knowledge — CS110", url: "https://youtube.com/playlist?list=PLS1QulWo1RIbfTjQvTdj8Y6yyq4R7g-Al" },
+      { label: "Alex Lee — CS110", url: "https://youtube.com/playlist?list=PL59LTecnGM1NRUyune3SxzZlYpZezK-oQ" },
+      { label: "McProgramming — CS110", url: "https://youtube.com/playlist?list=PLWlBsjbHjgz7D18tm8mt9wfNiJkJWspbE" },
+      { label: "Bro Code — CS110", url: "https://www.youtube.com/@BroCodez" },
+      { label: "freeCodeCamp — CS110", url: "https://www.youtube.com/@freecodecamp" },
+      { label: "W3Schools — CS110", url: "https://www.w3schools.com/java/" },
+      { label: "رولا محمد — CS100", url: "https://youtube.com/playlist?list=PLB6X_agqE9hq0xeyZSTNLF0PxA41Dp5pg" },
+      { label: "أكاديمية سنا العلم — CS100", url: "https://youtube.com/playlist?list=PLM9hcHCTjuq_foqvgp7DCCoS3SGSxiAWT" },
+      { label: "د. أحمد حجاج — CS100", url: "https://youtube.com/playlist?list=PLxIvc-MGOs6gZlMVYOOEtUHJmfUquCjwz" },
+      { label: "Neso Academy — CS100", url: "https://youtube.com/playlist?list=PLBlnK6fEyqRhqJPDXcvYlLfXPh37L89g3" },
+      { label: "Dr. Trefor Bazett — CS100", url: "https://youtube.com/playlist?list=PLHXZ9OQGMqxersk8fUxiUMSIx0DBqsKZS" },
+      { label: "The Organic Chemistry Tutor — CS100", url: "https://youtube.com/@theorganicchemistrytutor" },
+      { label: "TrevTutor — CS100", url: "https://www.youtube.com/@Trevtutor" },
+      { label: "د. إيمان المعلم — التفاضل والتكامل", url: "https://youtube.com/playlist?list=PLKLgppsNS14Eqdf_6KNA93CFRsx_tP0Zu" },
+      { label: "خان أكاديمي بالعربية", url: "https://ar.khanacademy.org/" },
+      { label: "The Organic Chemistry Tutor — التفاضل والتكامل", url: "https://youtube.com/playlist?list=PL0o_zxa4K1BWYThyV4T2Allw6zY0jEumv" },
+      { label: "Professor Leonard — التفاضل والتكامل", url: "https://www.youtube.com/@ProfessorLeonard" },
+      { label: "دروس أونلاين — اللغة الإنجليزية", url: "https://youtube.com/playlist?list=PL5isa5XjlZ5roRlz3R6453BIxknfoBiwZ" },
+      { label: "ZAmericanEnglish", url: "https://www.youtube.com/@ZAmericanEnglish" },
+      { label: "Learn English with Rebecca", url: "https://youtube.com/@engvidrebecca" },
+      { label: "English with Lucy", url: "https://youtube.com/@englishwithlucy" },
+      { label: "BBC Learning English", url: "https://www.bbc.co.uk/learningenglish" },
+      { label: "سطر (Satr) — أكاديمية طويق", url: "https://satr.tuwaiq.edu.sa/" },
+      { label: "دروب", url: "https://doroob.sa/ar/" },
+      { label: "إدراك", url: "https://www.edraak.org/" },
+      { label: "edX", url: "https://www.edx.org/" },
+      { label: "الاتحاد السعودي للأمن السيبراني (SAFCSP)", url: "https://safcsp.org.sa/" },
+      { label: "مهارات من Google", url: "https://grow.google/intl/mena/" },
+      { label: "CS50 من هارفارد", url: "https://cs50.harvard.edu/x/" },
+      { label: "فلكس كورسز (Flex Courses)", url: "https://www.flexcourses.com/courses" },
+      { label: "يوداسيتي (Udacity)", url: "https://www.udacity.com/" },
+      { label: "يوديمي (Udemy)", url: "https://www.udemy.com/" },
+      { label: "كورسيرا (Coursera)", url: "https://www.coursera.org/" },
+      { label: "مسك (Misk Hub)", url: "https://hub.misk.org.sa/ar/" },
+      { label: "أكاديمية سيسكو", url: "https://www.netacad.com/" },
+      { label: "هارفارد", url: "https://pll.harvard.edu/catalog" },
+      { label: "إثرائي", url: "https://www.ethrai.sa/" },
+    ],
+  },
   { slug: "campus-map", title: "مخطط الجامعة" },
   { slug: "campus-metro", title: "المترو الجامعي" },
-  { slug: "shared-courses-first-term", title: "المواد المشتركة في الترم الأول" },
-  { slug: "study-references", title: "مراجع للدراسة" },
   { slug: "study-plan", title: "الخطة الدراسية" },
   { slug: "minors", title: "التخصصات الفرعية" },
   { slug: "college-library", title: "مكتبة كلية علوم الحاسب والمعلومات" },
