@@ -15,7 +15,6 @@ const MAIN_LINKS = [
 
 const MORE_LINKS = [
   { href: "/vision", label: "رؤيتنا وأهدافنا" },
-  { href: "/summary", label: "ملخص المحتوى" },
   { href: "/resources", label: "موضوعات الإرشاد" },
   { href: "/journey", label: "رحلتك معنا" },
   { href: "/courses", label: "دليل المقررات" },
