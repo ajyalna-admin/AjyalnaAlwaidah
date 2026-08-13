@@ -6,8 +6,8 @@ const supabaseAdmin = createClient(
   process.env.SUPABASE_SERVICE_ROLE_KEY!
 );
 
-// يحوّل أي رابط خام داخل النص إلى رابط HTML قابل للضغط تلقائيًا،
-// عشان تقدر تكتبين أكثر من رابط بنص الرسالة نفسه
+// يحوّل أي رابط خام داخل النص إلى زر أزرق كحلي قابل للضغط (بدل نص أزرق تحته خط)،
+// عشان تقدر تكتبين أكثر من رابط بنص الرسالة نفسه وكل واحد يطلع كزر منفصل
 function linkifyText(text: string): string {
   const urlRegex = /(https?:\/\/[^\s<]+)/g;
   const escaped = text
@@ -17,7 +17,7 @@ function linkifyText(text: string): string {
   return escaped.replace(
     urlRegex,
     (url) =>
-      `<a href="${url}" style="color:#16223f;font-weight:bold;text-decoration:underline">${url}</a>`
+      `<a href="${url}" style="display:inline-block;background-color:#16223f;color:#f6f2ea;padding:10px 22px;border-radius:24px;text-decoration:none;font-weight:bold;font-size:13px;margin:6px 2px;">فتح الرابط</a>`
   );
 }
 
@@ -59,13 +59,13 @@ export async function POST(request: Request) {
     const bodyHtml = linkifyText(body).replace(/\n/g, "<br />");
 
     const linkHtml = url
-      ? `<p style="margin-top:16px"><a href="${url}" style="color:#16223f;font-weight:bold">اضغطي هنا للاطلاع</a></p>`
+      ? `<p style="margin-top:16px"><a href="${url}" style="display:inline-block;background-color:#16223f;color:#f6f2ea;padding:12px 26px;border-radius:24px;text-decoration:none;font-weight:bold;font-size:14px;">اضغطي هنا للاطلاع</a></p>`
       : "";
 
     const html = `
       <div dir="rtl" style="font-family:Tahoma,Arial,sans-serif;max-width:480px;margin:0 auto;padding:24px;color:#16223f">
         <h2 style="margin:0 0 12px">${subject}</h2>
-        <p style="line-height:1.7">${bodyHtml}</p>
+        <p style="line-height:1.9">${bodyHtml}</p>
         ${linkHtml}
         <hr style="margin:24px 0;border:none;border-top:1px solid #e5e5e5" />
         <p style="font-size:12px;color:#888">أجيالنا الواعدة</p>
