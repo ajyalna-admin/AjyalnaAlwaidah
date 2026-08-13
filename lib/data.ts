@@ -1044,7 +1044,6 @@ export const topics: Topic[] = [
       },
     ],
   },
-  { slug: "class-schedule", title: "الجدول الدراسي" },
   {
     slug: "blackboard-system",
     title: "نظام التعلم (Blackboard)",
