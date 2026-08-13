@@ -6,6 +6,21 @@ const supabaseAdmin = createClient(
   process.env.SUPABASE_SERVICE_ROLE_KEY!
 );
 
+// يحوّل أي رابط خام داخل النص إلى رابط HTML قابل للضغط تلقائيًا،
+// عشان تقدر تكتبين أكثر من رابط بنص الرسالة نفسه
+function linkifyText(text: string): string {
+  const urlRegex = /(https?:\/\/[^\s<]+)/g;
+  const escaped = text
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;");
+  return escaped.replace(
+    urlRegex,
+    (url) =>
+      `<a href="${url}" style="color:#16223f;font-weight:bold;text-decoration:underline">${url}</a>`
+  );
+}
+
 export async function POST(request: Request) {
   try {
     const { adminSecret, subject, body, url } = await request.json();
@@ -32,6 +47,9 @@ export async function POST(request: Request) {
       return NextResponse.json({ success: true, sent: 0, failed: 0, total: 0 });
     }
 
+    // أي روابط داخل نص الرسالة تتحول تلقائيًا لروابط قابلة للضغط (يدعم أكثر من رابط)
+    const bodyHtml = linkifyText(body).replace(/\n/g, "<br />");
+
     const linkHtml = url
       ? `<p style="margin-top:16px"><a href="${url}" style="color:#16223f;font-weight:bold">اضغطي هنا للاطلاع</a></p>`
       : "";
@@ -39,15 +57,13 @@ export async function POST(request: Request) {
     const html = `
       <div dir="rtl" style="font-family:Tahoma,Arial,sans-serif;max-width:480px;margin:0 auto;padding:24px;color:#16223f">
         <h2 style="margin:0 0 12px">${subject}</h2>
-        <p style="line-height:1.7">${body}</p>
+        <p style="line-height:1.7">${bodyHtml}</p>
         ${linkHtml}
         <hr style="margin:24px 0;border:none;border-top:1px solid #e5e5e5" />
         <p style="font-size:12px;color:#888">أجيالنا الواعدة</p>
       </div>
     `;
 
-    // نرسل دفعة وحدة (Resend يقبل حتى 50 مستلم بالـ bcc على الخطة المجانية دفعة وحدة؛
-    // لعدد أكبر نقسمها لدفعات)
     const batchSize = 45;
     const batches: string[][] = [];
     for (let i = 0; i < emails.length; i += batchSize) {
