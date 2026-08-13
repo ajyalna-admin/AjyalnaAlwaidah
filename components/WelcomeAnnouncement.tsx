@@ -3,36 +3,38 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
-import { X, Bell } from "lucide-react";
+import { X, Bell, Mail } from "lucide-react";
 
 const DISMISS_KEY = "email-feature-announcement-dismissed-v1";
 
-type FloatingDot = {
+type FloatingIcon = {
   id: number;
   left: number;
   duration: number;
   scale: number;
   color: string;
+  kind: "bell" | "mail";
 };
 
-const DOT_COLORS = ["#16223f", "#5f95a0", "#c7d9dc"];
-let dotIdCounter = 0;
+const ICON_COLORS = ["#16223f", "#5f95a0", "#c7d9dc"];
+let iconIdCounter = 0;
 
-// خلفية زخرفية دائمة وبسيطة: نقاط وأجراس صغيرة ترتفع بهدوء بكل صفحات الموقع،
-// بشكل رسمي هادئ يناسب إعلان ميزة جديدة، بدون طابع احتفالي
+// خلفية زخرفية دائمة: أيقونات بريد وأجراس صغيرة ترتفع بهدوء بكل صفحات الموقع،
+// بنفس ثيم ميزة الاشتراك بالتنبيهات والبريد الإلكتروني اللي أُعلن عنها
 function RisingElements() {
-  const [dots, setDots] = useState<FloatingDot[]>([]);
+  const [icons, setIcons] = useState<FloatingIcon[]>([]);
 
   useEffect(() => {
     const spawn = () => {
-      const dot: FloatingDot = {
-        id: dotIdCounter++,
+      const icon: FloatingIcon = {
+        id: iconIdCounter++,
         left: 4 + Math.random() * 92,
         duration: 16 + Math.random() * 10,
         scale: 0.5 + Math.random() * 0.5,
-        color: DOT_COLORS[Math.floor(Math.random() * DOT_COLORS.length)],
+        color: ICON_COLORS[Math.floor(Math.random() * ICON_COLORS.length)],
+        kind: Math.random() < 0.5 ? "bell" : "mail",
       };
-      setDots((prev) => [...prev.slice(-5), dot]);
+      setIcons((prev) => [...prev.slice(-5), icon]);
     };
 
     spawn();
@@ -42,20 +44,23 @@ function RisingElements() {
 
   return (
     <div className="pointer-events-none fixed inset-0 z-30 overflow-hidden" aria-hidden="true">
-      {dots.map((d) => (
-        <motion.div
-          key={d.id}
-          initial={{ y: "110vh", opacity: 0 }}
-          animate={{ y: "-15vh", opacity: [0, 0.35, 0.35, 0] }}
-          transition={{ duration: d.duration, ease: "linear" }}
-          onAnimationComplete={() =>
-            setDots((prev) => prev.filter((x) => x.id !== d.id))
-          }
-          style={{ position: "absolute", left: `${d.left}%`, color: d.color }}
-        >
-          <Bell style={{ width: 22 * d.scale, height: 22 * d.scale }} fill="currentColor" strokeWidth={0} />
-        </motion.div>
-      ))}
+      {icons.map((ic) => {
+        const IconComp = ic.kind === "bell" ? Bell : Mail;
+        return (
+          <motion.div
+            key={ic.id}
+            initial={{ y: "110vh", opacity: 0 }}
+            animate={{ y: "-15vh", opacity: [0, 0.35, 0.35, 0] }}
+            transition={{ duration: ic.duration, ease: "linear" }}
+            onAnimationComplete={() =>
+              setIcons((prev) => prev.filter((x) => x.id !== ic.id))
+            }
+            style={{ position: "absolute", left: `${ic.left}%`, color: ic.color }}
+          >
+            <IconComp style={{ width: 22 * ic.scale, height: 22 * ic.scale }} fill="currentColor" strokeWidth={0} />
+          </motion.div>
+        );
+      })}
     </div>
   );
 }
