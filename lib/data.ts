@@ -1297,8 +1297,6 @@ export const topics: Topic[] = [
       { label: "إثرائي", url: "https://www.ethrai.sa/" },
     ],
   },
-  { slug: "campus-map", title: "مخطط الجامعة" },
-  { slug: "campus-metro", title: "المترو الجامعي" },
   {
     slug: "study-plan",
     title: "الخطة الدراسية",
@@ -1569,10 +1567,12 @@ export const topics: Topic[] = [
 - لا يحق للطالبة التسجيل بعد اجتياز السنة الثانية.
 - على الطالبة تحقيق شرط كفاية اللغة، بتقديم درجة لا تقل عن (5) في اختبار الآيلتس، أو (83%) في اختبار ستيب، أو ما يعادلها من اختبارات اللغة المعيارية المعتمدة، أو أن تكون قد أُعفيت أو أتمّت مقررات اللغة الإنجليزية (ENG 102-2 أو ENG 102) بمعدل لا يقل عن (A)، وفق متطلبات الجامعة (مع تقديم ما يثبت ذلك).`,
         links: [
-          { label: "دليل الطالبة", url: "https://drive.google.com/drive/folders/1mQ5bPOO_ej9R2c5XiojMkszTMeDeRamN?usp=drive_link" },
+          { label: "دليل التخصصات المزدوجة للعام الجامعي 1448هـ", url: "https://pnu.edu.sa/ar/Deanship/registration/Advertisement/Documents/%d8%af%d9%84%d9%8a%d9%84%20%d8%a7%d9%84%d8%b7%d8%a7%d9%84%d8%a8%d8%a9%20%d9%84%d9%84%d8%aa%d8%ae%d8%b5%d8%b5%d8%a7%d8%aa%20%d8%a7%d9%84%d9%85%d8%b2%d8%af%d9%88%d8%ac%d8%a9%20%d9%84%d9%84%d8%b9%d8%a7%d9%85%20%d8%a7%d9%84%d8%ac%d8%a7%d9%85%d8%b9%d9%8a%201448%20%d9%87%d9%80.pdf" },
         ],
       },    ],
   },
+  { slug: "campus-map", title: "مخطط الجامعة" },
+  { slug: "campus-metro", title: "المترو الجامعي" },
   { slug: "college-library", title: "مكتبة كلية علوم الحاسب والمعلومات" },
   { slug: "central-library", title: "المكتبة المركزية" },
   { slug: "skills-record", title: "السجل المهاري" },
