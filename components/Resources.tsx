@@ -9,6 +9,7 @@ import { MajorsOverview } from "@/components/MajorsOverview";
 import { EnglishExemptionTables } from "@/components/EnglishExemptionTables";
 import { LoginCredentials } from "@/components/LoginCredentials";
 import { BlackboardNavList } from "@/components/BlackboardNavList";
+import { AcademicTables } from "@/components/AcademicTables";
 import { resourcesSection, topics } from "@/lib/data";
 import { LinkedText } from "@/components/LinkedText";
 
@@ -212,6 +213,7 @@ export function Resources() {
                             )}
                             {t.slug === "banner-system" && <LoginCredentials />}
                             {t.slug === "blackboard-system" && <BlackboardNavList />}
+                            {t.slug === "study-plan" && <AcademicTables />}
                           </>
                         ) : (
                           <div className="flex items-center gap-2.5 mt-5 text-sm text-muted">
