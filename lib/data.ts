@@ -384,6 +384,19 @@ export const metroStationsTable: MetroStationRow[] = [
   { station: "F2", facilities: "سكن أعضاء هيئة التدريس (فئة ب)\nالمركز الرياضي للأعضاء" },
 ];
 
+export type MapLegendItem = {
+  icon: "train" | "hospital" | "gate" | "daycare" | "bus";
+  label: string;
+};
+
+export const campusMapLegend: MapLegendItem[] = [
+  { icon: "train", label: "محطة القطار" },
+  { icon: "hospital", label: "المستشفى" },
+  { icon: "gate", label: "بوابة خارجية" },
+  { icon: "daycare", label: "حضانة الأطفال" },
+  { icon: "bus", label: "محطة الحافلات" },
+];
+
 export const resourcesSection = {
   eyebrow: "موضوعات الإرشاد",
   title: "موضوعات الإرشاد",
