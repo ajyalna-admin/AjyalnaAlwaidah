@@ -1,8 +1,19 @@
+import Image from "next/image";
 import { metroLines, metroStationsTable } from "@/lib/data";
 
 export function MetroMapDetails() {
   return (
     <div className="mt-6 space-y-8">
+      <div className="overflow-hidden rounded-2xl glass-card">
+        <Image
+          src="/metro-info-poster.jpg"
+          alt="قطار الجامعة (المترو) — مسارات المحطات ورموزها"
+          width={900}
+          height={1273}
+          className="h-auto w-full"
+        />
+      </div>
+
       <div>
         <h4 className="mb-3 font-display text-sm font-bold text-navy">
           مسارات القطار بالتفصيل
@@ -26,6 +37,21 @@ export function MetroMapDetails() {
               </div>
             </div>
           ))}
+        </div>
+      </div>
+
+      <div>
+        <h4 className="mb-3 font-display text-sm font-bold text-navy">
+          مخطط خط المترو التفصيلي
+        </h4>
+        <div className="overflow-hidden rounded-2xl glass-card">
+          <Image
+            src="/metro-lines-diagram.jpg"
+            alt="مخطط خط مترو الجامعة التفصيلي بكل المحطات"
+            width={900}
+            height={1273}
+            className="h-auto w-full"
+          />
         </div>
       </div>
 
@@ -55,6 +81,21 @@ export function MetroMapDetails() {
               ))}
             </tbody>
           </table>
+        </div>
+      </div>
+
+      <div>
+        <h4 className="mb-3 font-display text-sm font-bold text-navy">
+          مخطط المدينة الجامعية
+        </h4>
+        <div className="overflow-hidden rounded-2xl glass-card">
+          <Image
+            src="/metro-city-map.jpg"
+            alt="مخطط المدينة الجامعية بالكامل مع دليل الرموز"
+            width={900}
+            height={1273}
+            className="h-auto w-full"
+          />
         </div>
       </div>
     </div>
