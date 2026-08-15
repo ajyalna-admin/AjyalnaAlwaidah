@@ -9,6 +9,7 @@ export default function SendNotificationPage() {
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
   const [url, setUrl] = useState("/");
+  const [imageUrl, setImageUrl] = useState("");
   const [sendPush, setSendPush] = useState(true);
   const [sendEmail, setSendEmail] = useState(true);
   const [sendToSpecific, setSendToSpecific] = useState(false);
@@ -48,6 +49,7 @@ export default function SendNotificationPage() {
             subject: title,
             body,
             url: fullUrl,
+            imageUrl: imageUrl?.trim() || undefined,
             targetEmail: sendToSpecific ? targetEmail : undefined,
           }),
         });
@@ -108,6 +110,24 @@ export default function SendNotificationPage() {
             rows={3}
             className="w-full rounded-xl border border-line px-4 py-2.5 text-sm"
           />
+        </div>
+
+        <div>
+          <label className="mb-1 block text-sm font-medium text-navy">
+            رابط صورة أعلى الإيميل (اختياري)
+          </label>
+          <input
+            type="text"
+            value={imageUrl}
+            onChange={(e) => setImageUrl(e.target.value)}
+            placeholder="https://ajyalnaalwaidah.com/campus-buildings-table.jpg"
+            className="w-full rounded-xl border border-line px-4 py-2.5 text-sm"
+          />
+          <p className="mt-1 text-[11px] text-muted">
+            غيّريها كل مرة حسب الموضوع — استخدمي رابط أي صورة موجودة بمجلد
+            public بموقعكم (مثال: ajyalnaalwaidah.com/اسم-الصورة.jpg)، أو أي
+            رابط صورة عام ثاني.
+          </p>
         </div>
 
         <div>
