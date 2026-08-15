@@ -25,7 +25,7 @@ function linkifyText(text: string): string {
 
 export async function POST(request: Request) {
   try {
-    const { adminSecret, subject, body, url, targetEmail } = await request.json();
+    const { adminSecret, subject, body, url, targetEmail, imageUrl } = await request.json();
 
     if (!process.env.PUSH_ADMIN_SECRET || adminSecret !== process.env.PUSH_ADMIN_SECRET) {
       return NextResponse.json({ error: "غير مصرح" }, { status: 401 });
@@ -64,14 +64,22 @@ export async function POST(request: Request) {
          </td></tr>`
       : "";
 
-    // بنية بسيطة بدون <html>/<head>/خطوط خارجية، عشان Gmail ما يقص أي جزء منها
+    // صورة اختيارية أعلى الرسالة — تتغيّر حسب كل تنبيه ترسلينه
+    const imageHtml =
+      imageUrl && typeof imageUrl === "string" && imageUrl.trim()
+        ? `<tr><td style="padding:0;">
+             <img src="${imageUrl.trim()}" alt="${subject}" width="100%" style="display:block;width:100%;max-width:480px;border-radius:24px 24px 0 0;" />
+           </td></tr>`
+        : "";
+
     const html = `
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background-color:#f6f2ea;padding:32px 16px;font-family:${FONT_STACK};" dir="rtl">
   <tr>
     <td align="center">
-      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:480px;background-color:#ffffff;border-radius:24px;border:1px solid #e3ddd0;">
+      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:480px;background-color:#ffffff;border-radius:24px;border:1px solid #e3ddd0;overflow:hidden;">
+        ${imageHtml}
         <tr>
-          <td style="background-color:#16223f;padding:26px 32px;text-align:center;border-radius:24px 24px 0 0;">
+          <td style="background-color:#16223f;padding:26px 32px;text-align:center;">
             <div style="color:#f6f2ea;font-size:19px;font-weight:bold;">أجيالنا الواعدة</div>
             <div style="color:#8fb5bd;font-size:12px;margin-top:6px;">جيلٌ يُمكّن جيلاً</div>
           </td>
@@ -90,7 +98,7 @@ export async function POST(request: Request) {
           </td>
         </tr>
         <tr>
-          <td style="background-color:#f6f2ea;padding:18px 32px;text-align:center;border-top:1px solid #e3ddd0;border-radius:0 0 24px 24px;">
+          <td style="background-color:#f6f2ea;padding:18px 32px;text-align:center;border-top:1px solid #e3ddd0;">
             <div style="color:#16223f;font-size:12px;">أجيالنا الواعدة — منصة الإرشاد الجامعي</div>
             <div style="color:#5f95a0;font-size:12px;margin-top:4px;">ajyalnaalwaidah.com</div>
           </td>
