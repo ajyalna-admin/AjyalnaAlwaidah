@@ -1,7 +1,6 @@
+import Image from "next/image";
 import { Train, Cross, DoorOpen, Baby, Bus } from "lucide-react";
 import { metroLines, metroStationsTable, campusMapLegend, type MapLegendItem } from "@/lib/data";
-import { MetroLineDiagram } from "@/components/MetroLineDiagram";
-import { CampusCityMap } from "@/components/CampusCityMap";
 
 const LEGEND_ICONS: Record<MapLegendItem["icon"], typeof Train> = {
   train: Train,
@@ -14,6 +13,16 @@ const LEGEND_ICONS: Record<MapLegendItem["icon"], typeof Train> = {
 export function MetroMapDetails() {
   return (
     <div className="mt-6 space-y-8">
+      <div className="overflow-hidden rounded-2xl glass-card bg-cream">
+        <Image
+          src="/metro-info-poster.jpg"
+          alt="قطار الجامعة (المترو) — مسارات المحطات ورموزها"
+          width={1100}
+          height={1460}
+          className="h-auto w-full"
+        />
+      </div>
+
       <div>
         <h4 className="mb-3 font-display text-sm font-bold text-navy">
           مسارات القطار بالتفصيل
@@ -42,9 +51,17 @@ export function MetroMapDetails() {
 
       <div>
         <h4 className="mb-3 font-display text-sm font-bold text-navy">
-          مخطط خط المترو
+          مخطط خط المترو التفصيلي
         </h4>
-        <MetroLineDiagram />
+        <div className="overflow-hidden rounded-2xl glass-card bg-cream">
+          <Image
+            src="/metro-lines-diagram.jpg"
+            alt="مخطط خط مترو الجامعة التفصيلي بكل المحطات"
+            width={1100}
+            height={1460}
+            className="h-auto w-full"
+          />
+        </div>
       </div>
 
       <div>
@@ -80,7 +97,15 @@ export function MetroMapDetails() {
         <h4 className="mb-3 font-display text-sm font-bold text-navy">
           مخطط المدينة الجامعية
         </h4>
-        <CampusCityMap />
+        <div className="overflow-hidden rounded-2xl glass-card bg-cream">
+          <Image
+            src="/metro-city-map.jpg"
+            alt="مخطط المدينة الجامعية بالكامل مع دليل الرموز"
+            width={1100}
+            height={1460}
+            className="h-auto w-full"
+          />
+        </div>
       </div>
 
       <div>
