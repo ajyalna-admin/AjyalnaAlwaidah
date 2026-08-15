@@ -1,19 +1,17 @@
-import Image from "next/image";
-import { metroLines, metroStationsTable } from "@/lib/data";
+import { Train, Cross, DoorOpen, Baby, Bus } from "lucide-react";
+import { metroLines, metroStationsTable, campusMapLegend, type MapLegendItem } from "@/lib/data";
+
+const LEGEND_ICONS: Record<MapLegendItem["icon"], typeof Train> = {
+  train: Train,
+  hospital: Cross,
+  gate: DoorOpen,
+  daycare: Baby,
+  bus: Bus,
+};
 
 export function MetroMapDetails() {
   return (
     <div className="mt-6 space-y-8">
-      <div className="overflow-hidden rounded-2xl glass-card">
-        <Image
-          src="/metro-info-poster.jpg"
-          alt="قطار الجامعة (المترو) — مسارات المحطات ورموزها"
-          width={900}
-          height={1273}
-          className="h-auto w-full"
-        />
-      </div>
-
       <div>
         <h4 className="mb-3 font-display text-sm font-bold text-navy">
           مسارات القطار بالتفصيل
@@ -37,21 +35,6 @@ export function MetroMapDetails() {
               </div>
             </div>
           ))}
-        </div>
-      </div>
-
-      <div>
-        <h4 className="mb-3 font-display text-sm font-bold text-navy">
-          مخطط خط المترو التفصيلي
-        </h4>
-        <div className="overflow-hidden rounded-2xl glass-card">
-          <Image
-            src="/metro-lines-diagram.jpg"
-            alt="مخطط خط مترو الجامعة التفصيلي بكل المحطات"
-            width={900}
-            height={1273}
-            className="h-auto w-full"
-          />
         </div>
       </div>
 
@@ -86,16 +69,23 @@ export function MetroMapDetails() {
 
       <div>
         <h4 className="mb-3 font-display text-sm font-bold text-navy">
-          مخطط المدينة الجامعية
+          دليل رموز مخطط المدينة الجامعية
         </h4>
-        <div className="overflow-hidden rounded-2xl glass-card">
-          <Image
-            src="/metro-city-map.jpg"
-            alt="مخطط المدينة الجامعية بالكامل مع دليل الرموز"
-            width={900}
-            height={1273}
-            className="h-auto w-full"
-          />
+        <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
+          {campusMapLegend.map((item) => {
+            const Icon = LEGEND_ICONS[item.icon];
+            return (
+              <div
+                key={item.label}
+                className="flex items-center gap-2.5 rounded-2xl glass-card p-3.5"
+              >
+                <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-navy text-white">
+                  <Icon className="h-4 w-4" />
+                </span>
+                <p className="text-xs font-bold text-navy">{item.label}</p>
+              </div>
+            );
+          })}
         </div>
       </div>
     </div>
