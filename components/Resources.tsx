@@ -10,6 +10,8 @@ import { EnglishExemptionTables } from "@/components/EnglishExemptionTables";
 import { LoginCredentials } from "@/components/LoginCredentials";
 import { BlackboardNavList } from "@/components/BlackboardNavList";
 import { AcademicTables } from "@/components/AcademicTables";
+import { CampusMapDetails } from "@/components/CampusMapDetails";
+import { MetroMapDetails } from "@/components/MetroMapDetails";
 import { resourcesSection, topics } from "@/lib/data";
 import { LinkedText } from "@/components/LinkedText";
 
@@ -214,6 +216,8 @@ export function Resources() {
                             {t.slug === "banner-system" && <LoginCredentials />}
                             {t.slug === "blackboard-system" && <BlackboardNavList />}
                             {t.slug === "study-plan" && <AcademicTables />}
+                            {t.slug === "campus-map" && <CampusMapDetails />}
+                            {t.slug === "campus-metro" && <MetroMapDetails />}
                           </>
                         ) : (
                           <div className="flex items-center gap-2.5 mt-5 text-sm text-muted">
