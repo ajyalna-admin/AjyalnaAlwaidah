@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { campusBuildingsTable, collegeGroundFloorRooms } from "@/lib/data";
 
 export function CampusMapDetails() {
@@ -36,6 +37,15 @@ export function CampusMapDetails() {
         <h4 className="mb-3 font-display text-sm font-bold text-navy">
           أهم مرافق الطابق الأرضي — مبنى كلية علوم الحاسب والمعلومات
         </h4>
+        <div className="mb-4 overflow-hidden rounded-2xl glass-card bg-cream">
+          <Image
+            src="/campus-college-floorplan.jpg"
+            alt="مخطط الطابق الأرضي لمبنى كلية علوم الحاسب والمعلومات"
+            width={1100}
+            height={1213}
+            className="h-auto w-full"
+          />
+        </div>
         <div className="flex flex-wrap gap-2.5">
           {collegeGroundFloorRooms.map((room) => (
             <span
