@@ -1,5 +1,7 @@
 import { Train, Cross, DoorOpen, Baby, Bus } from "lucide-react";
 import { metroLines, metroStationsTable, campusMapLegend, type MapLegendItem } from "@/lib/data";
+import { MetroLineDiagram } from "@/components/MetroLineDiagram";
+import { CampusCityMap } from "@/components/CampusCityMap";
 
 const LEGEND_ICONS: Record<MapLegendItem["icon"], typeof Train> = {
   train: Train,
@@ -40,6 +42,13 @@ export function MetroMapDetails() {
 
       <div>
         <h4 className="mb-3 font-display text-sm font-bold text-navy">
+          مخطط خط المترو
+        </h4>
+        <MetroLineDiagram />
+      </div>
+
+      <div>
+        <h4 className="mb-3 font-display text-sm font-bold text-navy">
           دليل المحطات وأهم مرافقها
         </h4>
         <div className="overflow-x-auto rounded-2xl glass-card">
@@ -65,6 +74,13 @@ export function MetroMapDetails() {
             </tbody>
           </table>
         </div>
+      </div>
+
+      <div>
+        <h4 className="mb-3 font-display text-sm font-bold text-navy">
+          مخطط المدينة الجامعية
+        </h4>
+        <CampusCityMap />
       </div>
 
       <div>
