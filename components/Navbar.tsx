@@ -22,11 +22,19 @@ const MORE_LINKS = [
   { href: "/imtidad", label: "امتداد" },
 ];
 
+const EXCELLENCE_LINKS = [
+  { href: "/excellence#members", label: "تميز العضوات" },
+  { href: "/excellence#guidance-committees", label: "لجان الإرشاد المميزة" },
+  { href: "/excellence#sub-committees", label: "اللجان الفرعية المميزة" },
+];
+
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   const [moreOpen, setMoreOpen] = useState(false);
+  const [excellenceOpen, setExcellenceOpen] = useState(false);
   const moreRef = useRef<HTMLDivElement>(null);
+  const excellenceRef = useRef<HTMLDivElement>(null);
   const pathname = usePathname();
   const router = useRouter();
 
@@ -42,6 +50,9 @@ export function Navbar() {
       if (moreRef.current && !moreRef.current.contains(e.target as Node)) {
         setMoreOpen(false);
       }
+      if (excellenceRef.current && !excellenceRef.current.contains(e.target as Node)) {
+        setExcellenceOpen(false);
+      }
     };
     document.addEventListener("mousedown", onClickOutside);
     return () => document.removeEventListener("mousedown", onClickOutside);
@@ -50,6 +61,7 @@ export function Navbar() {
   const goToSection = (id: string) => {
     setOpen(false);
     setMoreOpen(false);
+    setExcellenceOpen(false);
     if (pathname === "/") {
       document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
     } else {
@@ -107,6 +119,31 @@ export function Navbar() {
               </div>
             )}
           </div>
+
+          <div className="relative" ref={excellenceRef}>
+            <button
+              onClick={() => setExcellenceOpen((v) => !v)}
+              className="flex items-center gap-1 px-3 py-2 text-[13px] font-medium text-navy/70 hover:text-navy transition-colors duration-200"
+            >
+              قائمة التميز
+              <ChevronDown className={`h-3.5 w-3.5 transition-transform duration-200 ${excellenceOpen ? "rotate-180" : ""}`} />
+            </button>
+
+            {excellenceOpen && (
+              <div className="absolute top-full mt-2 left-0 min-w-[210px] glass-card rounded-2xl p-2 flex flex-col">
+                {EXCELLENCE_LINKS.map((l) => (
+                  <Link
+                    key={l.href}
+                    href={l.href}
+                    onClick={() => setExcellenceOpen(false)}
+                    className="text-right px-3.5 py-2.5 rounded-xl text-[13px] font-medium text-navy/80 hover:bg-sky/15 hover:text-navy transition-colors duration-200 whitespace-nowrap"
+                  >
+                    {l.label}
+                  </Link>
+                ))}
+              </div>
+            )}
+          </div>
         </nav>
 
         <div className="flex items-center gap-3">
@@ -140,6 +177,18 @@ export function Navbar() {
             ))}
             <div className="h-px bg-line my-1.5" />
             {MORE_LINKS.map((l) => (
+              <Link
+                key={l.href}
+                href={l.href}
+                onClick={() => setOpen(false)}
+                className="text-right py-2.5 text-base text-navy/80"
+              >
+                {l.label}
+              </Link>
+            ))}
+            <div className="h-px bg-line my-1.5" />
+            <span className="text-right py-1 text-xs font-semibold text-navy/50">قائمة التميز</span>
+            {EXCELLENCE_LINKS.map((l) => (
               <Link
                 key={l.href}
                 href={l.href}
