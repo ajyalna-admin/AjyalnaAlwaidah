@@ -5,6 +5,7 @@ import { brand } from "@/lib/data";
 import { FloatingSubscribe } from "@/components/FloatingSubscribe";
 import { WelcomeConfetti } from "@/components/WelcomeConfetti";
 import { WelcomeAnnouncement } from "@/components/WelcomeAnnouncement";
+import { PartnershipAnnouncement } from "@/components/PartnershipAnnouncement";
 
 const ibmPlexArabic = IBM_Plex_Sans_Arabic({
   subsets: ["arabic"],
@@ -40,6 +41,7 @@ export default function RootLayout({
         <FloatingSubscribe />
         <WelcomeConfetti />
         <WelcomeAnnouncement />
+        <PartnershipAnnouncement storageKey="home" delayMs={1400} />
       </body>
     </html>
   );
