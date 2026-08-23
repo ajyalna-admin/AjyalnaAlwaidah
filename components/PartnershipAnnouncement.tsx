@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { PartyPopper, X, Sparkles } from "lucide-react";
 import { partnerships } from "@/lib/data";
 
@@ -10,11 +11,14 @@ type PartnershipAnnouncementProps = {
   storageKey: string;
   /** Which partnership entry to feature. Defaults to the first (currently جريدة السبت). */
   partnerSlug?: string;
+  /** Delay (ms) before the popup fades in. Defaults to 500 — pass a larger value on surfaces that already show another welcome popup, so the two don't land on the exact same frame. */
+  delayMs?: number;
 };
 
-export function PartnershipAnnouncement({ storageKey, partnerSlug }: PartnershipAnnouncementProps) {
+export function PartnershipAnnouncement({ storageKey, partnerSlug, delayMs = 500 }: PartnershipAnnouncementProps) {
   const [visible, setVisible] = useState(false);
   const [mounted, setMounted] = useState(false);
+  const pathname = usePathname();
 
   const partner = partnerSlug
     ? partnerships.find((p) => p.slug === partnerSlug) ?? partnerships[0]
@@ -22,6 +26,9 @@ export function PartnershipAnnouncement({ storageKey, partnerSlug }: Partnership
 
   useEffect(() => {
     if (!partner) return;
+    // النسخة العامة (storageKey === "home") لا تظهر داخل صفحة الشراكات نفسها،
+    // لأن الصفحة فيها نسختها الخاصة أصلًا — نتفادى ظهور نافذتين معًا.
+    if (storageKey === "home" && pathname?.startsWith("/partnerships")) return;
     const flagKey = `announcement-seen-${storageKey}`;
     try {
       if (sessionStorage.getItem(flagKey)) return;
@@ -32,10 +39,10 @@ export function PartnershipAnnouncement({ storageKey, partnerSlug }: Partnership
     const timer = setTimeout(() => {
       setMounted(true);
       requestAnimationFrame(() => setVisible(true));
-    }, 500);
+    }, delayMs);
     return () => clearTimeout(timer);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [storageKey]);
+  }, [storageKey, pathname, delayMs]);
 
   const close = () => {
     setVisible(false);
