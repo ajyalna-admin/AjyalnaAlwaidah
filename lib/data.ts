@@ -2732,6 +2732,53 @@ export const excellenceMembers: ExcellenceCommitteeMembers[] = [
   },
 ];
 
+// ==================== الشراكات ====================
+
+export const partnershipsSection = {
+  eyebrow: "الشراكات",
+  title: "الشراكات",
+  description:
+    "نؤمن أنّ العمل الجماعي يوسّع دائرة الأثر، لذلك نحرص على بناء شراكات تجمع بين الخبرات وتثري المحتوى الطلابي.",
+};
+
+export type PartnerIssue = {
+  badge: string;
+  title: string;
+  pdfUrl: string;
+};
+
+export type Partnership = {
+  slug: string;
+  partnerName: string;
+  collabTitle: string;
+  tagline: string;
+  description: string;
+  issue: PartnerIssue;
+  archiveUrl: string;
+  archiveLabel: string;
+};
+
+export const partnerships: Partnership[] = [
+  {
+    slug: "saturday-newspaper",
+    partnerName: "جريدة السبت",
+    collabTitle: "أجيالنا الواعدة × جريدة السبت",
+    tagline: "عندما تتّحد الجهود يتّسع الأثر",
+    description: `في عمل مشترك يجمع بين تجربتين، صدر هذا العدد ليكون مساحة تتقاطع فيها الأقلام وتتكامل فيها المهارات، بعيدًا عن حدود المبادرة الواحدة، وامتدادًا لفكرة أنّ العمل الجماعي يوسّع دائرة الأثر.
+
+تعاوننا في إصدار هذا العدد، في خطوة تهدف إلى إثراء المحتوى الطلابي وتوسيع دائرة المشاركة بين فريقين يجمعهما طموح مشترك، وقد شمل العمل عدة مراحل.
+
+وتبرز الجهود المتحالفة في مقال «دليل الطالبة الواعدة» الذي أُعدّ بمشاركة الفريقين وجمعت فيه خبراتهما لخدمة الطالبة المستجدة، ويُعد هذا الإصدار خطوة أولى في هذا الاتجاه، يُتوقع أن تُبنى عليها تجارب مستقبلية بحسب ما تتيحه الفرص.`,
+    issue: {
+      badge: "عدد خاص",
+      title: "دليل المستجدات مع بداية الدوامات",
+      pdfUrl: "/partnerships/saturday-newspaper-issue-1.pdf",
+    },
+    archiveUrl: "https://saturday.news/",
+    archiveLabel: "الاطلاع على الأعداد السابقة",
+  },
+];
+
 // ==================== الأسئلة الشائعة ====================
 
 export type FaqItem = { question: string; answer: string };
