@@ -20,6 +20,7 @@ const MORE_LINKS = [
   { href: "/courses", label: "دليل المقررات" },
   { href: "/tracks", label: "مساراتنا" },
   { href: "/imtidad", label: "امتداد" },
+  { href: "/partnerships", label: "الشراكات" },
 ];
 
 const EXCELLENCE_LINKS = [
