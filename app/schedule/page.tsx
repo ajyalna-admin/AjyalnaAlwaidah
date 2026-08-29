@@ -1,3 +1,4 @@
+import { Download } from "lucide-react";
 import { scheduleSection } from "@/lib/data";
 
 export const metadata = {
@@ -16,6 +17,15 @@ export default function SchedulePage() {
             {scheduleSection.title}
           </h1>
           <p className="mt-4 text-navy/70 leading-relaxed">{scheduleSection.description}</p>
+
+          <a
+            href={scheduleSection.pdfUrl}
+            download
+            className="mt-6 inline-flex items-center gap-2 rounded-full bg-navy px-5 py-2.5 text-sm font-medium text-cream hover:bg-navy-light transition-colors duration-200"
+          >
+            <Download className="h-4 w-4" />
+            تحميل الجدول PDF
+          </a>
         </div>
 
         <div className="mt-10 glass-card rounded-3xl p-4 sm:p-6">
