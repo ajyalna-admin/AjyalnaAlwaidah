@@ -2779,6 +2779,16 @@ export const partnerships: Partnership[] = [
   },
 ];
 
+// ==================== الجدول الدراسي ====================
+
+export const scheduleSection = {
+  eyebrow: "الجدول الدراسي",
+  title: "التقويم الدراسي | الفصل الأول لعام 1448هـ",
+  description:
+    "تقويم منظّم لأسابيع الفصل الدراسي الأول كاملة، ليسهّل عليكِ متابعة مواعيدك الدراسية أولًا بأول.",
+  imageUrl: "/schedule/academic-calendar-term1-1448.png",
+};
+
 // ==================== الأسئلة الشائعة ====================
 
 export type FaqItem = { question: string; answer: string };
