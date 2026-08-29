@@ -21,6 +21,7 @@ const MORE_LINKS = [
   { href: "/tracks", label: "مساراتنا" },
   { href: "/imtidad", label: "امتداد" },
   { href: "/partnerships", label: "الشراكات" },
+  { href: "/schedule", label: "الجدول الدراسي" },
 ];
 
 const EXCELLENCE_LINKS = [
