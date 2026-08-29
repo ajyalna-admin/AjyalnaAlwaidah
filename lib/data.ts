@@ -2787,6 +2787,7 @@ export const scheduleSection = {
   description:
     "تقويم منظّم لأسابيع الفصل الدراسي الأول كاملة، ليسهّل عليكِ متابعة مواعيدك الدراسية أولًا بأول.",
   imageUrl: "/schedule/academic-calendar-term1-1448.png",
+  pdfUrl: "/schedule/academic-calendar-term1-1448.pdf",
 };
 
 // ==================== الأسئلة الشائعة ====================
